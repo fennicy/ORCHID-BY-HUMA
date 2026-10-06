@@ -11,8 +11,8 @@ export const PricingPage: React.FC = () => {
   return (
     <div className="space-y-0">
       <PageHero
-        title="Beauty Salon &amp; Spa Pricing"
-        subtitle="Transparent, upfront investment in your beauty and wellness. Explore our full menu of services in Katy, Texas."
+        title="Salon & Spa Pricing in Katy, TX"
+        subtitle="Explore transparent, upfront pricing for all salon and spa treatments at Orchid By Huma in Katy, Texas. Starting prices and consultation details."
         breadcrumb="Pricing"
       />
 
@@ -60,20 +60,32 @@ export const PricingPage: React.FC = () => {
               <div className="divide-y divide-stone-100">
                 {category.services.map((item) => {
                   const isStarting = item.price.includes('& up') || item.startingPrice;
-                  const guideRoute =
-                    item.id === 'hydra-facial'
-                      ? '/services/hydrafacial-katy-tx'
-                      : item.id === 'balayage'
-                      ? '/services/balayage-katy-tx'
-                      : item.id === 'bridal-makeup'
-                      ? '/services/bridal-makeup-katy-tx'
-                      : item.id === 'brazilian-wax'
-                      ? '/services/brazilian-wax-katy-tx'
-                      : item.id === 'lash-lift-tint'
-                      ? '/services/lash-lift-katy-tx'
-                      : item.id === 'full-hair-color'
-                      ? '/services/hair-color-katy-tx'
-                      : undefined;
+                  const guideRouteMap: Record<string, string> = {
+                    'hydra-facial': '/services/hydrafacial-katy-tx',
+                    'balayage': '/services/balayage-katy-tx',
+                    'bridal-makeup': '/services/bridal-makeup-katy-tx',
+                    'brazilian-wax': '/services/brazilian-wax-katy-tx',
+                    'lash-lift-tint': '/services/lash-lift-katy-tx',
+                    'full-hair-color': '/services/hair-color-katy-tx',
+                    'root-touch-up': '/services/hair-color-katy-tx',
+                    'highlights-full': '/services/highlights-katy-tx',
+                    'partial-highlights': '/services/highlights-katy-tx',
+                    'brazilian-blowout': '/services/blowout-katy-tx',
+                    'voluminous-blowdry': '/services/blowout-katy-tx',
+                    'haircut': '/services/haircuts-katy-tx',
+                    'microdermabrasion': '/services/microdermabrasion-katy-tx',
+                    'acne-facial': '/services/acne-facial-katy-tx',
+                    'hot-oil-massage-60': '/services/massage-katy-tx',
+                    'hot-oil-massage-30': '/services/massage-katy-tx',
+                    'body-scrubbing': '/services/body-scrub-katy-tx',
+                    'full-body-with-brazilian': '/services/waxing-katy-tx',
+                    'eyebrows-threading': '/services/threading-katy-tx',
+                    'eyebrow-lamination': '/services/brow-lamination-katy-tx',
+                    'party-makeup': '/services/makeup-katy-tx',
+                    'micro-needling': '/services/aesthetics-katy-tx',
+                    'chemical-peel': '/services/aesthetics-katy-tx',
+                  };
+                  const guideRoute = guideRouteMap[item.id];
                   return (
                     <div
                       key={item.id}

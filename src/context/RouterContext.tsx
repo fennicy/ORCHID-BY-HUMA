@@ -1,19 +1,6 @@
 import React, { createContext, useContext, useEffect, useState, useMemo } from 'react';
 
-export type AppRoute =
-  | '/'
-  | '/about'
-  | '/services'
-  | '/pricing'
-  | '/contact'
-  | '/appointment'
-  | '/services/hydrafacial-katy-tx'
-  | '/services/balayage-katy-tx'
-  | '/services/hair-color-katy-tx'
-  | '/services/bridal-makeup-katy-tx'
-  | '/services/brazilian-wax-katy-tx'
-  | '/services/lash-lift-katy-tx'
-  | '/services/facials-katy-tx';
+export type AppRoute = string;
 
 interface RouterContextType {
   currentPath: AppRoute;
@@ -34,13 +21,7 @@ function normalizePath(rawPath: string): AppRoute {
   if (clean === '/appointment') return '/appointment';
 
   // Dedicated Service Landing Page Routes
-  if (clean === '/services/hydrafacial-katy-tx') return '/services/hydrafacial-katy-tx';
-  if (clean === '/services/balayage-katy-tx') return '/services/balayage-katy-tx';
-  if (clean === '/services/hair-color-katy-tx') return '/services/hair-color-katy-tx';
-  if (clean === '/services/bridal-makeup-katy-tx') return '/services/bridal-makeup-katy-tx';
-  if (clean === '/services/brazilian-wax-katy-tx') return '/services/brazilian-wax-katy-tx';
-  if (clean === '/services/lash-lift-katy-tx') return '/services/lash-lift-katy-tx';
-  if (clean === '/services/facials-katy-tx') return '/services/facials-katy-tx';
+  if (clean.startsWith('/services/')) return clean;
 
   return '/';
 }

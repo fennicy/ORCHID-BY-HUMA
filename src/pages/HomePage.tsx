@@ -5,6 +5,7 @@ import { SERVICE_CATEGORIES } from '../data/services';
 import { TESTIMONIALS } from '../data/testimonials';
 import { GALLERY_ITEMS } from '../data/gallery';
 import { FAQSection } from '../components/FAQSection';
+import { InstagramSection } from '../components/InstagramSection';
 import {
   Calendar,
   Phone,
@@ -98,7 +99,7 @@ export const HomePage: React.FC = () => {
     {
       title: 'Rigorous Hygiene & Safety',
       description:
-        'Hospital-grade sterilization for all implements, single-use disposable consumables, and spotless treatment beds adhere to the strictest Texas cosmetology hygiene standards.',
+        'Professional sanitation and hygiene practices for salon implements and treatment areas adhere to the strictest Texas cosmetology safety standards.',
       icon: ShieldCheck,
     },
   ];
@@ -106,43 +107,48 @@ export const HomePage: React.FC = () => {
   return (
     <div className="space-y-0">
       {/* =========================================================================
-          HERO SECTION
+          HERO SECTION (RESTORED LARGE AUTHENTIC HERO IMAGE & CONVERSION ARCHITECTURE)
           ========================================================================= */}
-      <section className="relative min-h-[85vh] lg:min-h-[90vh] flex items-center bg-[#1A1816] text-[#FAF8F5] overflow-hidden">
-        {/* Background Editorial Image with Measured Scrim */}
+      <section className="relative min-h-[70vh] sm:min-h-[74vh] lg:min-h-[78vh] flex items-center bg-[#1A1816] text-[#FAF8F5] overflow-hidden border-b border-[#2C2723]">
+        {/* Background Large Authentic Editorial Image with Measured Scrim */}
         <div className="absolute inset-0 z-0">
           <img
             src="/src/assets/images/hero_salon_spa_1791303830093.jpg"
-            alt="Orchid By Huma Luxury Salon and Spa interior in Katy, Texas"
+            alt="Orchid By Huma Luxury Salon and Spa interior sanctuary in Katy, Texas"
             className="w-full h-full object-cover object-center filter brightness-[0.72] contrast-[1.05]"
             referrerPolicy="no-referrer"
           />
-          {/* Subtle directional gradient overlay for guaranteed text legibility */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1A1816]/95 via-[#1A1816]/75 to-transparent sm:w-3/4 lg:w-3/5" />
+          {/* Directional gradient scrim guaranteeing pristine legibility while showcasing the salon interior */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1A1816]/95 via-[#1A1816]/80 to-transparent sm:w-3/4 lg:w-3/5" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1A1816] via-transparent to-black/30" />
         </div>
 
         {/* Content Container */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
-          <div className="max-w-2xl space-y-6">
-            {/* Trust Kicker */}
-            <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.25em] uppercase text-[#D8B88F]">
-              <Sparkles className="w-3.5 h-3.5 text-[#D8B88F]" />
-              <span>10+ Years of Beauty Artistry · Katy, TX</span>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-18 lg:py-20 animate-fade-in-up">
+          <div className="max-w-2xl space-y-5">
+            {/* Trust Kicker & Brand Supporting Text */}
+            <div className="space-y-1">
+              <span className="text-xs font-semibold tracking-[0.25em] uppercase text-[#D8B88F] block">
+                Orchid By Huma
+              </span>
+              <div className="inline-flex items-center gap-2 text-xs font-medium tracking-wider text-stone-300">
+                <Sparkles className="w-3.5 h-3.5 text-[#D8B88F]" />
+                <span>10+ Years of Beauty &amp; Spa Excellence · Katy, TX</span>
+              </div>
             </div>
 
-            {/* Headline */}
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-white font-normal leading-[1.12] tracking-tight text-balance">
-              Indulge in Luxury Beauty &amp; Spa Treatments
+            {/* Primary H1 */}
+            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white font-normal leading-[1.14] tracking-tight text-balance">
+              Luxury Beauty Salon, Spa &amp; Aesthetics Studio in Katy, TX
             </h1>
 
             {/* Supporting Copy */}
             <p className="text-stone-300 text-base sm:text-lg font-light leading-relaxed max-w-xl">
-              Discover personalized beauty, skincare, hair and spa treatments designed to help you relax, rejuvenate and feel your best in Katy, Texas.
+              Discover personalized hair artistry, clinical facials, HydraFacial, makeup, waxing, lashes, brows, and restorative massage in Katy, Texas.
             </p>
 
             {/* CTAs */}
-            <div className="pt-3 flex flex-wrap items-center gap-4">
+            <div className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4">
               <button
                 onClick={() => navigate('/appointment')}
                 className="bg-[#C59B6D] hover:bg-[#B48C5E] text-stone-950 font-semibold px-7 py-3.5 text-xs uppercase tracking-widest transition-all duration-200 cursor-pointer shadow-md hover:shadow-lg flex items-center gap-2"
@@ -151,26 +157,18 @@ export const HomePage: React.FC = () => {
                 <span>Book an Appointment</span>
               </button>
 
-              <button
-                onClick={() => navigate('/services')}
-                className="bg-transparent hover:bg-white/10 text-white border border-stone-400/60 hover:border-white px-6 py-3.5 text-xs uppercase tracking-widest transition-colors cursor-pointer flex items-center gap-2"
-              >
-                <span>Explore Our Services</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-
-            {/* Direct Phone & Location Pill-Free Trust Marker */}
-            <div className="pt-6 border-t border-stone-700/60 flex flex-wrap items-center gap-6 text-xs text-stone-300">
               <a
                 href={`tel:${BUSINESS_INFO.phone.primaryRaw}`}
-                className="flex items-center gap-2 hover:text-[#D8B88F] transition-colors"
+                className="bg-transparent hover:bg-white/10 text-white border border-stone-400/60 hover:border-white px-6 py-3.5 text-xs uppercase tracking-widest font-semibold transition-colors flex items-center gap-2"
               >
-                <Phone className="w-3.5 h-3.5 text-[#D8B88F]" />
-                <span className="font-medium">{BUSINESS_INFO.phone.primary}</span>
+                <Phone className="w-4 h-4 text-[#D8B88F]" />
+                <span>Call {BUSINESS_INFO.phone.primary}</span>
               </a>
-              <span className="text-stone-600">·</span>
-              <span className="flex items-center gap-1.5 text-stone-300">
+            </div>
+
+            {/* Direct Phone, Location & Rating Marker */}
+            <div className="pt-5 border-t border-stone-700/60 flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-stone-300">
+              <span className="flex items-center gap-1.5 text-stone-200">
                 <MapPin className="w-3.5 h-3.5 text-[#D8B88F]" />
                 <span>1105 S Mason Rd, Katy, TX</span>
               </span>
@@ -178,6 +176,10 @@ export const HomePage: React.FC = () => {
               <span className="text-[#D8B88F] font-medium flex items-center gap-1">
                 <Star className="w-3.5 h-3.5 fill-[#D8B88F] text-[#D8B88F]" />
                 <span>4.8 ★ Google Rating</span>
+              </span>
+              <span className="text-stone-600 hidden sm:inline">·</span>
+              <span className="text-stone-400 text-[11px] sm:text-xs hidden sm:inline">
+                Mon–Sat 10AM–6:30PM · Sun 12PM–5PM
               </span>
             </div>
           </div>
@@ -318,6 +320,159 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* =========================================================================
+          THREE PILLARS: HAIR CARE · SKIN & SPA · AESTHETICS & GLAM
+          ========================================================================= */}
+      <section className="py-20 lg:py-24 bg-[#FAF8F5] border-b border-[#E8E0D5]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+          <div className="text-center max-w-3xl mx-auto space-y-3">
+            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#976F44]">
+              Core Specializations
+            </span>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-stone-900">
+              Three Pillars of Beauty &amp; Wellness in Katy, TX
+            </h2>
+            <p className="text-stone-600 text-sm sm:text-base">
+              Explore dedicated departments designed to elevate your personal style, skin health, and celebratory moments.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Pillar 1: Hair Care */}
+            <div className="bg-white border border-[#E8E0D5] p-8 space-y-6 flex flex-col justify-between hover:border-[#B48C5E] transition-all">
+              <div className="space-y-4">
+                <div className="w-12 h-12 bg-[#F2ECE4] text-[#976F44] flex items-center justify-center">
+                  <Sparkles className="w-6 h-6" />
+                </div>
+                <h3 className="font-serif text-2xl text-stone-900">
+                  Hair Care &amp; Artistry
+                </h3>
+                <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
+                  Tailored precision cuts, bespoke balayage, dimensional foil highlights, root touch-ups, and Brazilian Blowout smoothing treatments formulated for lasting vitality.
+                </p>
+                <div className="pt-2 border-t border-stone-100 flex flex-col gap-2 text-xs">
+                  <Link to="/services/balayage-katy-tx" className="text-stone-800 hover:text-[#976F44] font-medium flex items-center justify-between">
+                    <span>Balayage in Katy ($240 &amp; up)</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#976F44]" />
+                  </Link>
+                  <Link to="/services/hair-color-katy-tx" className="text-stone-800 hover:text-[#976F44] font-medium flex items-center justify-between">
+                    <span>Hair Color &amp; Touch-Up ($60 &amp; up)</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#976F44]" />
+                  </Link>
+                  <Link to="/services/highlights-katy-tx" className="text-stone-800 hover:text-[#976F44] font-medium flex items-center justify-between">
+                    <span>Foil Highlights ($130 &amp; up)</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#976F44]" />
+                  </Link>
+                  <Link to="/services/blowout-katy-tx" className="text-stone-800 hover:text-[#976F44] font-medium flex items-center justify-between">
+                    <span>Voluminous Blowouts &amp; Brazilian ($45+)</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#976F44]" />
+                  </Link>
+                  <Link to="/services/haircuts-katy-tx" className="text-stone-800 hover:text-[#976F44] font-medium flex items-center justify-between">
+                    <span>Precision Haircuts ($40 &amp; up)</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#976F44]" />
+                  </Link>
+                </div>
+              </div>
+              <Link
+                to="/services/hair-salon-katy-tx"
+                className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#976F44] hover:text-stone-900 pt-2"
+              >
+                <span>Explore Hair Salon Hub</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+            {/* Pillar 2: Skin & Spa */}
+            <div className="bg-white border border-[#E8E0D5] p-8 space-y-6 flex flex-col justify-between hover:border-[#B48C5E] transition-all">
+              <div className="space-y-4">
+                <div className="w-12 h-12 bg-[#F2ECE4] text-[#976F44] flex items-center justify-center">
+                  <Droplet className="w-6 h-6" />
+                </div>
+                <h3 className="font-serif text-2xl text-stone-900">
+                  Skin Health &amp; Spa
+                </h3>
+                <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
+                  Clinical vortex HydraFacials, diamond-tip microdermabrasion, acne clearing facials, full-body botanical scrubs, and restorative hot oil massages.
+                </p>
+                <div className="pt-2 border-t border-stone-100 flex flex-col gap-2 text-xs">
+                  <Link to="/services/hydrafacial-katy-tx" className="text-stone-800 hover:text-[#976F44] font-medium flex items-center justify-between">
+                    <span>HydraFacial Clinical Care ($110)</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#976F44]" />
+                  </Link>
+                  <Link to="/services/microdermabrasion-katy-tx" className="text-stone-800 hover:text-[#976F44] font-medium flex items-center justify-between">
+                    <span>Microdermabrasion Facial ($80)</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#976F44]" />
+                  </Link>
+                  <Link to="/services/acne-facial-katy-tx" className="text-stone-800 hover:text-[#976F44] font-medium flex items-center justify-between">
+                    <span>Acne Purifying Facial ($65)</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#976F44]" />
+                  </Link>
+                  <Link to="/services/massage-katy-tx" className="text-stone-800 hover:text-[#976F44] font-medium flex items-center justify-between">
+                    <span>Hot Oil Massage ($40 / $70)</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#976F44]" />
+                  </Link>
+                  <Link to="/services/body-scrub-katy-tx" className="text-stone-800 hover:text-[#976F44] font-medium flex items-center justify-between">
+                    <span>Body Scrub &amp; Polish ($65)</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#976F44]" />
+                  </Link>
+                </div>
+              </div>
+              <Link
+                to="/services/facials-katy-tx"
+                className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#976F44] hover:text-stone-900 pt-2"
+              >
+                <span>Explore Skincare Hub</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+            {/* Pillar 3: Aesthetics & Glam */}
+            <div className="bg-white border border-[#E8E0D5] p-8 space-y-6 flex flex-col justify-between hover:border-[#B48C5E] transition-all">
+              <div className="space-y-4">
+                <div className="w-12 h-12 bg-[#F2ECE4] text-[#976F44] flex items-center justify-center">
+                  <Heart className="w-6 h-6" />
+                </div>
+                <h3 className="font-serif text-2xl text-stone-900">
+                  Aesthetics &amp; Glam
+                </h3>
+                <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
+                  High-definition bridal beauty, traditional dupatta setting, sanitary Brazilian waxing, organic threading, lash lifts, and fluffy brow lamination.
+                </p>
+                <div className="pt-2 border-t border-stone-100 flex flex-col gap-2 text-xs">
+                  <Link to="/services/bridal-makeup-katy-tx" className="text-stone-800 hover:text-[#976F44] font-medium flex items-center justify-between">
+                    <span>Bridal Makeup Experience ($750)</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#976F44]" />
+                  </Link>
+                  <Link to="/services/makeup-katy-tx" className="text-stone-800 hover:text-[#976F44] font-medium flex items-center justify-between">
+                    <span>Event &amp; Party Makeup ($75–$250)</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#976F44]" />
+                  </Link>
+                  <Link to="/services/brazilian-wax-katy-tx" className="text-stone-800 hover:text-[#976F44] font-medium flex items-center justify-between">
+                    <span>Brazilian Waxing ($50)</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#976F44]" />
+                  </Link>
+                  <Link to="/services/threading-katy-tx" className="text-stone-800 hover:text-[#976F44] font-medium flex items-center justify-between">
+                    <span>Eyebrow Threading ($10)</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#976F44]" />
+                  </Link>
+                  <Link to="/services/lash-lift-katy-tx" className="text-stone-800 hover:text-[#976F44] font-medium flex items-center justify-between">
+                    <span>Lash Lift &amp; Brow Lamination ($60+)</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#976F44]" />
+                  </Link>
+                </div>
+              </div>
+              <Link
+                to="/services/aesthetics-katy-tx"
+                className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#976F44] hover:text-stone-900 pt-2"
+              >
+                <span>Explore Aesthetics Hub</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
           SERVICES DIRECTORY PREVIEW (10 MAJOR CATEGORIES)
           ========================================================================= */}
       <section className="py-20 lg:py-28 bg-[#FAF8F5] border-b border-[#E8E0D5]">
@@ -353,8 +508,9 @@ export const HomePage: React.FC = () => {
                 <div className="aspect-16/10 overflow-hidden relative bg-stone-100">
                   <img
                     src={cat.image}
-                    alt={cat.title}
+                    alt={`${cat.title} services at Orchid By Huma in Katy TX`}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
                     referrerPolicy="no-referrer"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
@@ -412,8 +568,9 @@ export const HomePage: React.FC = () => {
                 <div className="aspect-4/3 overflow-hidden relative">
                   <img
                     src={feat.image}
-                    alt={feat.title}
+                    alt={`${feat.title} at Orchid By Huma in Katy, TX`}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-95"
+                    loading="lazy"
                     referrerPolicy="no-referrer"
                   />
                   <div className="absolute top-3 right-3 bg-[#1A1816]/90 backdrop-blur-xs text-[#D8B88F] font-semibold text-xs px-3 py-1 border border-stone-700">
@@ -565,8 +722,9 @@ export const HomePage: React.FC = () => {
               >
                 <img
                   src={item.image}
-                  alt={item.title}
+                  alt={`${item.title} by Orchid By Huma in Katy TX`}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 text-white">
@@ -582,7 +740,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          LOCAL SERVICE AREA & "NEAR ME" KATY COMMUNITY RELEVANCE
+          LOCAL SERVICE AREA: SERVING KATY & THE GREATER KATY AREA
           ========================================================================= */}
       <section className="py-16 lg:py-20 bg-[#FAF8F5] border-b border-[#E8E0D5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -591,17 +749,21 @@ export const HomePage: React.FC = () => {
               <div className="lg:col-span-8 space-y-4">
                 <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#976F44] flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-[#976F44]" />
-                  Local Salon &amp; Spa in Katy, TX
+                  Local Salon &amp; Spa in Katy, TX · 77450
                 </span>
                 <h3 className="font-serif text-2xl sm:text-3xl text-stone-900 leading-snug">
-                  Proudly Serving Katy &amp; West Houston Communities
+                  Serving Katy &amp; the Greater Katy Area
                 </h3>
                 <p className="text-stone-700 text-xs sm:text-sm leading-relaxed">
-                  Located conveniently on South Mason Road, <strong>Orchid By Huma</strong> is the trusted luxury salon and spa destination for residents across <strong>Cinco Ranch, Grand Lakes, Elyson, Cane Island, Firethorne, Cross Creek Ranch</strong>, and the greater Energy Corridor.
+                  Conveniently located at <strong>1105 S Mason Rd in Katy, Texas 77450</strong>, <strong>Orchid By Huma</strong> serves guests looking for a salon, spa, or aesthetics studio near them across Katy and neighboring West Houston. We proudly welcome clients from ZIP codes <strong>77450, 77494, 77493, and 77449</strong>, as well as the communities of <strong>Cinco Ranch, Grand Lakes, Elyson, Cane Island, Firethorne, Cross Creek Ranch</strong>, and the Energy Corridor.
                 </p>
                 <div className="flex flex-wrap gap-2 pt-2 text-xs text-stone-600">
-                  <span className="font-medium text-stone-900">Nearby Neighborhoods:</span>
-                  <span>Cinco Ranch</span>
+                  <span className="font-medium text-stone-900">Key Service Areas &amp; ZIPs:</span>
+                  <span>Katy (77450)</span>
+                  <span>·</span>
+                  <span>Cinco Ranch (77494)</span>
+                  <span>·</span>
+                  <span>North Katy (77493)</span>
                   <span>·</span>
                   <span>Grand Lakes</span>
                   <span>·</span>
@@ -612,8 +774,6 @@ export const HomePage: React.FC = () => {
                   <span>Firethorne</span>
                   <span>·</span>
                   <span>Cross Creek Ranch</span>
-                  <span>·</span>
-                  <span>West Houston</span>
                 </div>
               </div>
 
@@ -644,6 +804,11 @@ export const HomePage: React.FC = () => {
           ANSWER-FIRST FAQS (AEO & AI SEARCH ENGINE ANSWERABILITY)
           ========================================================================= */}
       <FAQSection />
+
+      {/* =========================================================================
+          OFFICIAL INSTAGRAM SOCIAL SHOWCASE
+          ========================================================================= */}
+      <InstagramSection />
 
       {/* =========================================================================
           HIGH-CONVERTING BOOKING CTA

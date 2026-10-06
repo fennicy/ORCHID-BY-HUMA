@@ -16,6 +16,16 @@ export const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [mobileMenuOpen]);
+
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'About Us', href: '/about' },
@@ -36,7 +46,7 @@ export const Header: React.FC = () => {
             </span>
             <span className="flex items-center gap-1.5 text-stone-400">
               <Clock className="w-3.5 h-3.5 text-[#C59B6D]" />
-              Mon–Sat: 10:00 AM – 6:30 PM · Sun: 12:00 PM – 5:00 PM
+              {BUSINESS_INFO.hours[0].days}: {BUSINESS_INFO.hours[0].time} · {BUSINESS_INFO.hours[1].days}: {BUSINESS_INFO.hours[1].time}
             </span>
           </div>
           <div className="flex items-center gap-4 text-stone-300">
@@ -129,8 +139,9 @@ export const Header: React.FC = () => {
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-stone-700 hover:text-stone-900 focus:outline-hidden"
-              aria-label={mobileMenuOpen ? 'Close Menu' : 'Open Menu'}
+              className="p-2 text-stone-700 hover:text-stone-900 focus-visible:ring-2 focus-visible:ring-[#B48C5E] outline-none"
+              aria-expanded={mobileMenuOpen}
+              aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>

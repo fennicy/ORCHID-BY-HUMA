@@ -21,7 +21,7 @@ export const AboutPage: React.FC = () => {
     <div className="space-y-0">
       <PageHero
         title="About Orchid By Huma"
-        subtitle="Beauty, relaxation and personalized care — all in one experience."
+        subtitle="Discover Orchid By Huma: over 10 years of personalized beauty, skincare, hair artistry, and spa care in Katy, Texas."
         breadcrumb="About Us"
       />
 
@@ -68,7 +68,7 @@ export const AboutPage: React.FC = () => {
               <div className="relative aspect-4/3 overflow-hidden shadow-md border border-[#E8E0D5]">
                 <img
                   src="/src/assets/images/hero_salon_spa_1791303830093.jpg"
-                  alt="Orchid By Huma Salon interior"
+                  alt="Orchid By Huma Luxury Salon and Spa interior in Katy, Texas"
                   className="w-full h-full object-cover"
                   loading="lazy"
                   referrerPolicy="no-referrer"

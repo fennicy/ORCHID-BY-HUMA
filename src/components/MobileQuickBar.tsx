@@ -16,17 +16,17 @@ export const MobileQuickBar: React.FC = () => {
       <div className="grid grid-cols-2 gap-2">
         <a
           href={`tel:${BUSINESS_INFO.phone.primaryRaw}`}
-          className="flex items-center justify-center gap-1.5 py-2.5 px-3 bg-stone-800 text-stone-100 text-xs font-semibold uppercase tracking-wider rounded-none hover:bg-stone-700 transition-colors"
+          className="flex items-center justify-center gap-2 py-3 px-3 bg-stone-800 text-stone-100 text-xs font-semibold uppercase tracking-wider rounded-none hover:bg-stone-700 active:bg-stone-900 transition-colors focus-visible:ring-2 focus-visible:ring-[#C59B6D] outline-none min-h-[44px]"
         >
           <Phone className="w-3.5 h-3.5 text-[#C59B6D]" />
           <span>Call Now</span>
         </a>
         <button
           onClick={() => navigate('/appointment')}
-          className="flex items-center justify-center gap-1.5 py-2.5 px-3 bg-[#B48C5E] text-stone-950 text-xs font-semibold uppercase tracking-wider rounded-none hover:bg-[#A87D4F] transition-colors cursor-pointer"
+          className="flex items-center justify-center gap-2 py-3 px-3 bg-[#B48C5E] text-stone-950 text-xs font-semibold uppercase tracking-wider rounded-none hover:bg-[#A87D4F] active:bg-[#976F44] transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-white outline-none min-h-[44px]"
         >
           <Calendar className="w-3.5 h-3.5 text-stone-950" />
-          <span>Book Seat</span>
+          <span>Book Appointment</span>
         </button>
       </div>
     </div>

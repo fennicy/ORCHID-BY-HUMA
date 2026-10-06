@@ -37,9 +37,9 @@ export const ContactForm: React.FC = () => {
         <div className="w-14 h-14 rounded-full bg-[#EBF5EE] text-[#2E7D32] flex items-center justify-center mx-auto">
           <CheckCircle2 className="w-8 h-8" />
         </div>
-        <h3 className="font-serif text-2xl text-stone-900">Message Received</h3>
+        <h3 className="font-serif text-2xl text-stone-900">Message Request Received</h3>
         <p className="text-stone-600 text-sm max-w-md mx-auto">
-          Thank you for reaching out to Orchid By Huma. Our Katy team will get in touch with you shortly.
+          Thank you for reaching out to Orchid By Huma. Our Katy salon team will contact you shortly. For immediate inquiries or same-day appointments, please call directly.
         </p>
         <div className="pt-2">
           <a
@@ -57,7 +57,7 @@ export const ContactForm: React.FC = () => {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       {error && (
-        <div className="p-3 bg-red-50 border border-red-200 text-red-800 text-xs flex items-center gap-2">
+        <div role="alert" className="p-3 bg-red-50 border border-red-200 text-red-800 text-xs flex items-center gap-2">
           <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
           <span>{error}</span>
         </div>
@@ -65,29 +65,33 @@ export const ContactForm: React.FC = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1">
+          <label htmlFor="contact-name" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1">
             Full Name <span className="text-[#976F44]">*</span>
           </label>
           <input
+            id="contact-name"
             type="text"
             required
+            autoComplete="name"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            placeholder="Your name"
+            placeholder="Full Name"
             className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#D8D0C5] text-stone-900 focus:outline-hidden focus:border-[#976F44] transition-colors"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1">
+          <label htmlFor="contact-phone" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1">
             Phone Number <span className="text-[#976F44]">*</span>
           </label>
           <input
+            id="contact-phone"
             type="tel"
             required
+            autoComplete="tel"
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-            placeholder="(281) 000-0000"
+            placeholder="(281) 555-0123"
             className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#D8D0C5] text-stone-900 focus:outline-hidden focus:border-[#976F44] transition-colors"
           />
         </div>
@@ -95,23 +99,26 @@ export const ContactForm: React.FC = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1">
+          <label htmlFor="contact-email" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1">
             Email Address
           </label>
           <input
+            id="contact-email"
             type="email"
+            autoComplete="email"
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            placeholder="your.email@example.com"
+            placeholder="client@email.com"
             className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#D8D0C5] text-stone-900 focus:outline-hidden focus:border-[#976F44] transition-colors"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1">
+          <label htmlFor="contact-service" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1">
             Service Interested In
           </label>
           <select
+            id="contact-service"
             value={formData.serviceInterested}
             onChange={(e) => setFormData({ ...formData, serviceInterested: e.target.value })}
             className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#D8D0C5] text-stone-900 focus:outline-hidden focus:border-[#976F44] transition-colors"
@@ -127,10 +134,11 @@ export const ContactForm: React.FC = () => {
       </div>
 
       <div>
-        <label className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1">
+        <label htmlFor="contact-date" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1">
           Preferred Date (Optional)
         </label>
         <input
+          id="contact-date"
           type="date"
           value={formData.preferredDate}
           onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
@@ -139,10 +147,11 @@ export const ContactForm: React.FC = () => {
       </div>
 
       <div>
-        <label className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1">
+        <label htmlFor="contact-message" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1">
           Your Message
         </label>
         <textarea
+          id="contact-message"
           rows={4}
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}

@@ -36,7 +36,7 @@ export const ServicesPage: React.FC = () => {
   return (
     <div className="space-y-0">
       <PageHero
-        title="Beauty &amp; Spa Services in Katy, TX"
+        title="Beauty, Spa & Salon Services in Katy, TX"
         subtitle="Discover our comprehensive directory of facial, hair, bridal, waxing, and wellness treatments crafted with 10+ years of expertise."
         breadcrumb="Services"
       />
@@ -66,39 +66,87 @@ export const ServicesPage: React.FC = () => {
       </section>
 
       {/* DEDICATED TREATMENT GUIDES BAR (Local Intent & Deep Linking) */}
-      <section className="bg-[#F2ECE4] border-b border-[#E0D7CB] py-4 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs">
-          <span className="font-semibold text-stone-900 uppercase tracking-wider flex items-center gap-1.5 shrink-0">
+      <section className="bg-[#F2ECE4] border-b border-[#E0D7CB] py-5 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto space-y-2.5 text-xs">
+          <div className="flex items-center gap-2 font-semibold text-stone-900 uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5 text-[#976F44]" />
-            Signature Service Guides:
-          </span>
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-stone-700">
-            <Link to="/services/hydrafacial-katy-tx" className="hover:text-[#976F44] transition-colors underline">
+            <span>Dedicated Service Guides &amp; Local Specialties in Katy, TX:</span>
+          </div>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-stone-700">
+            <Link to="/services/hydrafacial-katy-tx" className="hover:text-[#976F44] transition-colors underline font-medium">
               HydraFacial ($110)
             </Link>
             <span className="text-stone-400">·</span>
-            <Link to="/services/balayage-katy-tx" className="hover:text-[#976F44] transition-colors underline">
+            <Link to="/services/balayage-katy-tx" className="hover:text-[#976F44] transition-colors underline font-medium">
               Balayage ($240+)
             </Link>
             <span className="text-stone-400">·</span>
-            <Link to="/services/hair-color-katy-tx" className="hover:text-[#976F44] transition-colors underline">
+            <Link to="/services/hair-color-katy-tx" className="hover:text-[#976F44] transition-colors underline font-medium">
               Hair Color ($60+)
             </Link>
             <span className="text-stone-400">·</span>
-            <Link to="/services/bridal-makeup-katy-tx" className="hover:text-[#976F44] transition-colors underline">
-              Bridal Glam ($750)
+            <Link to="/services/highlights-katy-tx" className="hover:text-[#976F44] transition-colors underline font-medium">
+              Highlights ($130+)
             </Link>
             <span className="text-stone-400">·</span>
-            <Link to="/services/brazilian-wax-katy-tx" className="hover:text-[#976F44] transition-colors underline">
+            <Link to="/services/blowout-katy-tx" className="hover:text-[#976F44] transition-colors underline font-medium">
+              Blowouts ($45+)
+            </Link>
+            <span className="text-stone-400">·</span>
+            <Link to="/services/haircuts-katy-tx" className="hover:text-[#976F44] transition-colors underline font-medium">
+              Precision Haircuts ($40+)
+            </Link>
+            <span className="text-stone-400">·</span>
+            <Link to="/services/facials-katy-tx" className="hover:text-[#976F44] transition-colors underline font-medium">
+              Facials ($55+)
+            </Link>
+            <span className="text-stone-400">·</span>
+            <Link to="/services/microdermabrasion-katy-tx" className="hover:text-[#976F44] transition-colors underline font-medium">
+              Microdermabrasion ($80)
+            </Link>
+            <span className="text-stone-400">·</span>
+            <Link to="/services/acne-facial-katy-tx" className="hover:text-[#976F44] transition-colors underline font-medium">
+              Acne Facial ($65)
+            </Link>
+            <span className="text-stone-400">·</span>
+            <Link to="/services/bridal-makeup-katy-tx" className="hover:text-[#976F44] transition-colors underline font-medium">
+              Bridal Makeup ($750)
+            </Link>
+            <span className="text-stone-400">·</span>
+            <Link to="/services/makeup-katy-tx" className="hover:text-[#976F44] transition-colors underline font-medium">
+              Event Makeup ($75+)
+            </Link>
+            <span className="text-stone-400">·</span>
+            <Link to="/services/waxing-katy-tx" className="hover:text-[#976F44] transition-colors underline font-medium">
+              Waxing ($20+)
+            </Link>
+            <span className="text-stone-400">·</span>
+            <Link to="/services/brazilian-wax-katy-tx" className="hover:text-[#976F44] transition-colors underline font-medium">
               Brazilian Wax ($50)
             </Link>
             <span className="text-stone-400">·</span>
-            <Link to="/services/lash-lift-katy-tx" className="hover:text-[#976F44] transition-colors underline">
-              Lash Lift &amp; Brow Lamination
+            <Link to="/services/threading-katy-tx" className="hover:text-[#976F44] transition-colors underline font-medium">
+              Threading ($10)
             </Link>
             <span className="text-stone-400">·</span>
-            <Link to="/services/facials-katy-tx" className="hover:text-[#976F44] transition-colors underline">
-              Clinical Facials ($55+)
+            <Link to="/services/lash-lift-katy-tx" className="hover:text-[#976F44] transition-colors underline font-medium">
+              Lash Lift ($60)
+            </Link>
+            <span className="text-stone-400">·</span>
+            <Link to="/services/brow-lamination-katy-tx" className="hover:text-[#976F44] transition-colors underline font-medium">
+              Brow Lamination ($70)
+            </Link>
+            <span className="text-stone-400">·</span>
+            <Link to="/services/massage-katy-tx" className="hover:text-[#976F44] transition-colors underline font-medium">
+              Hot Oil Massage ($40+)
+            </Link>
+            <span className="text-stone-400">·</span>
+            <Link to="/services/body-scrub-katy-tx" className="hover:text-[#976F44] transition-colors underline font-medium">
+              Body Scrub ($65)
+            </Link>
+            <span className="text-stone-400">·</span>
+            <Link to="/services/aesthetics-katy-tx" className="hover:text-[#976F44] transition-colors underline font-medium">
+              Clinical Aesthetics ($95+)
             </Link>
           </div>
         </div>
@@ -148,20 +196,32 @@ export const ServicesPage: React.FC = () => {
               {/* Services Item Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {category.services.map((service) => {
-                  const guideRoute =
-                    service.id === 'hydra-facial'
-                      ? '/services/hydrafacial-katy-tx'
-                      : service.id === 'balayage'
-                      ? '/services/balayage-katy-tx'
-                      : service.id === 'bridal-makeup'
-                      ? '/services/bridal-makeup-katy-tx'
-                      : service.id === 'brazilian-wax'
-                      ? '/services/brazilian-wax-katy-tx'
-                      : service.id === 'lash-lift-tint'
-                      ? '/services/lash-lift-katy-tx'
-                      : service.id === 'full-hair-color'
-                      ? '/services/hair-color-katy-tx'
-                      : undefined;
+                  const guideRouteMap: Record<string, string> = {
+                    'hydra-facial': '/services/hydrafacial-katy-tx',
+                    'balayage': '/services/balayage-katy-tx',
+                    'bridal-makeup': '/services/bridal-makeup-katy-tx',
+                    'brazilian-wax': '/services/brazilian-wax-katy-tx',
+                    'lash-lift-tint': '/services/lash-lift-katy-tx',
+                    'full-hair-color': '/services/hair-color-katy-tx',
+                    'root-touch-up': '/services/hair-color-katy-tx',
+                    'highlights-full': '/services/highlights-katy-tx',
+                    'partial-highlights': '/services/highlights-katy-tx',
+                    'brazilian-blowout': '/services/blowout-katy-tx',
+                    'voluminous-blowdry': '/services/blowout-katy-tx',
+                    'haircut': '/services/haircuts-katy-tx',
+                    'microdermabrasion': '/services/microdermabrasion-katy-tx',
+                    'acne-facial': '/services/acne-facial-katy-tx',
+                    'hot-oil-massage-60': '/services/massage-katy-tx',
+                    'hot-oil-massage-30': '/services/massage-katy-tx',
+                    'body-scrubbing': '/services/body-scrub-katy-tx',
+                    'full-body-with-brazilian': '/services/waxing-katy-tx',
+                    'eyebrows-threading': '/services/threading-katy-tx',
+                    'eyebrow-lamination': '/services/brow-lamination-katy-tx',
+                    'party-makeup': '/services/makeup-katy-tx',
+                    'micro-needling': '/services/aesthetics-katy-tx',
+                    'chemical-peel': '/services/aesthetics-katy-tx',
+                  };
+                  const guideRoute = guideRouteMap[service.id];
 
                   return (
                     <div

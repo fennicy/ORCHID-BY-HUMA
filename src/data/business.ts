@@ -49,5 +49,6 @@ export const BUSINESS_INFO = {
   googleMapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3463.385465223038!2d-95.7533!3d29.7686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640dfa1f81dfef7%3A0xb3a826bc48be28!2s1105%20S%20Mason%20Rd%2C%20Katy%2C%20TX%2077450!5e0!3m2!1sen!2sus!4v1710000000000!5m2!1sen!2sus",
   googleMapsDirectionsUrl: "https://maps.google.com/?q=1105+S+Mason+Rd,+Katy,+TX+77450",
   
-  instagramUrl: "https://www.instagram.com/orchidbyhuma",
+  instagramUrl: "https://www.instagram.com/orchidbyhuma/",
+  instagramHandle: "@orchidbyhuma",
 };

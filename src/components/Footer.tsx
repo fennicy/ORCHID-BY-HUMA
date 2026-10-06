@@ -122,12 +122,12 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2.5 text-sm text-stone-400">
               <li>
                 <Link to="/services/hydrafacial-katy-tx" className="hover:text-stone-200 transition-colors">
-                  HydraFacial Treatment ($110)
+                  HydraFacial ($110)
                 </Link>
               </li>
               <li>
                 <Link to="/services/balayage-katy-tx" className="hover:text-stone-200 transition-colors">
-                  Balayage &amp; Highlights ($240 &amp; up)
+                  Balayage in Katy ($240 &amp; up)
                 </Link>
               </li>
               <li>
@@ -136,8 +136,18 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/services/highlights-katy-tx" className="hover:text-stone-200 transition-colors">
+                  Highlights ($130 &amp; up)
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/blowout-katy-tx" className="hover:text-stone-200 transition-colors">
+                  Blowout &amp; Brazilian ($45+)
+                </Link>
+              </li>
+              <li>
                 <Link to="/services/bridal-makeup-katy-tx" className="hover:text-stone-200 transition-colors">
-                  Bridal &amp; Occasion Makeup ($750)
+                  Bridal Makeup ($750)
                 </Link>
               </li>
               <li>
@@ -146,8 +156,13 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/services/threading-katy-tx" className="hover:text-stone-200 transition-colors">
+                  Eyebrow Threading ($10)
+                </Link>
+              </li>
+              <li>
                 <Link to="/services/lash-lift-katy-tx" className="hover:text-stone-200 transition-colors">
-                  Lash Lift &amp; Brow Lamination ($60+)
+                  Lash Lift &amp; Tint ($60)
                 </Link>
               </li>
             </ul>
@@ -189,8 +204,11 @@ export const Footer: React.FC = () => {
               <div className="flex items-start gap-2.5 pt-1">
                 <Clock className="w-4 h-4 text-[#C59B6D] shrink-0 mt-0.5" />
                 <div className="text-xs space-y-1 text-stone-400">
-                  <p><span className="text-stone-200">Mon–Sat:</span> 10:00 AM – 6:30 PM</p>
-                  <p><span className="text-stone-200">Sunday:</span> 12:00 PM – 5:00 PM</p>
+                  {BUSINESS_INFO.hours.map((h, i) => (
+                    <p key={i}>
+                      <span className="text-stone-200">{h.days}:</span> {h.time}
+                    </p>
+                  ))}
                 </div>
               </div>
             </div>

@@ -38,7 +38,7 @@
     <priority>0.9</priority>
   </url>
 
-  <!-- High-Commercial Intent Local Service Landing Pages (Katy, TX) -->
+  <!-- High-Commercial Intent Dedicated Local Service Landing Pages (Katy, TX) -->
   <url>
     <loc>https://orchidbyhuma.com/services/hydrafacial-katy-tx/</loc>
     <lastmod>2026-10-06</lastmod>
@@ -58,13 +58,85 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://orchidbyhuma.com/services/highlights-katy-tx/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://orchidbyhuma.com/services/blowout-katy-tx/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://orchidbyhuma.com/services/haircuts-katy-tx/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://orchidbyhuma.com/services/hair-salon-katy-tx/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://orchidbyhuma.com/services/facials-katy-tx/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://orchidbyhuma.com/services/microdermabrasion-katy-tx/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://orchidbyhuma.com/services/acne-facial-katy-tx/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://orchidbyhuma.com/services/massage-katy-tx/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://orchidbyhuma.com/services/body-scrub-katy-tx/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://orchidbyhuma.com/services/waxing-katy-tx/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://orchidbyhuma.com/services/brazilian-wax-katy-tx/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://orchidbyhuma.com/services/threading-katy-tx/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
     <loc>https://orchidbyhuma.com/services/bridal-makeup-katy-tx/</loc>
     <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://orchidbyhuma.com/services/brazilian-wax-katy-tx/</loc>
+    <loc>https://orchidbyhuma.com/services/makeup-katy-tx/</loc>
     <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
@@ -76,7 +148,13 @@
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://orchidbyhuma.com/services/facials-katy-tx/</loc>
+    <loc>https://orchidbyhuma.com/services/brow-lamination-katy-tx/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://orchidbyhuma.com/services/aesthetics-katy-tx/</loc>
     <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>

@@ -11,7 +11,7 @@ export const ContactPage: React.FC = () => {
   return (
     <div className="space-y-0">
       <PageHero
-        title="Get in Touch"
+        title="Contact Orchid By Huma in Katy, TX"
         subtitle="We invite you to reach out for appointments, bridal inquiries, or questions about our beauty treatments in Katy, Texas."
         breadcrumb="Contact Us"
       />

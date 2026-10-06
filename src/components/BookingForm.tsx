@@ -14,12 +14,63 @@ export const BookingForm: React.FC<BookingFormProps> = ({
   initialServiceCategory = 'facials',
   initialServiceId = '',
 }) => {
+  // Resolve pre-selected category and service intelligently from initial props
+  const resolvedCategory = () => {
+    if (initialServiceId) {
+      for (const cat of SERVICE_CATEGORIES) {
+        if (cat.services.some((s) => s.id === initialServiceId)) {
+          return cat.key;
+        }
+      }
+      if (initialServiceId.includes('hydra') || initialServiceId.includes('facial') || initialServiceId.includes('microderm')) return 'facials';
+      if (initialServiceId.includes('balayage') || initialServiceId.includes('color') || initialServiceId.includes('highlight')) return 'hair-color';
+      if (initialServiceId.includes('blowout') || initialServiceId.includes('styling')) return 'hair-styling';
+      if (initialServiceId.includes('haircut') || initialServiceId.includes('hair-salon')) return 'haircuts';
+      if (initialServiceId.includes('makeup') || initialServiceId.includes('bridal')) return 'makeup';
+      if (initialServiceId.includes('wax')) return 'waxing';
+      if (initialServiceId.includes('threading')) return 'threading';
+      if (initialServiceId.includes('lash') || initialServiceId.includes('brow')) return 'tint-lamination';
+      if (initialServiceId.includes('massage') || initialServiceId.includes('scrub')) return 'massage';
+    }
+    return initialServiceCategory;
+  };
+
+  const resolvedService = () => {
+    if (!initialServiceId) return '';
+    for (const cat of SERVICE_CATEGORIES) {
+      const found = cat.services.find((s) => s.id === initialServiceId);
+      if (found) return found.id;
+    }
+    const slugMap: Record<string, string> = {
+      'hydrafacial-katy-tx': 'hydra-facial',
+      'balayage-katy-tx': 'balayage',
+      'hair-color-katy-tx': 'full-hair-color',
+      'highlights-katy-tx': 'highlights-full',
+      'blowout-katy-tx': 'voluminous-blowdry',
+      'haircuts-katy-tx': 'haircut',
+      'hair-salon-katy-tx': 'haircut',
+      'facials-katy-tx': 'basic-facial',
+      'microdermabrasion-katy-tx': 'microdermabrasion',
+      'acne-facial-katy-tx': 'acne-facial',
+      'massage-katy-tx': 'hot-oil-massage-60',
+      'body-scrub-katy-tx': 'body-scrubbing',
+      'waxing-katy-tx': 'full-body-with-brazilian',
+      'brazilian-wax-katy-tx': 'brazilian-wax',
+      'threading-katy-tx': 'eyebrows-threading',
+      'bridal-makeup-katy-tx': 'bridal-makeup',
+      'makeup-katy-tx': 'party-makeup',
+      'lash-lift-katy-tx': 'lash-lift-tint',
+      'brow-lamination-katy-tx': 'eyebrow-lamination',
+    };
+    return slugMap[initialServiceId] || '';
+  };
+
   const [formData, setFormData] = useState<AppointmentFormData>({
     fullName: '',
     phone: '',
     email: '',
-    serviceCategory: initialServiceCategory,
-    specificService: initialServiceId,
+    serviceCategory: resolvedCategory(),
+    specificService: resolvedService(),
     preferredDate: '',
     preferredTime: '10:00 AM',
     notes: '',
@@ -167,7 +218,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
       </div>
 
       {error && (
-        <div className="p-3 bg-red-50 border border-red-200 text-red-800 text-xs flex items-center gap-2">
+        <div role="alert" className="p-3 bg-red-50 border border-red-200 text-red-800 text-xs flex items-center gap-2">
           <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
           <span>{error}</span>
         </div>
@@ -176,29 +227,33 @@ export const BookingForm: React.FC<BookingFormProps> = ({
       {/* Row 1: Full Name & Phone Number */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1.5">
+          <label htmlFor="booking-fullname" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1.5">
             Full Name <span className="text-[#976F44]">*</span>
           </label>
           <input
+            id="booking-fullname"
             type="text"
             required
+            autoComplete="name"
             value={formData.fullName}
             onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-            placeholder="e.g. Eleanor Vance"
+            placeholder="Full Name"
             className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#D8D0C5] text-stone-900 focus:outline-hidden focus:border-[#976F44] focus:ring-1 focus:ring-[#976F44] transition-colors"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1.5">
+          <label htmlFor="booking-phone" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1.5">
             Phone Number <span className="text-[#976F44]">*</span>
           </label>
           <input
+            id="booking-phone"
             type="tel"
             required
+            autoComplete="tel"
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-            placeholder="(281) 000-0000"
+            placeholder="(281) 555-0123"
             className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#D8D0C5] text-stone-900 focus:outline-hidden focus:border-[#976F44] focus:ring-1 focus:ring-[#976F44] transition-colors"
           />
         </div>
@@ -206,14 +261,16 @@ export const BookingForm: React.FC<BookingFormProps> = ({
 
       {/* Row 2: Email */}
       <div>
-        <label className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1.5">
+        <label htmlFor="booking-email" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1.5">
           Email Address
         </label>
         <input
+          id="booking-email"
           type="email"
+          autoComplete="email"
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          placeholder="your.email@example.com"
+          placeholder="client@email.com"
           className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#D8D0C5] text-stone-900 focus:outline-hidden focus:border-[#976F44] focus:ring-1 focus:ring-[#976F44] transition-colors"
         />
       </div>
@@ -221,10 +278,11 @@ export const BookingForm: React.FC<BookingFormProps> = ({
       {/* Row 3: Service Category & Specific Service */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1.5">
+          <label htmlFor="booking-category" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1.5">
             Service Category <span className="text-[#976F44]">*</span>
           </label>
           <select
+            id="booking-category"
             value={formData.serviceCategory}
             onChange={(e) => {
               const newCat = e.target.value;
@@ -245,10 +303,11 @@ export const BookingForm: React.FC<BookingFormProps> = ({
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1.5">
+          <label htmlFor="booking-service" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1.5">
             Specific Treatment
           </label>
           <select
+            id="booking-service"
             value={formData.specificService}
             onChange={(e) => setFormData({ ...formData, specificService: e.target.value })}
             className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#D8D0C5] text-stone-900 focus:outline-hidden focus:border-[#976F44] focus:ring-1 focus:ring-[#976F44] transition-colors"
@@ -266,11 +325,12 @@ export const BookingForm: React.FC<BookingFormProps> = ({
       {/* Row 4: Preferred Date & Time */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1.5">
+          <label htmlFor="booking-date" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1.5">
             Preferred Date <span className="text-[#976F44]">*</span>
           </label>
           <div className="relative">
             <input
+              id="booking-date"
               type="date"
               required
               min={todayStr}
@@ -282,11 +342,12 @@ export const BookingForm: React.FC<BookingFormProps> = ({
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1.5">
+          <label htmlFor="booking-time" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1.5">
             Preferred Time Slot
           </label>
           <div className="relative">
             <select
+              id="booking-time"
               value={formData.preferredTime}
               onChange={(e) => setFormData({ ...formData, preferredTime: e.target.value })}
               className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#D8D0C5] text-stone-900 focus:outline-hidden focus:border-[#976F44] focus:ring-1 focus:ring-[#976F44] transition-colors"
@@ -303,10 +364,11 @@ export const BookingForm: React.FC<BookingFormProps> = ({
 
       {/* Row 5: Notes / Hair details / Preferences */}
       <div>
-        <label className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1.5">
+        <label htmlFor="booking-notes" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1.5">
           Special Notes or Skin / Hair Concerns
         </label>
         <textarea
+          id="booking-notes"
           rows={3}
           value={formData.notes}
           onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
@@ -327,7 +389,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
           ) : (
             <>
               <Calendar className="w-4 h-4 text-[#D8B88F]" />
-              <span>Book Your Seat</span>
+              <span>Request Appointment</span>
             </>
           )}
         </button>

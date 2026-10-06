@@ -184,6 +184,31 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ service })
         </div>
       </section>
 
+      {/* Why Choose Orchid By Huma for this Service in Katy, TX */}
+      <section className="py-16 lg:py-20 bg-[#FAF8F5] border-b border-[#E8E0D5]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-[#F2ECE4] border border-[#E0D7CB] p-8 sm:p-12">
+            <div className="max-w-3xl space-y-4">
+              <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#976F44] flex items-center gap-2">
+                <Sparkles className="w-3.5 h-3.5 text-[#976F44]" />
+                Katy Local Authority
+              </span>
+              <h2 className="font-serif text-2xl sm:text-3xl text-stone-900">
+                Why Katy Clients Choose Orchid By Huma
+              </h2>
+              <div className="space-y-3 text-stone-700 text-xs sm:text-sm leading-relaxed">
+                <p>
+                  With more than 10 years of beauty and spa excellence in Katy, Texas, <strong>Orchid By Huma</strong> combines personalized client care, licensed technicians, and premium salon-grade formulations.
+                </p>
+                <p>
+                  Conveniently situated at <strong>1105 S Mason Rd, Katy, TX 77450</strong>, our salon provides a quiet, hygienic haven for guests seeking unhurried, meticulous artistry. Whether booking online or calling <strong>(281) 206-0151</strong>, every treatment begins with an honest consultation to deliver results tailored to you.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Answer-First Visible FAQs (AEO & Local Intent) */}
       <section className="py-16 lg:py-20 bg-[#FAF8F5] border-b border-[#E8E0D5]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">

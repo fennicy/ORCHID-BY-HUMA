@@ -6,63 +6,75 @@ export interface FAQItem {
 
 export const MAIN_FAQS: FAQItem[] = [
   {
-    question: "What is Orchid By Huma?",
+    question: "What services does Orchid By Huma offer in Katy, TX?",
     answer:
-      "Orchid By Huma is a premier luxury beauty salon and spa located in Katy, Texas. With more than 10 years of experience, the salon offers specialized facials, HydraFacials, hair coloring, balayage, haircuts, blowouts, bridal makeup, waxing, eyebrow threading, lash lifts, and therapeutic massage.",
-    category: "General",
+      "Orchid By Huma is a luxury beauty salon, spa and aesthetics studio in Katy, Texas offering hair styling, precision haircuts, custom hair color, balayage, highlights, HydraFacials, clinical and botanical facials, microdermabrasion, relaxation hot oil massage, body scrubs, full-body waxing, Brazilian waxing, eyebrow threading, bridal and event makeup, lash lifts, brow lamination, and clinical aesthetic treatments.",
+    category: "Services",
   },
   {
-    question: "Where is Orchid By Huma located in Katy, TX?",
+    question: "Where is Orchid By Huma located?",
     answer:
-      "Orchid By Huma is located at 1105 S Mason Rd, Katy, TX 77450, conveniently accessible to clients throughout Katy, Cinco Ranch, Grand Lakes, Elyson, and West Houston.",
+      "Orchid By Huma is located at 1105 S Mason Rd, Katy, TX 77450, conveniently accessible to clients throughout Katy, Cinco Ranch, Grand Lakes, Elyson, and the Greater Katy area.",
     category: "Location",
   },
   {
-    question: "What services does Orchid By Huma offer?",
+    question: "Where can I get a facial near me in Katy?",
     answer:
-      "Orchid By Huma offers nine specialized departments: clinical and botanical facials (including HydraFacial), hair styling and treatments (including Brazilian Blowouts and voluminous blowouts), dimensional hair color and balayage, precision haircuts, bridal and event makeup (including Nikkah and Mayon styling), full-body waxing, eyebrow and facial threading, lash lift and brow lamination, and relaxation hot oil massages.",
-    category: "Services",
+      "Orchid By Huma offers personalized facial treatments at 1105 S Mason Rd in Katy, Texas. Our licensed aestheticians provide Basic Facials ($55), Brightening Facials ($60), Acne Purifying Facials ($65), Deep Hydrating & Calming Facials ($75), Microdermabrasion ($80), and signature HydraFacials ($110).",
+    category: "Facials",
   },
   {
     question: "Does Orchid By Huma offer HydraFacial in Katy, TX?",
     answer:
-      "Yes. Orchid By Huma offers professional HydraFacial treatments ($110) utilizing vortex-fusion exfoliation, gentle vacuum pore extraction, and peptide/antioxidant hydration for instant, radiant skin with zero downtime.",
+      "Yes. Orchid By Huma provides the signature HydraFacial treatment for $110. The 60-minute procedure utilizes vortex-fusion pore extraction, gentle salicylic resurfacing, and intense antioxidant and hyaluronic acid infusion with zero downtime.",
     category: "Facials",
   },
   {
-    question: "Does Orchid By Huma offer hair color and balayage?",
+    question: "Does Orchid By Huma offer hair coloring, balayage, and highlights?",
     answer:
-      "Yes. Orchid By Huma provides full custom hair color ($110 & up), root touch-ups ($60 & up), full highlights ($200 & up), partial highlights ($130 & up), lowlights ($250 & up), and hand-painted dimensional balayage ($240 & up) using gentle salon-grade formulations.",
+      "Yes. Orchid By Huma provides custom hair coloring ($110 & up), root touch-ups ($60 & up), full highlights ($200 & up), partial highlights ($130 & up), lowlights ($250 & up), hair toning ($50 & up), and hand-painted dimensional balayage ($240 & up) using salon-grade conditioning formulations.",
     category: "Hair",
   },
   {
-    question: "Does Orchid By Huma specialize in bridal and South Asian makeup?",
+    question: "Where can I get bridal makeup in Katy?",
     answer:
-      "Yes. Orchid By Huma specializes in luxury bridal makeup packages ($750), Nikkah makeup ($550), Engagement makeup ($450), and Mayon makeup with hair and dupatta setup ($350), as well as party makeup ($250) and office makeup ($125).",
+      "Orchid By Huma specializes in luxury bridal makeup at our Katy salon. We offer complete bridal packages ($750) including high-definition airbrush makeup, premium lashes, hair updo, jewelry setting, and traditional dupatta draping, as well as Nikkah makeup ($550), Engagement makeup ($450), and Mayon beauty ($350).",
     category: "Bridal",
   },
   {
     question: "Does Orchid By Huma offer waxing and Brazilian waxing?",
     answer:
-      "Yes. Orchid By Huma provides full body waxing with Brazilian ($120), full body without Brazilian ($80), individual Brazilian waxing ($50), bikini line ($20), arms, legs, back waxing, soothing post-wax vaginal masks ($15), and exfoliating scrubs.",
+      "Yes. Orchid By Huma offers gentle, hygienic waxing in private sanitary treatment rooms: Full Body Wax With Brazilian ($120), Full Body Wax Without Brazilian ($80), Brazilian Wax ($50), Bikini Line ($20), Full Legs ($40), Full Arms ($30), Underarms ($25), and soothing post-wax treatment masks ($15).",
     category: "Waxing",
   },
   {
-    question: "Does Orchid By Huma offer lash lifts and brow lamination?",
+    question: "Where can I get a lash lift or brow lamination in Katy?",
     answer:
-      "Yes. Orchid By Huma offers lash lift and tint ($60) to curl and darken natural lashes for 6 to 8 weeks, eyebrow lamination ($70) for full feathered brows, and custom brow tinting ($20).",
+      "Orchid By Huma offers professional Lash Lift & Tint ($60) to curl and darken natural lashes for 6 to 8 weeks, as well as Eyebrow Lamination ($70) for feathered, brushed-up fluffy brow arches, and custom eyebrow tinting ($20).",
     category: "Lashes & Brows",
+  },
+  {
+    question: "Does Orchid By Huma offer eyebrow threading?",
+    answer:
+      "Yes. Orchid By Huma provides traditional organic cotton thread hair removal: Eyebrow Threading ($10), Full Face Threading ($40), Upper Lip ($5), Chin ($5), and Sideburns ($10), sculpting razor-sharp arches without wax or chemical irritation.",
+    category: "Threading",
   },
   {
     question: "How do I book an appointment at Orchid By Huma?",
     answer:
-      "You can submit an online appointment request through our website booking portal or call the salon directly at (281) 206-0151. For same-day appointments or specific stylist requests (such as blowouts with Qadir or haircuts with Tosheen), phone reservations are recommended.",
+      "You can request an appointment online through our website booking form or call our Katy salon directly at (281) 206-0151. For same-day visits or urgent bridal consultations, calling directly is recommended.",
     category: "Booking",
   },
   {
     question: "What are Orchid By Huma's business hours?",
     answer:
       "Orchid By Huma is open Monday through Saturday from 10:00 AM to 6:30 PM, and Sunday from 12:00 PM to 5:00 PM.",
-    category: "General",
+    category: "Hours",
+  },
+  {
+    question: "Do prices vary for customized treatments?",
+    answer:
+      "Prices listed for hair color, balayage, haircuts, and styling are starting prices where indicated (& up). Final investment depends on hair length, density, and customized service requirements determined during your consultation.",
+    category: "Pricing",
   },
 ];

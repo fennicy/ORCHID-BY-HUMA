@@ -11,8 +11,8 @@ export const AppointmentPage: React.FC = () => {
   return (
     <div className="space-y-0">
       <PageHero
-        title="Book Your Appointment"
-        subtitle="Choose your service and preferred time, and our team will help you plan your visit to Orchid By Huma."
+        title="Book an Appointment at Orchid By Huma"
+        subtitle="Choose your service and preferred time, and our team will help you plan your visit to Orchid By Huma in Katy, Texas."
         breadcrumb="Book Appointment"
       />
 
