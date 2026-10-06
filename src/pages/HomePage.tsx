@@ -3,9 +3,7 @@ import { useRouter, Link } from '../context/RouterContext';
 import { BUSINESS_INFO } from '../data/business';
 import { SERVICE_CATEGORIES } from '../data/services';
 import { TESTIMONIALS } from '../data/testimonials';
-import { GALLERY_ITEMS } from '../data/gallery';
 import { FAQSection } from '../components/FAQSection';
-import { InstagramSection } from '../components/InstagramSection';
 import {
   Calendar,
   Phone,
@@ -692,54 +690,6 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          EDITORIAL GALLERY
-          ========================================================================= */}
-      <section className="py-20 lg:py-28 bg-[#F5EFE6] border-b border-[#E8E0D5]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
-            <div>
-              <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#976F44]">
-                Salon Artistry
-              </span>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-stone-900 mt-1">
-                Visual Gallery
-              </h2>
-            </div>
-            <button
-              onClick={() => navigate('/services')}
-              className="text-xs font-semibold uppercase tracking-widest text-[#976F44] hover:text-stone-900 transition-colors flex items-center gap-1.5 cursor-pointer self-start sm:self-auto"
-            >
-              <span>Explore Treatments</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {GALLERY_ITEMS.map((item) => (
-              <div
-                key={item.id}
-                className="group relative overflow-hidden bg-stone-200 border border-[#E8E0D5] aspect-4/3"
-              >
-                <img
-                  src={item.image}
-                  alt={`${item.title} by Orchid By Huma in Katy TX`}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 text-white">
-                  <span className="text-[11px] uppercase tracking-wider text-[#D8B88F] font-semibold">
-                    {item.category}
-                  </span>
-                  <h4 className="font-serif text-lg text-white mt-1">{item.title}</h4>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================================
           LOCAL SERVICE AREA: SERVING KATY & THE GREATER KATY AREA
           ========================================================================= */}
       <section className="py-16 lg:py-20 bg-[#FAF8F5] border-b border-[#E8E0D5]">
@@ -804,11 +754,6 @@ export const HomePage: React.FC = () => {
           ANSWER-FIRST FAQS (AEO & AI SEARCH ENGINE ANSWERABILITY)
           ========================================================================= */}
       <FAQSection />
-
-      {/* =========================================================================
-          OFFICIAL INSTAGRAM SOCIAL SHOWCASE
-          ========================================================================= */}
-      <InstagramSection />
 
       {/* =========================================================================
           HIGH-CONVERTING BOOKING CTA

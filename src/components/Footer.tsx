@@ -1,47 +1,11 @@
 import React from 'react';
-import { useRouter, Link } from '../context/RouterContext';
+import { Link } from '../context/RouterContext';
 import { BUSINESS_INFO } from '../data/business';
-import { Phone, Mail, MapPin, Clock, ArrowRight, Instagram, ShieldCheck, Sparkles } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Instagram, ShieldCheck } from 'lucide-react';
 
 export const Footer: React.FC = () => {
-  const { navigate } = useRouter();
-
   return (
     <footer className="bg-[#141210] text-[#E7E2DB] border-t border-stone-800">
-      {/* Top Pre-Footer Callout */}
-      <div className="border-b border-stone-800/80 py-12 px-4 sm:px-6 lg:px-8 bg-[#181614]">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <span className="text-[#C59B6D] text-xs font-semibold uppercase tracking-[0.2em] flex items-center gap-2">
-              <Sparkles className="w-3.5 h-3.5 text-[#C59B6D]" />
-              Luxury Salon &amp; Spa · Katy, Texas
-            </span>
-            <h3 className="font-serif text-2xl sm:text-3xl text-white mt-1">
-              Ready to elevate your beauty &amp; wellness ritual?
-            </h3>
-            <p className="text-stone-400 text-sm mt-1">
-              10+ years of dedicated artistry in facials, hair design, bridal glam, and relaxation.
-            </p>
-          </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <button
-              onClick={() => navigate('/appointment')}
-              className="bg-[#C59B6D] hover:bg-[#B48C5E] text-stone-950 font-semibold px-6 py-3 text-xs uppercase tracking-wider transition-colors cursor-pointer flex items-center gap-2"
-            >
-              <span>Book Appointment</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-            <a
-              href={`tel:${BUSINESS_INFO.phone.primaryRaw}`}
-              className="border border-stone-700 hover:border-stone-500 text-white font-medium px-5 py-3 text-xs uppercase tracking-wider transition-colors flex items-center gap-2"
-            >
-              <Phone className="w-3.5 h-3.5 text-[#C59B6D]" />
-              <span>(281) 206-0151</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
       {/* Main Footer Directory */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
