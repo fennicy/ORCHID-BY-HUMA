@@ -1,0 +1,6 @@
+# robots.txt for Orchid By Huma (https://orchidbyhuma.com/)
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://orchidbyhuma.com/sitemap.xml

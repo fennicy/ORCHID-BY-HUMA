@@ -1,0 +1,6 @@
+{
+  "name": "Orchid By Huma - Luxury Beauty Salon & Spa",
+  "description": "Premier luxury beauty salon and spa in Katy, Texas offering facials, HydraFacials, haircuts, balayage, hair styling, bridal makeup, waxing, threading, lash lifts, and relaxation massage.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
