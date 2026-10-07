@@ -61,6 +61,16 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/gallery" className="hover:text-white transition-colors">
+                  Salon Gallery
+                </Link>
+              </li>
+              <li>
+                <Link to="/reviews" className="hover:text-white transition-colors">
+                  Client Reviews
+                </Link>
+              </li>
+              <li>
                 <Link to="/pricing" className="hover:text-white transition-colors">
                   Transparent Pricing
                 </Link>
@@ -71,7 +81,7 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/appointment" className="text-[#C59B6D] hover:underline font-medium">
+                <Link to="/book" className="text-[#C59B6D] hover:underline font-medium">
                   Book An Appointment →
                 </Link>
               </li>
@@ -81,52 +91,47 @@ export const Footer: React.FC = () => {
           {/* Column 3: Featured Treatments */}
           <div>
             <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#C59B6D] mb-4">
-              Signature Treatments
+              Service Categories
             </h4>
             <ul className="space-y-2.5 text-sm text-stone-400">
               <li>
-                <Link to="/services/hydrafacial-katy-tx" className="hover:text-stone-200 transition-colors">
+                <Link to="/services/facials-skincare" className="hover:text-stone-200 transition-colors">
+                  Facials &amp; Skincare
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/hair" className="hover:text-stone-200 transition-colors">
+                  Haircuts &amp; Blowouts
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/hair-color" className="hover:text-stone-200 transition-colors">
+                  Balayage &amp; Hair Color
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/threading-waxing" className="hover:text-stone-200 transition-colors">
+                  Threading &amp; Waxing
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/bridal" className="hover:text-stone-200 transition-colors">
+                  Bridal &amp; Event Makeup
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/brows-lashes" className="hover:text-stone-200 transition-colors">
+                  Brows &amp; Lash Lifts
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/spa" className="hover:text-stone-200 transition-colors">
+                  Spa &amp; Body Massage
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/hydrafacial-katy-tx" className="hover:text-[#D8B88F] transition-colors font-medium">
                   HydraFacial ($110)
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/balayage-katy-tx" className="hover:text-stone-200 transition-colors">
-                  Balayage in Katy ($240 &amp; up)
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/hair-color-katy-tx" className="hover:text-stone-200 transition-colors">
-                  Hair Color &amp; Root Touch Up ($60 &amp; up)
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/highlights-katy-tx" className="hover:text-stone-200 transition-colors">
-                  Highlights ($130 &amp; up)
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/blowout-katy-tx" className="hover:text-stone-200 transition-colors">
-                  Blowout &amp; Brazilian ($45+)
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/bridal-makeup-katy-tx" className="hover:text-stone-200 transition-colors">
-                  Bridal Makeup ($750)
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/brazilian-wax-katy-tx" className="hover:text-stone-200 transition-colors">
-                  Brazilian Waxing ($50)
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/threading-katy-tx" className="hover:text-stone-200 transition-colors">
-                  Eyebrow Threading ($10)
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/lash-lift-katy-tx" className="hover:text-stone-200 transition-colors">
-                  Lash Lift &amp; Tint ($60)
                 </Link>
               </li>
             </ul>

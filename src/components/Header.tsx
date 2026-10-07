@@ -30,8 +30,10 @@ export const Header: React.FC = () => {
     { name: 'Home', href: '/' },
     { name: 'About Us', href: '/about' },
     { name: 'Services', href: '/services' },
+    { name: 'Gallery', href: '/gallery' },
+    { name: 'Reviews', href: '/reviews' },
     { name: 'Pricing', href: '/pricing' },
-    { name: 'Contact Us', href: '/contact' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   return (
@@ -120,7 +122,7 @@ export const Header: React.FC = () => {
             </a>
 
             <button
-              onClick={() => navigate('/appointment')}
+              onClick={() => navigate('/book')}
               className="bg-[#1A1816] hover:bg-[#976F44] text-[#FAF8F5] px-5 py-2.5 text-xs font-semibold tracking-wider uppercase transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md flex items-center gap-2 whitespace-nowrap"
             >
               <Calendar className="w-3.5 h-3.5 text-[#D8B88F]" />
@@ -131,7 +133,7 @@ export const Header: React.FC = () => {
           {/* Mobile Menu Toggle Button */}
           <div className="flex items-center gap-2 sm:hidden">
             <button
-              onClick={() => navigate('/appointment')}
+              onClick={() => navigate('/book')}
               className="bg-[#1A1816] text-[#FAF8F5] px-3 py-1.5 text-xs font-medium uppercase tracking-wider"
             >
               Book
@@ -180,7 +182,7 @@ export const Header: React.FC = () => {
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);
-                    navigate('/appointment');
+                    navigate('/book');
                   }}
                   className="w-full py-3.5 px-4 bg-[#1A1816] text-white text-center font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-sm"
                 >

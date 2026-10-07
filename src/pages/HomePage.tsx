@@ -5,6 +5,16 @@ import { SERVICE_CATEGORIES } from '../data/services';
 import { TESTIMONIALS } from '../data/testimonials';
 import { FAQSection } from '../components/FAQSection';
 import {
+  heroSalonSpa as heroImage,
+  facialTreatment as facialImage,
+  hairStylingBalayage as balayageImage,
+  bridalMakeup as bridalImage,
+  spaTreatmentRoom as spaRoomImage,
+  salonInteriorHair as salonInteriorImage,
+  hairWashStyling as hairWashImage,
+  orchidReceptionSalon as receptionImage,
+} from '../assets/images';
+import {
   Calendar,
   Phone,
   ArrowRight,
@@ -30,7 +40,7 @@ export const HomePage: React.FC = () => {
       category: 'Facials & Skincare',
       price: '$110',
       description: 'Deep vortex pore extraction followed by intensive botanical antioxidant & hyaluronic hydration.',
-      image: '/src/assets/images/facial_skincare_treatment_1791303841283.jpg',
+      image: facialImage,
       landingRoute: '/services/hydrafacial-katy-tx',
     },
     {
@@ -38,7 +48,7 @@ export const HomePage: React.FC = () => {
       category: 'Hair Color',
       price: '$240 & up',
       description: 'Hand-painted sun-kissed dimension with seamless root transition and high-shine gloss toner.',
-      image: '/src/assets/images/hair_styling_balayage_1791303852977.jpg',
+      image: balayageImage,
       landingRoute: '/services/balayage-katy-tx',
     },
     {
@@ -46,7 +56,7 @@ export const HomePage: React.FC = () => {
       category: 'Bridal Beauty',
       price: '$750',
       description: 'Full bridal transformation with airbrush complexion, lashes, jewelry placement, and traditional dupatta setting.',
-      image: '/src/assets/images/bridal_beauty_makeup_1791303863839.jpg',
+      image: bridalImage,
       landingRoute: '/services/bridal-makeup-katy-tx',
     },
     {
@@ -54,7 +64,7 @@ export const HomePage: React.FC = () => {
       category: 'Waxing & Body',
       price: '$50 / $120',
       description: 'Gentle stripless wax formulated for sensitive intimate skin, administered in private sanitary suites.',
-      image: '/src/assets/images/facial_skincare_treatment_1791303841283.jpg',
+      image: facialImage,
       landingRoute: '/services/brazilian-wax-katy-tx',
     },
     {
@@ -62,7 +72,7 @@ export const HomePage: React.FC = () => {
       category: 'Tint & Lamination',
       price: '$60 / $70',
       description: 'Semi-permanent curl and feathered upward brow sculpting for awake, naturally defined eyes.',
-      image: '/src/assets/images/bridal_beauty_makeup_1791303863839.jpg',
+      image: bridalImage,
       landingRoute: '/services/lash-lift-katy-tx',
     },
     {
@@ -70,7 +80,7 @@ export const HomePage: React.FC = () => {
       category: 'Facials & Skincare',
       price: '$55–$110',
       description: 'Targeted skin therapy for acne, hyperpigmentation, anti-aging, and deep hydration.',
-      image: '/src/assets/images/facial_skincare_treatment_1791303841283.jpg',
+      image: facialImage,
       landingRoute: '/services/facials-katy-tx',
     },
   ];
@@ -111,7 +121,7 @@ export const HomePage: React.FC = () => {
         {/* Background Large Authentic Editorial Image with Measured Scrim */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/src/assets/images/hero_salon_spa_1791303830093.jpg"
+            src={heroImage}
             alt="Orchid By Huma Luxury Salon and Spa interior sanctuary in Katy, Texas"
             className="w-full h-full object-cover object-center filter brightness-[0.72] contrast-[1.05]"
             referrerPolicy="no-referrer"
@@ -148,7 +158,7 @@ export const HomePage: React.FC = () => {
             {/* CTAs */}
             <div className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4">
               <button
-                onClick={() => navigate('/appointment')}
+                onClick={() => navigate('/book')}
                 className="bg-[#C59B6D] hover:bg-[#B48C5E] text-stone-950 font-semibold px-7 py-3.5 text-xs uppercase tracking-widest transition-all duration-200 cursor-pointer shadow-md hover:shadow-lg flex items-center gap-2"
               >
                 <Calendar className="w-4 h-4 text-stone-950" />
@@ -194,7 +204,7 @@ export const HomePage: React.FC = () => {
             <div className="lg:col-span-5 relative">
               <div className="relative aspect-4/5 overflow-hidden shadow-md border border-[#E8E0D5]">
                 <img
-                  src="/src/assets/images/facial_skincare_treatment_1791303841283.jpg"
+                  src={facialImage}
                   alt="Personalized skincare treatment at Orchid By Huma in Katy TX"
                   className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                   loading="lazy"
@@ -264,7 +274,7 @@ export const HomePage: React.FC = () => {
                   Read Our Full Story
                 </button>
                 <button
-                  onClick={() => navigate('/appointment')}
+                  onClick={() => navigate('/book')}
                   className="text-stone-900 hover:text-[#976F44] text-xs uppercase tracking-widest font-semibold flex items-center gap-1.5 py-3 transition-colors cursor-pointer"
                 >
                   <span>Book Appointment</span>
@@ -541,6 +551,124 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* =========================================================================
+          AUTHENTIC SALON & SPA SANCTUARY SHOWCASE (REAL KATY PHOTOGRAPHY)
+          ========================================================================= */}
+      <section className="py-20 lg:py-24 bg-[#F5EFE6] border-b border-[#E8E0D5]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div className="space-y-2 max-w-2xl">
+              <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#976F44]">
+                Authentic Photography
+              </span>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-stone-900">
+                Inside Our Katy Sanctuary
+              </h2>
+              <p className="text-stone-600 text-sm sm:text-base">
+                Take a look inside Orchid By Huma at 1105 South Mason Rd. Private treatment rooms, modern styling stations, and a welcoming reception designed for calm and comfort.
+              </p>
+            </div>
+            <button
+              onClick={() => navigate('/gallery')}
+              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#976F44] hover:text-stone-900 transition-colors self-start md:self-end pb-1 border-b border-[#976F44] cursor-pointer"
+            >
+              <span>View Full Salon Gallery</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div
+              onClick={() => navigate('/gallery')}
+              className="group cursor-pointer bg-white border border-[#E8E0D5] overflow-hidden shadow-xs hover:border-[#B48C5E] transition-all"
+            >
+              <div className="aspect-4/3 overflow-hidden">
+                <img
+                  src={receptionImage}
+                  alt="Orchid By Huma reception sanctuary in Katy TX"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-4">
+                <span className="text-[11px] uppercase tracking-wider text-[#976F44] font-semibold block">
+                  Welcome Lounge
+                </span>
+                <h4 className="font-serif text-base text-stone-900 font-medium mt-0.5">
+                  Orchid Reception &amp; Ambiance
+                </h4>
+              </div>
+            </div>
+
+            <div
+              onClick={() => navigate('/gallery')}
+              className="group cursor-pointer bg-white border border-[#E8E0D5] overflow-hidden shadow-xs hover:border-[#B48C5E] transition-all"
+            >
+              <div className="aspect-4/3 overflow-hidden">
+                <img
+                  src={salonInteriorImage}
+                  alt="Hair styling stations at Orchid By Huma in Katy TX"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-4">
+                <span className="text-[11px] uppercase tracking-wider text-[#976F44] font-semibold block">
+                  Styling Floor
+                </span>
+                <h4 className="font-serif text-base text-stone-900 font-medium mt-0.5">
+                  Modern Hair Styling Stations
+                </h4>
+              </div>
+            </div>
+
+            <div
+              onClick={() => navigate('/gallery')}
+              className="group cursor-pointer bg-white border border-[#E8E0D5] overflow-hidden shadow-xs hover:border-[#B48C5E] transition-all"
+            >
+              <div className="aspect-4/3 overflow-hidden">
+                <img
+                  src={hairWashImage}
+                  alt="Hair wash and conditioning suites at Orchid By Huma in Katy TX"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-4">
+                <span className="text-[11px] uppercase tracking-wider text-[#976F44] font-semibold block">
+                  Wash &amp; Blowdry Bar
+                </span>
+                <h4 className="font-serif text-base text-stone-900 font-medium mt-0.5">
+                  Hair Wash &amp; Conditioning
+                </h4>
+              </div>
+            </div>
+
+            <div
+              onClick={() => navigate('/gallery')}
+              className="group cursor-pointer bg-white border border-[#E8E0D5] overflow-hidden shadow-xs hover:border-[#B48C5E] transition-all"
+            >
+              <div className="aspect-4/3 overflow-hidden">
+                <img
+                  src={spaRoomImage}
+                  alt="Private spa treatment suite at Orchid By Huma in Katy TX"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-4">
+                <span className="text-[11px] uppercase tracking-wider text-[#976F44] font-semibold block">
+                  Private Spa Suite
+                </span>
+                <h4 className="font-serif text-base text-stone-900 font-medium mt-0.5">
+                  Clinical Skincare &amp; Massage Room
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
           FEATURED SIGNATURE SERVICES HIGHLIGHT
           ========================================================================= */}
       <section className="py-20 lg:py-28 bg-[#1A1816] text-[#FAF8F5] border-b border-[#2C2723]">
@@ -598,7 +726,7 @@ export const HomePage: React.FC = () => {
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                     <button
-                      onClick={() => navigate('/appointment')}
+                      onClick={() => navigate('/book')}
                       className="px-3 py-1 bg-[#C59B6D] hover:bg-[#B48C5E] text-stone-950 font-semibold text-[11px] uppercase tracking-wider transition-colors cursor-pointer"
                     >
                       Book
@@ -611,7 +739,7 @@ export const HomePage: React.FC = () => {
 
           <div className="mt-14 text-center">
             <button
-              onClick={() => navigate('/appointment')}
+              onClick={() => navigate('/book')}
               className="bg-[#C59B6D] hover:bg-[#B48C5E] text-stone-950 font-semibold px-8 py-3.5 text-xs uppercase tracking-widest transition-colors cursor-pointer"
             >
               Book Your Appointment Now
@@ -675,14 +803,22 @@ export const HomePage: React.FC = () => {
             ))}
           </div>
 
-          <div className="mt-12 text-center">
+          <div className="mt-12 text-center flex flex-wrap items-center justify-center gap-4">
+            <button
+              onClick={() => navigate('/reviews')}
+              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#976F44] hover:text-stone-900 transition-colors border-b border-[#976F44] pb-1 cursor-pointer"
+            >
+              <span>Explore All Verified Client Reviews (4.8 ★)</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+            <span className="text-stone-400 hidden sm:inline">·</span>
             <a
               href="https://www.google.com/search?q=Orchid+By+Huma+Katy+TX"
               target="_blank"
               rel="noreferrer noopener"
-              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-stone-900 hover:text-[#976F44] transition-colors border-b border-stone-400 pb-1"
+              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-stone-600 hover:text-[#976F44] transition-colors pb-1"
             >
-              <span>Read More Reviews On Google (4.8 ★)</span>
+              <span>Read on Google</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </a>
           </div>
@@ -772,7 +908,7 @@ export const HomePage: React.FC = () => {
           </p>
           <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
             <button
-              onClick={() => navigate('/appointment')}
+              onClick={() => navigate('/book')}
               className="bg-[#C59B6D] hover:bg-[#B48C5E] text-stone-950 font-semibold px-8 py-4 text-xs uppercase tracking-widest transition-all duration-200 cursor-pointer shadow-lg flex items-center gap-2"
             >
               <Calendar className="w-4 h-4 text-stone-950" />

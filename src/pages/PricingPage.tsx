@@ -130,7 +130,7 @@ export const PricingPage: React.FC = () => {
                           )}
                           <button
                             onClick={() =>
-                              navigate('/appointment', {
+                              navigate('/book', {
                                 service: item.id,
                                 category: item.category,
                               })
@@ -164,7 +164,7 @@ export const PricingPage: React.FC = () => {
           </p>
           <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
             <button
-              onClick={() => navigate('/appointment')}
+              onClick={() => navigate('/book')}
               className="bg-[#C59B6D] hover:bg-[#B48C5E] text-stone-950 font-semibold px-8 py-3.5 text-xs uppercase tracking-widest transition-colors cursor-pointer flex items-center gap-2"
             >
               <Calendar className="w-4 h-4 text-stone-950" />

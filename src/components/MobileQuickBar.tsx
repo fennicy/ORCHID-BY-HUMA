@@ -7,7 +7,7 @@ export const MobileQuickBar: React.FC = () => {
   const { navigate, currentPath } = useRouter();
 
   // Hide when already on the appointment page to avoid redundancy
-  if (currentPath === '/appointment') {
+  if (currentPath === '/appointment' || currentPath === '/book') {
     return null;
   }
 
@@ -22,7 +22,7 @@ export const MobileQuickBar: React.FC = () => {
           <span>Call Now</span>
         </a>
         <button
-          onClick={() => navigate('/appointment')}
+          onClick={() => navigate('/book')}
           className="flex items-center justify-center gap-2 py-3 px-3 bg-[#B48C5E] text-stone-950 text-xs font-semibold uppercase tracking-wider rounded-none hover:bg-[#A87D4F] active:bg-[#976F44] transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-white outline-none min-h-[44px]"
         >
           <Calendar className="w-3.5 h-3.5 text-stone-950" />

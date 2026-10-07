@@ -18,7 +18,9 @@ function normalizePath(rawPath: string): AppRoute {
   if (clean === '/services') return '/services';
   if (clean === '/pricing') return '/pricing';
   if (clean === '/contact') return '/contact';
-  if (clean === '/appointment') return '/appointment';
+  if (clean === '/appointment' || clean === '/book') return '/book';
+  if (clean === '/gallery') return '/gallery';
+  if (clean === '/reviews') return '/reviews';
 
   // Dedicated Service Landing Page Routes
   if (clean.startsWith('/services/')) return clean;

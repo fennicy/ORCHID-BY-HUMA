@@ -10,6 +10,8 @@ import { ServicesPage } from './pages/ServicesPage';
 import { PricingPage } from './pages/PricingPage';
 import { ContactPage } from './pages/ContactPage';
 import { AppointmentPage } from './pages/AppointmentPage';
+import { GalleryPage } from './pages/GalleryPage';
+import { ReviewsPage } from './pages/ReviewsPage';
 import { ServiceDetailPage } from './pages/ServiceDetailPage';
 import { SERVICE_LANDING_PAGES } from './data/servicePages';
 
@@ -33,8 +35,13 @@ const AppContent: React.FC = () => {
         return <ServicesPage />;
       case '/pricing':
         return <PricingPage />;
+      case '/gallery':
+        return <GalleryPage />;
+      case '/reviews':
+        return <ReviewsPage />;
       case '/contact':
         return <ContactPage />;
+      case '/book':
       case '/appointment':
         return <AppointmentPage />;
       case '/':

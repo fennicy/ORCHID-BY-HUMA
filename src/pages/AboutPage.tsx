@@ -3,6 +3,10 @@ import { useRouter } from '../context/RouterContext';
 import { PageHero } from '../components/PageHero';
 import { BUSINESS_INFO } from '../data/business';
 import {
+  heroSalonSpa as heroImage,
+  bridalMakeup as bridalImage,
+} from '../assets/images';
+import {
   Calendar,
   Phone,
   Sparkles,
@@ -67,7 +71,7 @@ export const AboutPage: React.FC = () => {
             <div className="lg:col-span-6">
               <div className="relative aspect-4/3 overflow-hidden shadow-md border border-[#E8E0D5]">
                 <img
-                  src="/src/assets/images/hero_salon_spa_1791303830093.jpg"
+                  src={heroImage}
                   alt="Orchid By Huma Luxury Salon and Spa interior in Katy, Texas"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -135,7 +139,7 @@ export const AboutPage: React.FC = () => {
             <div className="lg:col-span-6 order-2 lg:order-1">
               <div className="aspect-4/3 overflow-hidden shadow-md border border-[#E8E0D5]">
                 <img
-                  src="/src/assets/images/bridal_beauty_makeup_1791303863839.jpg"
+                  src={bridalImage}
                   alt="Bridal and occasion artistry at Orchid By Huma in Katy TX"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -267,7 +271,7 @@ export const AboutPage: React.FC = () => {
           </p>
           <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
             <button
-              onClick={() => navigate('/appointment')}
+              onClick={() => navigate('/book')}
               className="bg-[#C59B6D] hover:bg-[#B48C5E] text-stone-950 font-semibold px-8 py-3.5 text-xs uppercase tracking-widest transition-colors cursor-pointer flex items-center gap-2"
             >
               <Calendar className="w-4 h-4 text-stone-950" />

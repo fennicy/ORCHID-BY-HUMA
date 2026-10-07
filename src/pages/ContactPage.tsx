@@ -137,7 +137,7 @@ export const ContactPage: React.FC = () => {
                   Select your treatment, date, and preferred time directly via our online booking request portal.
                 </p>
                 <button
-                  onClick={() => navigate('/appointment')}
+                  onClick={() => navigate('/book')}
                   className="w-full py-3 bg-[#C59B6D] hover:bg-[#B48C5E] text-stone-950 text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer flex items-center justify-center gap-2"
                 >
                   <Calendar className="w-4 h-4" />

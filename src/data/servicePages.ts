@@ -1,4 +1,14 @@
 import { FAQItem } from './faqs';
+import {
+  facialTreatment as facialImage,
+  hairStylingBalayage as balayageImage,
+  bridalMakeup as bridalImage,
+  spaWellness as spaImage,
+  spaTreatmentRoom as spaRoomImage,
+  salonInteriorHair as salonInteriorImage,
+  hairWashStyling as hairWashImage,
+  orchidReceptionSalon as receptionImage,
+} from '../assets/images';
 
 export interface ServiceLandingPageData {
   slug: string;
@@ -31,7 +41,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Facials & Skincare',
     price: '$110',
     duration: '60 min',
-    image: '/src/assets/images/facial_skincare_treatment_1791303841283.jpg',
+    image: facialImage,
     overview: [
       'The HydraFacial at Orchid By Huma is our signature clinical skincare ritual in Katy, Texas. Combining patented vortex-fusion technology with medical-grade botanical infusions, this non-invasive multi-step treatment delivers immediate, visible clarity, hydration, and plumping without redness or irritation.',
       'Our licensed Katy aestheticians customize every serum blend to address your specific skin goals—whether targeting congested blackheads, dehydration, sun damage, or fine lines. Located at 1105 S Mason Rd, our spa delivers noticeably radiant, glowing skin that lasts for weeks.',
@@ -89,7 +99,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Hair Color & Highlights',
     price: '$240 & up',
     duration: '180 min',
-    image: '/src/assets/images/hair_styling_balayage_1791303852977.jpg',
+    image: balayageImage,
     overview: [
       'Balayage at Orchid By Huma delivers the ultimate low-maintenance, sun-kissed hair color for clients in Katy, Texas. Unlike traditional foil highlights that create harsh demarcation lines, our master colorists freehand-paint lightener onto selected ribbons of hair to achieve a seamless gradient transition.',
       'We protect hair health at every stage with bond-multiplying treatments and customized demi-permanent toners that eradicate brassiness and deliver rich caramel, honey, or icy blonde dimension.',
@@ -143,7 +153,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Hair Color & Highlights',
     price: '$60 & up',
     duration: '60–120 min',
-    image: '/src/assets/images/hair_styling_balayage_1791303852977.jpg',
+    image: balayageImage,
     overview: [
       'Whether you need 100% grey coverage root touch-ups, rich all-over brunette gloss, or multi-dimensional color, Orchid By Huma provides expert color formulations in Katy, Texas. With more than 10 years of color artistry, we provide precise shade matching and vibrant longevity.',
       'Our color specialists analyze hair porosity and undertones before selecting salon-grade ammonia-free and conditioning color lines that leave hair silky, reflective, and nourished.',
@@ -197,7 +207,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Hair Color & Highlights',
     price: '$130 & up',
     duration: '90–150 min',
-    image: '/src/assets/images/hair_styling_balayage_1791303852977.jpg',
+    image: balayageImage,
     overview: [
       'At Orchid By Huma in Katy, Texas, our foil highlighting services create bright, multi-dimensional contrast tailored to your natural base. Full foil highlights ($200 & up) provide complete radiance from crown to nape, while partial highlights ($130 & up) focus on the crown and face frame for a sunlit refresh.',
       'We combine precision micro-weaving with bond-building formulations to lift hair cleanly while preserving tensile strength and silkiness.',
@@ -251,7 +261,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Hair Styling & Treatments',
     price: '$45 & up',
     duration: '45–120 min',
-    image: '/src/assets/images/hair_styling_balayage_1791303852977.jpg',
+    image: balayageImage,
     overview: [
       'Experience salon styling with a signature blowout at Orchid By Huma in Katy, Texas. Starting at $45 & up, our voluminous blowouts combine therapeutic scalp cleansing, round-brush tension styling, and long-lasting curl settings that hold volume for days.',
       'For clients seeking long-term frizz elimination, our professional Brazilian Blowout ($200 & up) bonds protective protein complexes to each hair shaft, reducing blowdry time and locking in glass-like shine for up to 12 weeks.',
@@ -305,7 +315,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Precision Haircuts',
     price: '$40 & up',
     duration: '30–45 min',
-    image: '/src/assets/images/hair_styling_balayage_1791303852977.jpg',
+    image: balayageImage,
     overview: [
       'A great haircut transforms how you carry yourself every day. At Orchid By Huma in Katy, Texas, our haircutting consultations begin with evaluating your facial contours, hair density, growth patterns, and styling routine.',
       'From chic bobs and soft curtain bangs to long seamless layers and split-end maintenance trims ($30), our experienced stylists deliver clean perimeters and effortless movement.',
@@ -359,7 +369,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Hair Care & Salon Services',
     price: '$40 & up',
     duration: '30–180 min',
-    image: '/src/assets/images/hair_styling_balayage_1791303852977.jpg',
+    image: balayageImage,
     overview: [
       'Orchid By Huma is a full-service luxury hair salon located at 1105 S Mason Rd in Katy, Texas. With more than 10 years of beauty experience, our team of passionate stylists and master colorists caters to all hair textures and aesthetic goals.',
       'Our hair department encompasses precision haircutting ($40 & up), root touch-ups ($60 & up), full single-process color ($110 & up), partial & full foil highlights ($130–$200 & up), hand-painted balayage ($240 & up), and smoothing Brazilian Blowouts ($200 & up).',
@@ -413,7 +423,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Facials & Skincare',
     price: '$55–$110',
     duration: '45–60 min',
-    image: '/src/assets/images/facial_skincare_treatment_1791303841283.jpg',
+    image: facialImage,
     overview: [
       'At Orchid By Huma in Katy, Texas, our facial therapies are personalized to your exact skin type and lifestyle needs. Beginning with a professional skin analysis, our licensed aestheticians blend steam exfoliation, gentle extractions, custom massage, and therapeutic masks.',
       'Our comprehensive menu features Basic Facials ($55), Brightening Facials ($60), Acne Purifying Facials ($65), Deep Hydrating & Calming Facials ($75), Microdermabrasion ($80), Back Facials ($55), and the signature HydraFacial ($110).',
@@ -467,7 +477,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Facials & Skincare',
     price: '$80',
     duration: '50 min',
-    image: '/src/assets/images/facial_skincare_treatment_1791303841283.jpg',
+    image: facialImage,
     overview: [
       'Microdermabrasion at Orchid By Huma ($80) is an effective, non-chemical resurfacing treatment that gently exfoliates the outermost layer of dead skin cells. Using a medical-grade diamond-tipped wand paired with adjustable vacuum suction, our aestheticians sweep away dullness.',
       'This treatment stimulates micro-circulation, boosts cellular turnover, softens fine lines, and promotes enhanced absorption of topical serums and hydrators.',
@@ -521,7 +531,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Facials & Skincare',
     price: '$65',
     duration: '55 min',
-    image: '/src/assets/images/facial_skincare_treatment_1791303841283.jpg',
+    image: facialImage,
     overview: [
       'Struggling with breakouts, congestion, or hormonal cystic flare-ups? Our Acne Facial ($65) at Orchid By Huma in Katy, Texas provides thorough clinical relief. Our aestheticians address the root causes of acne: excess sebum, dead skin buildup, and bacterial colonization.',
       'Using enzyme steam, safe sterile extractions, high-frequency antibacterial care, and anti-inflammatory botanical masks, we calm existing lesions and prevent future breakouts without stripping your skin barrier.',
@@ -575,7 +585,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Massage & Spa Wellness',
     price: '$40 / $70',
     duration: '30–60 min',
-    image: '/src/assets/images/spa_massage_wellness_1791303875097.jpg',
+    image: spaImage,
     overview: [
       'Escape daily stress with our signature Hot Oil Massage at Orchid By Huma in Katy, Texas. Available in a 60-minute full body experience ($70) or a focused 30-minute neck, shoulder, and upper back session ($40), this therapeutic treatment uses warm aromatic botanical oils to soothe tight muscles.',
       'Our skilled therapists apply rhythmic kneading and long effleurage strokes in a quiet, candlelit sanctuary at 1105 S Mason Rd, helping you dissolve stress, stimulate lymphatic drainage, and restore inner peace.',
@@ -629,7 +639,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Massage & Spa Wellness',
     price: '$65',
     duration: '45 min',
-    image: '/src/assets/images/spa_massage_wellness_1791303875097.jpg',
+    image: spaImage,
     overview: [
       'Reinvigorate your skin from shoulders to toes with our Body Scrubbing & Polish Ritual ($65) at Orchid By Huma in Katy, Texas. This 45-minute spa experience sloughs away dry, dead skin cells using fine mineral salts infused with nourishing plant oils.',
       'Ideal before a vacation, spray tan, special event, or seasonal skin reset, our body scrub leaves your skin remarkably silky, deeply moisturized, and glowing.',
@@ -683,7 +693,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Waxing & Body Treatments',
     price: '$20–$120',
     duration: '15–75 min',
-    image: '/src/assets/images/facial_skincare_treatment_1791303841283.jpg',
+    image: facialImage,
     overview: [
       'At Orchid By Huma in Katy, Texas, waxing is practiced with strict medical-grade hygiene, speed, and genuine client comfort. Located on South Mason Road, our private suites provide discreet, sanitary hair removal using premium temperature-regulated stripless and soft waxes.',
       'Our waxing menu includes Full Body with Brazilian ($120), Full Body without Brazilian ($80), individual Brazilian ($50), Bikini Line ($20), Full Legs ($40), Half Legs ($30), Full Arms ($30), Underarms ($25), Full Back ($30), and soothing post-wax treatment masks ($15).',
@@ -737,7 +747,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Waxing & Body Treatments',
     price: '$50',
     duration: '30 min',
-    image: '/src/assets/images/facial_skincare_treatment_1791303841283.jpg',
+    image: facialImage,
     overview: [
       'At Orchid By Huma, client comfort, strict sanitation, and meticulous technique are our highest priorities. Our Brazilian waxing service in Katy ($50) uses temperature-controlled gentle wax designed for sensitive intimate skin, removing hair cleanly from the root with minimal discomfort.',
       'We also provide full-body waxing packages with Brazilian ($120), bikini line grooming ($20), and soothing post-wax treatment masks ($15) and scrubs ($15) to keep skin smooth and bump-free.',
@@ -791,7 +801,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Threading & Facial Grooming',
     price: '$5–$40',
     duration: '10–35 min',
-    image: '/src/assets/images/bridal_beauty_makeup_1791303863839.jpg',
+    image: bridalImage,
     overview: [
       'Eyebrow threading is an ancient, precise art that creates crisp, clean brow definition without chemical irritants or skin pulling. At Orchid By Huma in Katy, Texas, our master threading artists use 100% organic antibacterial cotton thread twisted to lift rows of hair directly from the root.',
       'Our threading menu includes Eyebrow Threading ($10), Full Face Threading ($40), Upper Lip ($5), Chin ($5), Sideburns ($10), and Forehead ($10). Threading is safe for clients using retinol, Accutane, or chemical peels.',
@@ -845,7 +855,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Bridal & Event Makeup',
     price: '$350–$750',
     duration: '100–180 min',
-    image: '/src/assets/images/bridal_beauty_makeup_1791303863839.jpg',
+    image: bridalImage,
     overview: [
       'Orchid By Huma is Katy’s premier destination for luxury bridal beauty and traditional wedding ceremonies. Specializing in high-definition airbrush bridal makeup, heirloom jewelry setting, and intricate dupatta draping, our artists ensure you look breathtaking in person and under 4K photography.',
       'We offer specialized packages for each wedding function: Complete Bridal Experience ($750), Nikkah Makeup ($550), Engagement Makeup ($450), and Mayon Makeup with hair and dupatta setup ($350). Every detail is curated around your wedding attire, jewelry, and personal aesthetic.',
@@ -899,7 +909,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Bridal & Event Makeup',
     price: '$75–$250',
     duration: '40–90 min',
-    image: '/src/assets/images/bridal_beauty_makeup_1791303863839.jpg',
+    image: bridalImage,
     overview: [
       'Whether attending a gala, photoshoot, birthday dinner, or graduation, Orchid By Huma delivers stunning event makeup in Katy, Texas. Our makeup artists blend modern trends with classic elegance to accentuate your best features.',
       'Our event makeup offerings include Party Makeup ($250) featuring sculpted contour, dramatic or neutral eye artistry, and premium lashes; Basic Office Makeup ($125) for polished natural business presence; and Quick Makeup & Touch-Ups ($75).',
@@ -953,7 +963,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Tint & Lamination',
     price: '$60',
     duration: '60 min',
-    image: '/src/assets/images/bridal_beauty_makeup_1791303863839.jpg',
+    image: bridalImage,
     overview: [
       'Wake up every morning with open, curled eyelashes without touching an eyelash curler or mascara wand. At Orchid By Huma in Katy, Texas, our Lash Lift & Tint ($60) gently curls your natural lashes from the root using custom silicone shield molds.',
       'Paired with a deep jet-black vegetable tint, your lashes appear dramatically darker, longer, and more defined for 6 to 8 weeks—the entire natural hair shed cycle.',
@@ -1007,7 +1017,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Tint & Lamination',
     price: '$70',
     duration: '50 min',
-    image: '/src/assets/images/bridal_beauty_makeup_1791303863839.jpg',
+    image: bridalImage,
     overview: [
       'Eyebrow lamination is the ultimate secret to full, feathery, editorial brows. At Orchid By Huma in Katy, Texas, our Eyebrow Lamination service ($70) relaxes and realigns your natural brow hairs, allowing us to brush them upward into an arch that conceals gaps and sparse spots.',
       'We also offer custom Eyebrow Tinting ($20) to deepen the color and match your hair shade, giving you effortless wake-up-and-go brows that stay groomed for up to 8 weeks.',
@@ -1061,7 +1071,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Aesthetic & Clinical Treatments',
     price: '$95–$250 & up',
     duration: '50–120 min',
-    image: '/src/assets/images/facial_skincare_treatment_1791303841283.jpg',
+    image: facialImage,
     overview: [
       'For clients seeking targeted aesthetic rejuvenation beyond traditional salon care, Orchid By Huma offers clinical aesthetic treatments at 1105 S Mason Rd in Katy, Texas. Our certified practitioners utilize advanced techniques to boost collagen and resurface texture.',
       'Our clinical offerings include Micro-Needling Collagen Therapy ($150 & up), Exfoliating Chemical Peels ($95 & up), Semi-Permanent Micro-Shading Brow Artistry ($250 & up), and Red Light Phototherapy Add-Ons ($10).',
@@ -1100,6 +1110,384 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
       { title: 'HydraFacial in Katy, TX', route: '/services/hydrafacial-katy-tx', price: '$110' },
       { title: 'Microdermabrasion Facial', route: '/services/microdermabrasion-katy-tx', price: '$80' },
       { title: 'Brow Lamination in Katy', route: '/services/brow-lamination-katy-tx', price: '$70' },
+    ],
+  },
+
+  // 21. Facials & Skincare Category Hub
+  'facials-skincare': {
+    slug: 'facials-skincare',
+    route: '/services/facials-skincare',
+    metaTitle: 'Facials & Skincare Services in Katy, TX | Orchid By Huma',
+    metaDescription:
+      'Premier facial and clinical skincare rituals in Katy, TX at Orchid By Huma. HydraFacials ($110), microdermabrasion ($80), acne purifications ($65), and brightening treatments.',
+    h1: 'Facials & Skincare in Katy, TX',
+    tagline: 'Customized clinical skincare rituals, vortex pore extractions, and deep botanical hydration tailored to your skin type.',
+    category: 'Facials & Skincare',
+    price: '$55–$110',
+    duration: '45–60 min',
+    image: facialImage,
+    overview: [
+      'At Orchid By Huma, our licensed aestheticians customize every facial treatment to your unique skin health goals. Located at 1105 South Mason Rd in Katy, Texas, we combine advanced clinical extraction technology with nurturing botanical serums to purify, hydrate, and restore your natural radiance.',
+      'Our dedicated skincare menu features our celebrated HydraFacial ($110), diamond-tip Microdermabrasion ($80), Acne Purifying Facial ($65), Vitamin C Brightening Facial ($60), and Hydrating Botanical Facials ($55), all administered in private, sanitized suites.',
+    ],
+    benefits: [
+      'Painless vortex extraction removes stubborn debris and blackheads without redness',
+      'Targeted infusion of hyaluronic acid, peptides, and protective antioxidants',
+      'Personalized formulas for acne, dehydration, hyperpigmentation, and delicate skin',
+      'Tranquil facial massage, aromatherapy, and restorative neck and shoulder care',
+    ],
+    processSteps: [
+      {
+        title: 'Step 1: Skin Evaluation',
+        desc: 'Consultation to inspect moisture barrier, pore congestion, and sensitivity.',
+      },
+      {
+        title: 'Step 2: Deep Exfoliation & Extraction',
+        desc: 'Gentle resurfacing to remove dull stratum corneum and clear congested pores.',
+      },
+      {
+        title: 'Step 3: Nourishing Infusion & Mask',
+        desc: 'Medical-grade hydration serums sealed with customized therapeutic mask and sun protection.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Which facial is best for first-time clients at Orchid By Huma?',
+        answer: 'Our HydraFacial ($110) is our most popular option because it provides immediate clarity, hydration, and glow with zero peeling downtime.',
+      },
+      {
+        question: 'How frequently should I schedule a professional facial in Katy?',
+        answer: 'For optimal cellular turnover and sustained radiance, we recommend scheduling a facial every 3 to 4 weeks.',
+      },
+    ],
+    relatedServices: [
+      { title: 'HydraFacial Clinical Care', route: '/services/hydrafacial-katy-tx', price: '$110' },
+      { title: 'Microdermabrasion Facial', route: '/services/microdermabrasion-katy-tx', price: '$80' },
+      { title: 'Acne Purifying Facial', route: '/services/acne-facial-katy-tx', price: '$65' },
+    ],
+  },
+
+  // 22. Hair Services Hub
+  'hair': {
+    slug: 'hair',
+    route: '/services/hair',
+    metaTitle: 'Hair Services in Katy, TX | Orchid By Huma',
+    metaDescription:
+      'Precision haircuts ($40 & up), signature blowouts ($45 & up), Brazilian Blowout smoothing ($250 & up), and restorative hair treatments in Katy, TX at Orchid By Huma.',
+    h1: 'Hair Services in Katy, TX',
+    tagline: 'Master haircutting, signature bouncy blowouts, smoothing Brazilian Blowouts, and deep restorative hair treatments on South Mason Rd.',
+    category: 'Hair Services',
+    price: '$30–$250 & up',
+    duration: '30–120 min',
+    image: salonInteriorImage,
+    overview: [
+      'Whether you desire a precision haircut, a red-carpet blowout that retains volume for days, or an intensive keratin Brazilian Blowout, our seasoned stylists craft looks tailored to your facial contours, hair texture, and daily routine.',
+      'Our Katy salon styling stations feature salon-grade hair products that preserve follicle integrity, amplify shine, and simplify home styling. Each appointment includes a consultation and expert styling recommendations.',
+    ],
+    benefits: [
+      'Tailored cutting techniques that complement your bone structure and natural hair movement',
+      'Signature blowdry styling that imparts luminous shine and multi-day bounce',
+      'Formaldehyde-free smoothing treatments that eliminate frizz for up to 12 weeks',
+      'Deep conditioning masques that repair heat and chemical damage',
+    ],
+    processSteps: [
+      {
+        title: 'Step 1: Hair & Lifestyle Consultation',
+        desc: 'Reviewing desired shape, density, styling habits, and maintenance preferences.',
+      },
+      {
+        title: 'Step 2: Cleansing & Botanical Conditioning',
+        desc: 'Invigorating hair wash bar ritual with targeted moisturizing shampoo and conditioner.',
+      },
+      {
+        title: 'Step 3: Precision Craft & Finishing Style',
+        desc: 'Meticulous cut and thermal brush blowdry or iron styling tailored to your look.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Do you offer hair wash and blowdry styling together?',
+        answer: 'Yes! We provide complete hair wash, scalp massage, and blowout packages starting at $45, as well as add-on blowdries for haircuts and color.',
+      },
+      {
+        question: 'How long does a Brazilian Blowout last?',
+        answer: 'A Brazilian Blowout at Orchid By Huma typically lasts 10 to 12 weeks with sulfate-free aftercare shampoo.',
+      },
+    ],
+    relatedServices: [
+      { title: 'Precision Haircuts', route: '/services/haircuts-katy-tx', price: '$40 & up' },
+      { title: 'Voluminous Blowout', route: '/services/blowout-katy-tx', price: '$45 & up' },
+      { title: 'Hair Salon Services', route: '/services/hair-salon-katy-tx', price: '$30–$250' },
+    ],
+  },
+
+  // 23. Hair Color, Balayage & Highlights Hub
+  'hair-color': {
+    slug: 'hair-color',
+    route: '/services/hair-color',
+    metaTitle: 'Hair Color, Balayage & Highlights in Katy, TX | Orchid By Huma',
+    metaDescription:
+      'Custom hand-painted balayage ($240 & up), full foil highlights ($200 & up), seamless root touch-ups ($60 & up), and high-gloss toners in Katy, TX.',
+    h1: 'Hair Color, Balayage & Highlights in Katy, TX',
+    tagline: 'Hand-painted dimensional balayage, high-definition foil placement, 100% grey root coverage, and high-shine gloss toners.',
+    category: 'Hair Color',
+    price: '$60–$250 & up',
+    duration: '60–180 min',
+    image: balayageImage,
+    overview: [
+      'Our master colorists at Orchid By Huma specialize in bespoke hair color formulation that honors hair health while delivering rich multidimensional vibrancy. From sun-kissed hand-painted balayage to high-contrast full foil highlights, we craft shades that illuminate your complexion.',
+      'Our color menu includes Balayage ($240 & up), Full Highlights ($200 & up), Partial Highlights ($130 & up), Full All-Over Color ($110 & up), Root Touch-Up ($60 & up), Lowlights ($250 & up), and Hair Toning Gloss ($50 & up).',
+    ],
+    benefits: [
+      'Bespoke color formulation adjusted to your undertones and base hair level',
+      'Seamless soft-grow-out balayage blending that requires minimal touch-ups',
+      'Bond-building protective additives that prevent breakage during lightening',
+      'High-shine gloss toner that eliminates brassiness and locks in radiant reflection',
+    ],
+    processSteps: [
+      {
+        title: 'Step 1: Color Analysis & Strand Test',
+        desc: 'Consultation to inspect hair porosity, color history, and target swatch inspiration.',
+      },
+      {
+        title: 'Step 2: Dimensional Application',
+        desc: 'Artistic hand-painting or precise foil placement with gentle lighteners.',
+      },
+      {
+        title: 'Step 3: Custom Glaze & Blowdry',
+        desc: 'Tonal gloss wash to seal cuticles, enhance dimension, and reveal finished hair under natural light.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is the difference between Balayage and Highlights?',
+        answer: 'Balayage is freehand painted for a soft, natural sun-kissed gradient that grows out seamlessly, while traditional foil highlights offer more uniform lift from roots to ends.',
+      },
+      {
+        question: 'How long does a balayage appointment take?',
+        answer: 'A comprehensive balayage session usually requires approximately 3 hours, including lightning, custom toner gloss, deep conditioning, and finished blowout.',
+      },
+    ],
+    relatedServices: [
+      { title: 'Balayage in Katy, TX', route: '/services/balayage-katy-tx', price: '$240 & up' },
+      { title: 'Highlights in Katy, TX', route: '/services/highlights-katy-tx', price: '$130 & up' },
+      { title: 'Root Touch Up & Color', route: '/services/hair-color-katy-tx', price: '$60 & up' },
+    ],
+  },
+
+  // 24. Threading & Waxing Hub
+  'threading-waxing': {
+    slug: 'threading-waxing',
+    route: '/services/threading-waxing',
+    metaTitle: 'Threading & Waxing Services in Katy, TX | Orchid By Huma',
+    metaDescription:
+      'Precise eyebrow threading ($10), full face threading ($40), Brazilian wax ($50), and full body waxing ($80–$120) in Katy, Texas at Orchid By Huma.',
+    h1: 'Threading & Waxing Services in Katy, TX',
+    tagline: 'Razor-sharp eyebrow arches with organic thread, gentle facial waxing, and private hygienic full body waxing suites.',
+    category: 'Threading & Waxing',
+    price: '$6–$120',
+    duration: '10–75 min',
+    image: spaRoomImage,
+    overview: [
+      'Orchid By Huma is celebrated across Katy and West Houston for meticulous eyebrow threading and gentle, hygienic body waxing. Our specialists have over 10 years of experience shaping natural arches and providing virtually painless hair removal.',
+      'We offer Eyebrow Threading ($10), Full Face Threading ($40), Upper Lip ($6), Chin/Forehead ($8), Brazilian Waxing ($50), Full Body Waxing with Brazilian ($120), Full Arms ($30), Full Legs ($40), and Underarms ($25) using hypoallergenic botanic waxes.',
+    ],
+    benefits: [
+      '100% natural organic cotton threading that never pulls or damages delicate facial skin',
+      'Temperature-controlled stripless wax formulated specifically for sensitive bikini skin',
+      'Strict clinical sanitation: no double dipping, disposable bed sheets, and medical sanitizers',
+      'Calming post-depilatory botanical oils and soothing serums included with every service',
+    ],
+    processSteps: [
+      {
+        title: 'Step 1: Skin Sanitization & Prep',
+        desc: 'Skin cleansed with antibacterial pre-wax tonic and soothing prep powders.',
+      },
+      {
+        title: 'Step 2: Precision Removal',
+        desc: 'Expert cotton thread manipulation or gentle stripless wax application by certified technicians.',
+      },
+      {
+        title: 'Step 3: Calming Post-Care',
+        desc: 'Aloe vera, rose water, or calming azulene oil applied to eliminate redness.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Why choose threading over waxing for eyebrows?',
+        answer: 'Threading removes hairs directly from the root with pinpoint precision without adhering to the top skin layer, making it ideal for sensitive skin and retinol users.',
+      },
+      {
+        question: 'How often should I wax for best results?',
+        answer: 'We recommend body waxing every 4 to 5 weeks to weaken follicle regrowth and ensure soft, thin future hair.',
+      },
+    ],
+    relatedServices: [
+      { title: 'Eyebrow Threading in Katy', route: '/services/threading-katy-tx', price: '$10' },
+      { title: 'Brazilian Waxing in Katy', route: '/services/brazilian-wax-katy-tx', price: '$50' },
+      { title: 'Full Body Waxing Packages', route: '/services/waxing-katy-tx', price: '$80–$120' },
+    ],
+  },
+
+  // 25. Bridal & Occasion Makeup Hub
+  'bridal': {
+    slug: 'bridal',
+    route: '/services/bridal',
+    metaTitle: 'Bridal & Occasion Makeup in Katy, TX | Orchid By Huma',
+    metaDescription:
+      'Luxury South Asian & Western bridal makeup ($750), Nikkah, Engagement, Mehndi, dupatta draping, jewelry setting, and event makeup in Katy, TX.',
+    h1: 'Bridal & Occasion Makeup in Katy, TX',
+    tagline: 'High-definition airbrush bridal beauty, dupatta setting, jewelry pin placement, and glamorous party makeup.',
+    category: 'Bridal & Occasion Makeup',
+    price: '$75–$750',
+    duration: '40–180 min',
+    image: bridalImage,
+    overview: [
+      'Your special celebration calls for perfection. At Orchid By Huma, our master bridal artists create iconic looks designed to radiate elegance under daylight, candlelight, and high-definition photography throughout the entire celebration.',
+      'We specialize in luxury South Asian bridal transformations ($750), Nikkah & Mehndi ceremonies ($450), Engagement & Reception glam ($350), Party Makeup ($125), and Dupatta Setting ($50). Every bridal service includes luxury lashes, jewelry placement, and setting sprays.',
+    ],
+    benefits: [
+      'Sweat-proof, tear-resistant complexion artistry that remains flawless for 16+ hours',
+      'Mastery of traditional dupatta setting, saree pinning, and bridal jewelry securing',
+      'Custom luxury lash clusters and contouring tailored to your individual features',
+      'Private bridal dressing suite in Katy with dedicated assistant attention',
+    ],
+    processSteps: [
+      {
+        title: 'Step 1: Bridal Vision Consultation',
+        desc: 'Reviewing bridal attire colors, jewelry style, lighting conditions, and skin undertones.',
+      },
+      {
+        title: 'Step 2: Complexion Architecture & Eyes',
+        desc: 'Hydrating skin prep, high-definition foundation blending, dimensional eye design, and luxury lashes.',
+      },
+      {
+        title: 'Step 3: Dupatta, Jewelry & Setting',
+        desc: 'Traditional dupatta draping, tikka/jhumka pin placement, and lock-in setting sprays.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is included in the Orchid By Huma bridal package?',
+        answer: 'Our full bridal package ($750) includes complete airbrush/HD makeup, luxury mink-style lashes, hair styling, dupatta setting, and all jewelry pinning.',
+      },
+      {
+        question: 'Do you offer party makeup for bridesmaids and family members?',
+        answer: 'Yes! Party and event makeup is available for $125 per guest, or $75 for express beauty touch-ups.',
+      },
+    ],
+    relatedServices: [
+      { title: 'Bridal Makeup in Katy, TX', route: '/services/bridal-makeup-katy-tx', price: '$750' },
+      { title: 'Event & Party Makeup', route: '/services/makeup-katy-tx', price: '$75–$250' },
+      { title: 'Lash Lift & Brow Artistry', route: '/services/lash-lift-katy-tx', price: '$60–$70' },
+    ],
+  },
+
+  // 26. Brows & Lashes Hub
+  'brows-lashes': {
+    slug: 'brows-lashes',
+    route: '/services/brows-lashes',
+    metaTitle: 'Brows & Lashes Services in Katy, TX | Orchid By Huma',
+    metaDescription:
+      'Lash lift & tint ($60), eyebrow lamination ($70), custom brow tinting ($20), and micro-shading ($250 & up) in Katy, Texas at Orchid By Huma.',
+    h1: 'Brows & Lashes in Katy, TX',
+    tagline: 'Semi-permanent lash curling, feathered brow lamination, custom tinting, and micro-shading brow artistry.',
+    category: 'Brows & Lashes',
+    price: '$20–$250 & up',
+    duration: '25–120 min',
+    image: bridalImage,
+    overview: [
+      'Awaken your natural eye beauty with customized brow sculpting and lash enhancements at Orchid By Huma on South Mason Road. Wake up every morning with perfectly lifted, dark lashes and neat, feathered brows with zero daily effort.',
+      'Our brow and lash menu includes Lash Lift & Tint ($60), Eyebrow Lamination ($70), Eyelash Tint ($30), Eyebrow Tint ($20), Eyelash Extensions ($120 & up), and Semi-Permanent Micro-Shading ($250 & up).',
+    ],
+    benefits: [
+      'Lash lifts curl your natural lashes from base to tip without damaging curling irons',
+      'Eyebrow lamination relaxes coarse brow hairs to create full, fluffy, model-style arches',
+      'Gentle plant-derived tints that darken and define sparse hairs for 4 to 6 weeks',
+      'Micro-shading soft powder technique creating lasting symmetry and shape',
+    ],
+    processSteps: [
+      {
+        title: 'Step 1: Brow & Lash Mapping',
+        desc: 'Assessing natural curl, hair density, symmetry, and selecting shield rod size.',
+      },
+      {
+        title: 'Step 2: Gentle Keratin Solution',
+        desc: 'Nourishing perming and neutralizing lotions applied carefully to reshape hairs.',
+      },
+      {
+        title: 'Step 3: Deep Tint & Keratin Glaze',
+        desc: 'Intense jet-black or tailored brown pigment followed by conditioning keratin sealant.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'How long does a lash lift and tint last?',
+        answer: 'A lash lift and tint at Orchid By Huma lasts approximately 6 to 8 weeks depending on your natural lash growth cycle.',
+      },
+      {
+        question: 'Can I combine brow lamination with eyebrow threading?',
+        answer: 'Yes! Combining brow lamination with a clean threading cleanup produces the cleanest, fullest defined arches.',
+      },
+    ],
+    relatedServices: [
+      { title: 'Lash Lift & Tint in Katy', route: '/services/lash-lift-katy-tx', price: '$60' },
+      { title: 'Brow Lamination in Katy', route: '/services/brow-lamination-katy-tx', price: '$70' },
+      { title: 'Eyebrow Threading', route: '/services/threading-katy-tx', price: '$10' },
+    ],
+  },
+
+  // 27. Spa & Wellness Hub
+  'spa': {
+    slug: 'spa',
+    route: '/services/spa',
+    metaTitle: 'Spa & Wellness Services in Katy, TX | Orchid By Huma',
+    metaDescription:
+      'Warm botanical oil massages ($40 / $70), full body scrub exfoliations ($65), and restorative spa treatments in Katy, Texas at Orchid By Huma.',
+    h1: 'Spa & Wellness in Katy, TX',
+    tagline: 'Warm botanical oil massages, invigorating body scrub polishes, and peaceful relaxation in private Katy spa rooms.',
+    category: 'Spa & Wellness',
+    price: '$40–$70',
+    duration: '30–60 min',
+    image: spaImage,
+    overview: [
+      'Escape everyday stress and discover restorative tranquility at Orchid By Huma’s dedicated Katy spa suites. Our therapeutic wellness treatments are designed to release deep muscle tension, stimulate circulation, and renew tired skin.',
+      'Our spa menu features our 60-Minute Hot Oil Massage ($70), 30-Minute Targeted Tension Massage ($40), and Full-Body Sugar Scrub & Polish ($65) in a peaceful environment scented with calming essential oils.',
+    ],
+    benefits: [
+      'Heated therapeutic botanical oils penetrate deep muscle layers to dissolve stress',
+      'Exfoliating full-body scrubs slough off dull dead cells and awaken microcirculation',
+      'Private, temperature-controlled spa suites with soft ambient lighting and music',
+      'Improves skin tone, relieves tension headaches, and promotes deep restful sleep',
+    ],
+    processSteps: [
+      {
+        title: 'Step 1: Consultation & Comfort Prep',
+        desc: 'Reviewing muscle tension points, pressure preferences, and preferred aromatics.',
+      },
+      {
+        title: 'Step 2: Warm Oil Therapeutic Flow',
+        desc: 'Rhythmic effleurage and friction strokes utilizing heated botanical oils.',
+      },
+      {
+        title: 'Step 3: Warm Towel Compress & Rest',
+        desc: 'Soothing steamed towels applied to remove excess oil and ground your relaxation.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is included in the Hot Oil Massage at Orchid By Huma?',
+        answer: 'Our hot oil massage uses pure warmed herbal oils applied with restorative long gliding strokes to release tension in the back, shoulders, neck, and limbs.',
+      },
+      {
+        question: 'Can I pair a body scrub with a massage or facial?',
+        answer: 'Yes! Pairing our body scrub with a facial or massage creates the ultimate half-day rejuvenation experience.',
+      },
+    ],
+    relatedServices: [
+      { title: 'Hot Oil Massage in Katy', route: '/services/massage-katy-tx', price: '$40 / $70' },
+      { title: 'Body Scrub & Polish', route: '/services/body-scrub-katy-tx', price: '$65' },
+      { title: 'HydraFacial Skincare', route: '/services/hydrafacial-katy-tx', price: '$110' },
     ],
   },
 };

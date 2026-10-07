@@ -28,7 +28,11 @@ export const SEOHead: React.FC = () => {
       title = servicePage.metaTitle;
       description = servicePage.metaDescription;
       canonical = `https://orchidbyhuma.com${servicePage.route}/`;
-      image = `https://orchidbyhuma.com${servicePage.image}`;
+      image = servicePage.image.startsWith('http')
+        ? servicePage.image
+        : servicePage.image.startsWith('/')
+        ? `https://orchidbyhuma.com${servicePage.image}`
+        : `https://orchidbyhuma.com/${servicePage.image}`;
       breadcrumbItems = [
         { name: 'Home', url: 'https://orchidbyhuma.com/' },
         { name: 'Services', url: 'https://orchidbyhuma.com/services/' },
@@ -119,13 +123,36 @@ export const SEOHead: React.FC = () => {
           faqItems = [];
           break;
         case '/appointment':
+        case '/book':
           title = 'Book an Appointment in Katy, TX | Orchid By Huma';
           description =
-            'Reserve your visit at Orchid By Huma in Katy, Texas. Select your preferred service, date, and time for facials, hair styling, and beauty care.';
-          canonical = 'https://orchidbyhuma.com/appointment/';
+            'Reserve your visit at Orchid By Huma in Katy, Texas. Select your preferred service, date, and time for facials, hair styling, balayage, and beauty care.';
+          canonical = 'https://orchidbyhuma.com/book/';
           breadcrumbItems = [
             { name: 'Home', url: 'https://orchidbyhuma.com/' },
             { name: 'Book Appointment', url: canonical },
+          ];
+          faqItems = [];
+          break;
+        case '/gallery':
+          title = 'Salon & Spa Gallery | Orchid By Huma in Katy, TX';
+          description =
+            'Take a visual tour inside Orchid By Huma in Katy, Texas. Explore our styling stations, hair wash lounge, private skincare suites, and authentic salon ambiance.';
+          canonical = 'https://orchidbyhuma.com/gallery/';
+          breadcrumbItems = [
+            { name: 'Home', url: 'https://orchidbyhuma.com/' },
+            { name: 'Gallery', url: canonical },
+          ];
+          faqItems = [];
+          break;
+        case '/reviews':
+          title = 'Client Reviews & Ratings (4.8 ★) | Orchid By Huma Katy, TX';
+          description =
+            'Read verified client Google reviews for Orchid By Huma in Katy, TX. 4.8 out of 5 stars for HydraFacials, haircuts, balayage, threading, and bridal beauty.';
+          canonical = 'https://orchidbyhuma.com/reviews/';
+          breadcrumbItems = [
+            { name: 'Home', url: 'https://orchidbyhuma.com/' },
+            { name: 'Reviews', url: canonical },
           ];
           faqItems = [];
           break;

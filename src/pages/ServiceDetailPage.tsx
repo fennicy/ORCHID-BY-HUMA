@@ -64,7 +64,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ service })
 
           <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
             <button
-              onClick={() => navigate('/appointment', { service: service.slug })}
+              onClick={() => navigate('/book', { service: service.slug })}
               className="bg-[#C59B6D] hover:bg-[#B48C5E] text-stone-950 font-semibold px-7 py-3.5 text-xs uppercase tracking-widest transition-all duration-200 cursor-pointer shadow-md flex items-center gap-2"
             >
               <Calendar className="w-4 h-4 text-stone-950" />
@@ -299,7 +299,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ service })
           </p>
           <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
             <button
-              onClick={() => navigate('/appointment', { service: service.slug })}
+              onClick={() => navigate('/book', { service: service.slug })}
               className="bg-[#C59B6D] hover:bg-[#B48C5E] text-stone-950 font-semibold px-8 py-3.5 text-xs uppercase tracking-widest transition-colors cursor-pointer flex items-center gap-2"
             >
               <Calendar className="w-4 h-4 text-stone-950" />

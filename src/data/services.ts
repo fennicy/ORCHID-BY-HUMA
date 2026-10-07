@@ -1,4 +1,14 @@
 import { ServiceCategory } from '../types';
+import {
+  facialTreatment as facialImage,
+  hairStylingBalayage as balayageImage,
+  bridalMakeup as bridalImage,
+  spaWellness as spaImage,
+  hairWashStyling as hairWashImage,
+  salonInteriorHair as salonInteriorImage,
+  spaTreatmentRoom as spaRoomImage,
+  orchidReceptionSalon as receptionImage,
+} from '../assets/images';
 
 export const SERVICE_CATEGORIES: ServiceCategory[] = [
   {
@@ -6,7 +16,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     title: 'Facials & Skincare',
     shortDescription: 'Advanced clinical & botanical facial treatments customized for glowing, healthy skin.',
     longDescription: 'Our licensed aestheticians analyze your skin condition to curate a personalized ritual using medical-grade cleansers, botanical serums, and gentle rejuvenation techniques.',
-    image: '/src/assets/images/facial_skincare_treatment_1791303841283.jpg',
+    image: facialImage,
     services: [
       {
         id: 'hydra-facial',
@@ -133,7 +143,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     title: 'Hair Styling & Treatments',
     shortDescription: 'Signature blowouts, restorative protein treatments, and Brazilian Blowouts.',
     longDescription: 'Whether you need a red-carpet blowout, special occasion styling, or intensive keratin smoothing, our experienced hair stylists tailor every movement to your hair texture.',
-    image: '/src/assets/images/hair_styling_balayage_1791303852977.jpg',
+    image: hairWashImage,
     services: [
       {
         id: 'brazilian-blowout',
@@ -238,7 +248,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     title: 'Hair Color & Highlights',
     shortDescription: 'Custom balayage, dimensional highlights, root touch-ups, and artistic glossing.',
     longDescription: 'Our master colorists specialize in bespoke color formulation that respects hair integrity while delivering rich multidimensional vibrancy.',
-    image: '/src/assets/images/hair_styling_balayage_1791303852977.jpg',
+    image: balayageImage,
     services: [
       {
         id: 'balayage',
@@ -322,7 +332,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     title: 'Precision Haircuts',
     shortDescription: 'Tailored haircutting, shaping, and texturizing for women and men.',
     longDescription: 'Personalized haircutting tailored to facial contours, bone structure, and lifestyle. Every cut begins with a dedicated consultation.',
-    image: '/src/assets/images/hair_styling_balayage_1791303852977.jpg',
+    image: salonInteriorImage,
     services: [
       {
         id: 'haircut',
@@ -359,7 +369,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     title: 'Bridal & Event Makeup',
     shortDescription: 'Radiant bridal beauty, Nikkah, Engagement, Mayon, and special event makeup.',
     longDescription: 'From intimate office events to lavish bridal affairs, our master makeup artists craft flawless, photo-ready looks tailored to your heritage, attire, and personal style.',
-    image: '/src/assets/images/bridal_beauty_makeup_1791303863839.jpg',
+    image: bridalImage,
     services: [
       {
         id: 'bridal-makeup',
@@ -427,7 +437,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     title: 'Waxing & Body Treatments',
     shortDescription: 'Gentle, hygienic full body waxing, Brazilian wax, and delicate intimate care.',
     longDescription: 'We prioritize client comfort with premium temperature-regulated stripless and soft waxes, soothing botanical pre-care, and calming after-care lotions.',
-    image: '/src/assets/images/facial_skincare_treatment_1791303841283.jpg',
+    image: spaRoomImage,
     services: [
       {
         id: 'full-body-with-brazilian',
@@ -543,7 +553,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     title: 'Threading & Facial Waxing',
     shortDescription: 'Precise eyebrow threading, delicate facial contouring, and clean skin shaping.',
     longDescription: 'Traditional antibacterial cotton threading and sensitive facial waxing that creates razor-sharp eyebrow arches without pulling delicate skin.',
-    image: '/src/assets/images/bridal_beauty_makeup_1791303863839.jpg',
+    image: receptionImage,
     services: [
       {
         id: 'eyebrows-threading',
@@ -627,7 +637,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     title: 'Tint, Lamination & Lashes',
     shortDescription: 'Lash lifts, brow lamination, custom tinting, and micro-shading enhancements.',
     longDescription: 'Awaken your eyes with semi-permanent definition that frees you from daily mascara and brow pencils for 6 to 8 weeks.',
-    image: '/src/assets/images/bridal_beauty_makeup_1791303863839.jpg',
+    image: bridalImage,
     services: [
       {
         id: 'lash-lift-tint',
@@ -689,7 +699,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     title: 'Massage & Spa Wellness',
     shortDescription: 'Warm botanical oil massages and holistic relaxation rituals.',
     longDescription: 'Release built-up neck, shoulder, and back tension with soothing warm botanical oil treatments delivered in our quiet sanctuary.',
-    image: '/src/assets/images/spa_massage_wellness_1791303875097.jpg',
+    image: spaImage,
     services: [
       {
         id: 'hot-oil-massage-60',

@@ -1,0 +1,32 @@
+/*
+Theme Name: Orchid by Huma
+Theme URI: https://orchidbyhuma.com/
+Author: Orchid by Huma
+Author URI: https://orchidbyhuma.com/
+Description: Luxury Beauty Salon, Spa & Aesthetics WordPress Theme for Orchid by Huma in Katy, TX. Authentic editorial design featuring real salon interior photography, high-touch typography, responsive galleries with lightbox, and dedicated service templates.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.7
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: orchid-by-huma
+Tags: custom-header, custom-menu, featured-images, full-width-template, theme-options, translation-ready, luxury, beauty-salon, day-spa
+*/
+
+/* Core Theme Variables & Color Palette */
+:root {
+  --orchid-cream: #FAF8F5;
+  --orchid-sand: #F2ECE4;
+  --orchid-stone: #E8E0D5;
+  --orchid-black: #1A1816;
+  --orchid-dark: #141210;
+  --orchid-gold: #C59B6D;
+  --orchid-gold-light: #D8B88F;
+  --orchid-gold-dark: #976F44;
+  --orchid-text: #2C2825;
+  --orchid-text-muted: #6B635B;
+  --orchid-border: #E8E0D5;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
