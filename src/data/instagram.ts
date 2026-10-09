@@ -1,8 +1,10 @@
-import facialImage from '../assets/images/facial_skincare_treatment_1791303841283.jpg';
-import balayageImage from '../assets/images/hair_styling_balayage_1791303852977.jpg';
-import bridalImage from '../assets/images/bridal_beauty_makeup_1791303863839.jpg';
-import heroImage from '../assets/images/hero_salon_spa_1791303830093.jpg';
-import spaImage from '../assets/images/spa_massage_wellness_1791303875097.jpg';
+import {
+  facialTreatment as facialImage,
+  hairStylingBalayage as balayageImage,
+  bridalMakeup as bridalImage,
+  heroSalonSpa as heroImage,
+  spaWellness as spaImage,
+} from '../assets/images';
 
 export interface InstagramPost {
   id: string;
@@ -66,5 +68,4 @@ export const INSTAGRAM_POSTS: InstagramPost[] = [
 ];
 
 // Content-ready list for verified Instagram Reels.
-// Left empty until individual verified Reel URLs are linked.
 export const FEATURED_REELS: InstagramReel[] = [];

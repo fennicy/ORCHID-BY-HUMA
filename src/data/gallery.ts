@@ -9,9 +9,17 @@ import {
   hairStylingBalayage,
   heroSalonSpa,
   spaWellness,
+  tintLaminationLashes,
 } from '../assets/images';
 
 export const GALLERY_ITEMS: GalleryItem[] = [
+  {
+    id: 'gal-lashes-brows',
+    title: 'Lash Lift, Feathered Brow Lamination & Tint',
+    category: 'Brows & Lashes',
+    image: tintLaminationLashes,
+    aspect: 'aspect-4/3',
+  },
   {
     id: 'gal-reception',
     title: 'Orchid By Huma Reception & Welcome Lounge',

@@ -13,7 +13,7 @@ export const SEOHead: React.FC = () => {
     let description =
       'Luxury salon, spa and aesthetics services in Katy, TX. Explore hair, facials, HydraFacial, makeup, waxing, lashes, brows, massage and more at Orchid By Huma.';
     let canonical = 'https://orchidbyhuma.com/';
-    let image = 'https://orchidbyhuma.com/assets/images/hero_salon_spa_1791303830093.jpg';
+    let image = 'https://orchidbyhuma.com/assets/images/hero-salon-spa.webp';
     let breadcrumbItems: { name: string; url: string }[] = [
       { name: 'Home', url: 'https://orchidbyhuma.com/' },
     ];
@@ -49,7 +49,7 @@ export const SEOHead: React.FC = () => {
           name: BUSINESS_INFO.name,
           telephone: '+1-281-206-0151',
           url: BUSINESS_INFO.canonicalUrl,
-          image: 'https://orchidbyhuma.com/assets/images/hero_salon_spa_1791303830093.jpg',
+          image: 'https://orchidbyhuma.com/assets/images/hero-salon-spa.webp',
           address: {
             '@type': 'PostalAddress',
             streetAddress: BUSINESS_INFO.address.street,

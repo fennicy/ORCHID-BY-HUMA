@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BUSINESS_INFO } from '../data/business';
 import { SERVICE_CATEGORIES } from '../data/services';
+import { WhatsAppIcon } from './WhatsAppIcon';
 import { Send, CheckCircle2, Phone, AlertCircle } from 'lucide-react';
 
 export const ContactForm: React.FC = () => {
@@ -17,38 +18,123 @@ export const ContactForm: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submittedData, setSubmittedData] = useState<{ name: string; serviceInterested: string; phone: string } | null>(null);
+  const [submissionId, setSubmissionId] = useState<string>('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name.trim() || !formData.phone.trim()) {
-      setError('Please provide your name and phone number.');
+    setError(null);
+
+    // Validation
+    if (!formData.name.trim()) {
+      setError('Please provide your name.');
+      return;
+    }
+    if (!formData.phone.trim() || formData.phone.trim().length < 7) {
+      setError('Please provide a valid phone number so our Katy salon team can contact you.');
+      return;
+    }
+    if (!formData.message.trim()) {
+      setError('Please provide a message or question for our team.');
       return;
     }
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          phone: formData.phone.trim(),
+          email: formData.email.trim() || undefined,
+          serviceInterested: formData.serviceInterested,
+          preferredDate: formData.preferredDate || undefined,
+          message: formData.message.trim(),
+          sourceUrl: typeof window !== 'undefined' ? window.location.href : undefined,
+        }),
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Unable to deliver your message. Please call us directly.');
+      }
+
+      setSubmittedData({
+        name: formData.name.trim(),
+        serviceInterested: formData.serviceInterested,
+        phone: formData.phone.trim(),
+      });
+      setSubmissionId(data.id || '');
       setSubmitted(true);
-    }, 500);
+      setError(null);
+    } catch (err: any) {
+      console.error('Contact submission error:', err);
+      setError(
+        err.message || 'We could not send your message right now. Please check your internet connection or call our Katy salon directly at (281) 206-0151.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  if (submitted) {
+  if (submitted && submittedData) {
     return (
-      <div className="bg-[#FAF8F5] border border-[#E8E0D5] p-8 text-center space-y-4">
-        <div className="w-14 h-14 rounded-full bg-[#EBF5EE] text-[#2E7D32] flex items-center justify-center mx-auto">
+      <div className="bg-[#FAF7F5] border border-[#EACCC9] p-8 text-center space-y-4">
+        <div className="w-14 h-14 rounded-full bg-[#F0D8D6] text-[#4A2C2A] flex items-center justify-center mx-auto">
           <CheckCircle2 className="w-8 h-8" />
         </div>
-        <h3 className="font-serif text-2xl text-stone-900">Message Request Received</h3>
-        <p className="text-stone-600 text-sm max-w-md mx-auto">
-          Thank you for reaching out to Orchid By Huma. Our Katy salon team will contact you shortly. For immediate inquiries or same-day appointments, please call directly.
+        <div className="space-y-1">
+          <span className="text-xs uppercase tracking-wider text-[#4A2C2A] font-semibold block">
+            Message Received {submissionId ? `· Ref: ${submissionId}` : ''}
+          </span>
+          <h3 className="font-serif text-2xl text-[#38201F]">Inquiry Successfully Received</h3>
+        </div>
+        <p className="text-[#4A2C2A]/80 text-sm max-w-md mx-auto">
+          Thank you, <strong className="text-[#38201F]">{submittedData.name}</strong>. Your inquiry has been received by our Katy salon team. We will review your message and reach out to you at{' '}
+          <strong className="text-[#38201F]">{submittedData.phone}</strong> shortly.
         </p>
-        <div className="pt-2">
+        <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a
+            href={BUSINESS_INFO.whatsapp.createUrl(`Hi Orchid By Huma, I just sent an inquiry online regarding ${submittedData.serviceInterested} (Ref: ${submissionId || 'Website'}).`)}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Chat on WhatsApp with Orchid By Huma"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#25D366]/20 border border-[#25D366]/60 text-[#1E3A2F] text-xs font-semibold uppercase tracking-wider hover:bg-[#25D366]/30 transition-colors"
+          >
+            <WhatsAppIcon className="w-3.5 h-3.5 text-[#25D366]" />
+            Chat on WhatsApp
+          </a>
           <a
             href={`tel:${BUSINESS_INFO.phone.primaryRaw}`}
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#1A1816] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#976F44] transition-colors"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#4A2C2A] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#38201F] transition-colors"
           >
-            <Phone className="w-3.5 h-3.5 text-[#D8B88F]" />
-            Call Us Directly: {BUSINESS_INFO.phone.primary}
+            <Phone className="w-3.5 h-3.5 text-[#E6C4C2]" />
+            Call: {BUSINESS_INFO.phone.primary}
           </a>
+          <button
+            onClick={() => {
+              setSubmitted(false);
+              setSubmittedData(null);
+              setSubmissionId('');
+              setFormData({
+                name: '',
+                phone: '',
+                email: '',
+                serviceInterested: 'General Inquiry',
+                preferredDate: '',
+                message: '',
+              });
+            }}
+            className="px-4 py-2.5 border border-[#EACCC9] text-[#4A2C2A] text-xs font-semibold uppercase tracking-wider hover:bg-white transition-colors cursor-pointer"
+          >
+            Send Another Message
+          </button>
         </div>
       </div>
     );
@@ -65,8 +151,8 @@ export const ContactForm: React.FC = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="contact-name" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1">
-            Full Name <span className="text-[#976F44]">*</span>
+          <label htmlFor="contact-name" className="block text-xs font-medium text-[#4A2C2A] uppercase tracking-wider mb-1">
+            Full Name <span className="text-[#4A2C2A] font-bold">*</span>
           </label>
           <input
             id="contact-name"
@@ -76,13 +162,13 @@ export const ContactForm: React.FC = () => {
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             placeholder="Full Name"
-            className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#D8D0C5] text-stone-900 focus:outline-hidden focus:border-[#976F44] transition-colors"
+            className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#EACCC9] text-[#38201F] focus:outline-hidden focus:border-[#4A2C2A] focus:ring-1 focus:ring-[#E6C4C2] transition-colors"
           />
         </div>
 
         <div>
-          <label htmlFor="contact-phone" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1">
-            Phone Number <span className="text-[#976F44]">*</span>
+          <label htmlFor="contact-phone" className="block text-xs font-medium text-[#4A2C2A] uppercase tracking-wider mb-1">
+            Phone Number <span className="text-[#4A2C2A] font-bold">*</span>
           </label>
           <input
             id="contact-phone"
@@ -92,14 +178,14 @@ export const ContactForm: React.FC = () => {
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
             placeholder="(281) 555-0123"
-            className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#D8D0C5] text-stone-900 focus:outline-hidden focus:border-[#976F44] transition-colors"
+            className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#EACCC9] text-[#38201F] focus:outline-hidden focus:border-[#4A2C2A] focus:ring-1 focus:ring-[#E6C4C2] transition-colors"
           />
         </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="contact-email" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1">
+          <label htmlFor="contact-email" className="block text-xs font-medium text-[#4A2C2A] uppercase tracking-wider mb-1">
             Email Address
           </label>
           <input
@@ -109,19 +195,19 @@ export const ContactForm: React.FC = () => {
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             placeholder="client@email.com"
-            className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#D8D0C5] text-stone-900 focus:outline-hidden focus:border-[#976F44] transition-colors"
+            className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#EACCC9] text-[#38201F] focus:outline-hidden focus:border-[#4A2C2A] focus:ring-1 focus:ring-[#E6C4C2] transition-colors"
           />
         </div>
 
         <div>
-          <label htmlFor="contact-service" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1">
+          <label htmlFor="contact-service" className="block text-xs font-medium text-[#4A2C2A] uppercase tracking-wider mb-1">
             Service Interested In
           </label>
           <select
             id="contact-service"
             value={formData.serviceInterested}
             onChange={(e) => setFormData({ ...formData, serviceInterested: e.target.value })}
-            className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#D8D0C5] text-stone-900 focus:outline-hidden focus:border-[#976F44] transition-colors"
+            className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#EACCC9] text-[#38201F] focus:outline-hidden focus:border-[#4A2C2A] focus:ring-1 focus:ring-[#E6C4C2] transition-colors"
           >
             <option value="General Inquiry">General Question / Consultation</option>
             {SERVICE_CATEGORIES.map((cat) => (
@@ -134,7 +220,7 @@ export const ContactForm: React.FC = () => {
       </div>
 
       <div>
-        <label htmlFor="contact-date" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1">
+        <label htmlFor="contact-date" className="block text-xs font-medium text-[#4A2C2A] uppercase tracking-wider mb-1">
           Preferred Date (Optional)
         </label>
         <input
@@ -142,12 +228,12 @@ export const ContactForm: React.FC = () => {
           type="date"
           value={formData.preferredDate}
           onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
-          className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#D8D0C5] text-stone-900 focus:outline-hidden focus:border-[#976F44] transition-colors"
+          className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#EACCC9] text-[#38201F] focus:outline-hidden focus:border-[#4A2C2A] focus:ring-1 focus:ring-[#E6C4C2] transition-colors"
         />
       </div>
 
       <div>
-        <label htmlFor="contact-message" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1">
+        <label htmlFor="contact-message" className="block text-xs font-medium text-[#4A2C2A] uppercase tracking-wider mb-1">
           Your Message
         </label>
         <textarea
@@ -156,16 +242,16 @@ export const ContactForm: React.FC = () => {
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
           placeholder="How can our salon and spa team help you today?"
-          className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#D8D0C5] text-stone-900 focus:outline-hidden focus:border-[#976F44] transition-colors resize-none"
+          className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#EACCC9] text-[#38201F] focus:outline-hidden focus:border-[#4A2C2A] focus:ring-1 focus:ring-[#E6C4C2] transition-colors resize-none"
         />
       </div>
 
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full py-3.5 bg-[#1A1816] hover:bg-[#976F44] text-white text-xs font-semibold uppercase tracking-widest transition-all duration-200 cursor-pointer shadow-sm flex items-center justify-center gap-2"
+        className="w-full py-3.5 bg-[#4A2C2A] hover:bg-[#38201F] text-white text-xs font-semibold uppercase tracking-widest transition-all duration-200 cursor-pointer shadow-sm flex items-center justify-center gap-2"
       >
-        <Send className="w-3.5 h-3.5 text-[#D8B88F]" />
+        <Send className="w-3.5 h-3.5 text-[#E6C4C2]" />
         <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
       </button>
     </form>

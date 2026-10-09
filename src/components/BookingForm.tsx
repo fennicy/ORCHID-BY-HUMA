@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { SERVICE_CATEGORIES } from '../data/services';
 import { BUSINESS_INFO } from '../data/business';
 import { AppointmentFormData } from '../types';
+import { WhatsAppIcon } from './WhatsAppIcon';
 import { Calendar, Clock, CheckCircle2, Phone, AlertCircle } from 'lucide-react';
 
 interface BookingFormProps {
@@ -13,6 +14,7 @@ interface BookingFormProps {
 export const BookingForm: React.FC<BookingFormProps> = ({
   initialServiceCategory = 'facials',
   initialServiceId = '',
+  onSuccess,
 }) => {
   // Resolve pre-selected category and service intelligently from initial props
   const resolvedCategory = () => {
@@ -96,16 +98,19 @@ export const BookingForm: React.FC<BookingFormProps> = ({
     '5:30 PM',
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submittedData, setSubmittedData] = useState<AppointmentFormData | null>(null);
+  const [submissionId, setSubmissionId] = useState<string>('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
 
-    // Basic validation
+    // Client-side validation
     if (!formData.fullName.trim()) {
       setError('Please provide your full name.');
       return;
     }
-    if (!formData.phone.trim()) {
+    if (!formData.phone.trim() || formData.phone.trim().length < 7) {
       setError('Please enter your phone number so our Katy salon can confirm your booking.');
       return;
     }
@@ -115,68 +120,120 @@ export const BookingForm: React.FC<BookingFormProps> = ({
     }
 
     setIsSubmitting(true);
-    // Simulate real scheduling request transmission
-    setTimeout(() => {
-      setIsSubmitting(false);
+
+    try {
+      const response = await fetch('/api/book-appointment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          fullName: formData.fullName.trim(),
+          phone: formData.phone.trim(),
+          email: formData.email.trim() || undefined,
+          serviceCategory: formData.serviceCategory,
+          specificService: formData.specificService
+            ? availableServices.find((s) => s.id === formData.specificService)?.name || formData.specificService
+            : undefined,
+          preferredDate: formData.preferredDate,
+          preferredTime: formData.preferredTime,
+          notes: formData.notes.trim() || undefined,
+          sourceUrl: typeof window !== 'undefined' ? window.location.href : undefined,
+        }),
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Unable to submit your appointment request at this moment.');
+      }
+
+      // Preserve copy of submitted data for confirmation screen before clearing active form
+      setSubmittedData({ ...formData });
+      setSubmissionId(data.id || '');
       setSubmitted(true);
-    }, 600);
+      setError(null);
+      if (onSuccess) {
+        onSuccess();
+      }
+    } catch (err: any) {
+      console.error('Booking submission error:', err);
+      setError(
+        err.message || 'We could not deliver your appointment request. Please check your connection or call us directly at (281) 206-0151.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  if (submitted) {
+  if (submitted && submittedData) {
     return (
-      <div className="bg-[#FAF8F5] border border-[#E8E0D5] p-8 sm:p-12 text-center space-y-6 max-w-xl mx-auto shadow-sm">
-        <div className="w-16 h-16 rounded-full bg-[#EBF5EE] text-[#2E7D32] flex items-center justify-center mx-auto">
+      <div className="bg-[#FAF7F5] border border-[#EACCC9] p-8 sm:p-12 text-center space-y-6 max-w-xl mx-auto shadow-sm">
+        <div className="w-16 h-16 rounded-full bg-[#F0D8D6] text-[#4A2C2A] flex items-center justify-center mx-auto">
           <CheckCircle2 className="w-9 h-9" />
         </div>
 
         <div className="space-y-2">
-          <span className="text-xs uppercase tracking-[0.2em] text-[#976F44] font-semibold">
-            Request Received
+          <span className="text-xs uppercase tracking-[0.2em] text-[#4A2C2A] font-semibold">
+            Request Received {submissionId ? `· Ref: ${submissionId}` : ''}
           </span>
-          <h3 className="font-serif text-2xl sm:text-3xl text-stone-900">
-            Thank you, {formData.fullName.split(' ')[0]}!
+          <h3 className="font-serif text-2xl sm:text-3xl text-[#38201F]">
+            Thank you, {submittedData.fullName.split(' ')[0]}!
           </h3>
-          <p className="text-stone-600 text-sm leading-relaxed max-w-md mx-auto pt-1">
-            Your appointment request has been received. Our team will contact you at{' '}
-            <strong className="text-stone-900">{formData.phone}</strong> to confirm your appointment time and details.
+          <p className="text-[#4A2C2A]/80 text-sm leading-relaxed max-w-md mx-auto pt-1">
+            Your appointment request has been received by our salon team. We will contact you at{' '}
+            <strong className="text-[#38201F]">{submittedData.phone}</strong> to confirm stylist availability and schedule your appointment time.
           </p>
         </div>
 
         {/* Appointment summary recap */}
-        <div className="bg-[#F2ECE4] p-5 text-left text-xs text-stone-800 space-y-2 border border-[#E0D7CB]">
-          <div className="flex justify-between border-b border-[#D8D0C5] pb-2">
-            <span className="text-stone-500">Service:</span>
-            <span className="font-semibold text-stone-900">
-              {formData.specificService
-                ? availableServices.find((s) => s.id === formData.specificService)?.name || formData.specificService
+        <div className="bg-[#F0D8D6]/35 p-5 text-left text-xs text-[#4A2C2A] space-y-2 border border-[#EACCC9]">
+          <div className="flex justify-between border-b border-[#EACCC9] pb-2">
+            <span className="text-[#4A2C2A]/70">Service:</span>
+            <span className="font-semibold text-[#38201F]">
+              {submittedData.specificService
+                ? availableServices.find((s) => s.id === submittedData.specificService)?.name || submittedData.specificService
                 : selectedCatObj?.title}
             </span>
           </div>
-          <div className="flex justify-between border-b border-[#D8D0C5] pb-2">
-            <span className="text-stone-500">Preferred Date:</span>
-            <span className="font-semibold text-stone-900">{formData.preferredDate}</span>
+          <div className="flex justify-between border-b border-[#EACCC9] pb-2">
+            <span className="text-[#4A2C2A]/70">Preferred Date:</span>
+            <span className="font-semibold text-[#38201F]">{submittedData.preferredDate}</span>
           </div>
-          <div className="flex justify-between border-b border-[#D8D0C5] pb-2">
-            <span className="text-stone-500">Preferred Time:</span>
-            <span className="font-semibold text-stone-900">{formData.preferredTime}</span>
+          <div className="flex justify-between border-b border-[#EACCC9] pb-2">
+            <span className="text-[#4A2C2A]/70">Preferred Time:</span>
+            <span className="font-semibold text-[#38201F]">{submittedData.preferredTime}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-stone-500">Location:</span>
-            <span className="font-semibold text-stone-900">1105 South Mason Rd, Katy, TX</span>
+            <span className="text-[#4A2C2A]/70">Location:</span>
+            <span className="font-semibold text-[#38201F]">1105 South Mason Rd, Katy, TX</span>
           </div>
         </div>
 
-        <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a
+            href={BUSINESS_INFO.whatsapp.createUrl(`Hi Orchid By Huma, I just submitted an appointment request for ${submittedData.fullName} on ${submittedData.preferredDate} (Ref: ${submissionId || 'Website'}).`)}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Chat on WhatsApp with Orchid By Huma"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 bg-[#25D366]/20 border border-[#25D366]/60 text-[#1E3A2F] text-xs font-semibold uppercase tracking-wider hover:bg-[#25D366]/30 transition-colors"
+          >
+            <WhatsAppIcon className="w-3.5 h-3.5 text-[#25D366]" />
+            Chat on WhatsApp
+          </a>
           <a
             href={`tel:${BUSINESS_INFO.phone.primaryRaw}`}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#1A1816] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#976F44] transition-colors"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 bg-[#4A2C2A] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#38201F] transition-colors"
           >
-            <Phone className="w-3.5 h-3.5 text-[#D8B88F]" />
-            Call Salon: {BUSINESS_INFO.phone.primary}
+            <Phone className="w-3.5 h-3.5 text-[#E6C4C2]" />
+            Call: {BUSINESS_INFO.phone.primary}
           </a>
           <button
             onClick={() => {
               setSubmitted(false);
+              setSubmittedData(null);
+              setSubmissionId('');
               setFormData({
                 fullName: '',
                 phone: '',
@@ -188,9 +245,9 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                 notes: '',
               });
             }}
-            className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-3 border border-stone-300 text-stone-700 text-xs font-semibold uppercase tracking-wider hover:bg-stone-100 transition-colors cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center px-4 py-3 border border-[#EACCC9] text-[#4A2C2A] text-xs font-semibold uppercase tracking-wider hover:bg-[#FAF7F5] transition-colors cursor-pointer"
           >
-            Book Another Visit
+            Book Another
           </button>
         </div>
       </div>
@@ -203,16 +260,16 @@ export const BookingForm: React.FC<BookingFormProps> = ({
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-[#FAF8F5] border border-[#E8E0D5] p-6 sm:p-10 shadow-xs max-w-2xl mx-auto space-y-6"
+      className="bg-[#FAF7F5] border border-[#EACCC9] p-6 sm:p-10 shadow-xs max-w-2xl mx-auto space-y-6"
     >
-      <div className="border-b border-[#E8E0D5] pb-4">
-        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#976F44]">
+      <div className="border-b border-[#EACCC9] pb-4">
+        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#4A2C2A]">
           Reserve Your Visit
         </span>
-        <h2 className="font-serif text-2xl sm:text-3xl text-stone-900 mt-1">
+        <h2 className="font-serif text-2xl sm:text-3xl text-[#38201F] mt-1">
           Book Your Appointment
         </h2>
-        <p className="text-stone-600 text-xs sm:text-sm mt-1">
+        <p className="text-[#4A2C2A]/80 text-xs sm:text-sm mt-1">
           Choose your service and preferred time, and our team will help you plan your visit.
         </p>
       </div>
@@ -227,8 +284,8 @@ export const BookingForm: React.FC<BookingFormProps> = ({
       {/* Row 1: Full Name & Phone Number */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="booking-fullname" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1.5">
-            Full Name <span className="text-[#976F44]">*</span>
+          <label htmlFor="booking-fullname" className="block text-xs font-medium text-[#4A2C2A] uppercase tracking-wider mb-1.5">
+            Full Name <span className="text-[#4A2C2A] font-bold">*</span>
           </label>
           <input
             id="booking-fullname"
@@ -238,13 +295,13 @@ export const BookingForm: React.FC<BookingFormProps> = ({
             value={formData.fullName}
             onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
             placeholder="Full Name"
-            className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#D8D0C5] text-stone-900 focus:outline-hidden focus:border-[#976F44] focus:ring-1 focus:ring-[#976F44] transition-colors"
+            className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#EACCC9] text-[#38201F] focus:outline-hidden focus:border-[#4A2C2A] focus:ring-1 focus:ring-[#E6C4C2] transition-colors"
           />
         </div>
 
         <div>
-          <label htmlFor="booking-phone" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1.5">
-            Phone Number <span className="text-[#976F44]">*</span>
+          <label htmlFor="booking-phone" className="block text-xs font-medium text-[#4A2C2A] uppercase tracking-wider mb-1.5">
+            Phone Number <span className="text-[#4A2C2A] font-bold">*</span>
           </label>
           <input
             id="booking-phone"
@@ -254,14 +311,14 @@ export const BookingForm: React.FC<BookingFormProps> = ({
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
             placeholder="(281) 555-0123"
-            className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#D8D0C5] text-stone-900 focus:outline-hidden focus:border-[#976F44] focus:ring-1 focus:ring-[#976F44] transition-colors"
+            className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#EACCC9] text-[#38201F] focus:outline-hidden focus:border-[#4A2C2A] focus:ring-1 focus:ring-[#E6C4C2] transition-colors"
           />
         </div>
       </div>
 
       {/* Row 2: Email */}
       <div>
-        <label htmlFor="booking-email" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1.5">
+        <label htmlFor="booking-email" className="block text-xs font-medium text-[#4A2C2A] uppercase tracking-wider mb-1.5">
           Email Address
         </label>
         <input
@@ -271,15 +328,15 @@ export const BookingForm: React.FC<BookingFormProps> = ({
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           placeholder="client@email.com"
-          className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#D8D0C5] text-stone-900 focus:outline-hidden focus:border-[#976F44] focus:ring-1 focus:ring-[#976F44] transition-colors"
+          className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#EACCC9] text-[#38201F] focus:outline-hidden focus:border-[#4A2C2A] focus:ring-1 focus:ring-[#E6C4C2] transition-colors"
         />
       </div>
 
       {/* Row 3: Service Category & Specific Service */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="booking-category" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1.5">
-            Service Category <span className="text-[#976F44]">*</span>
+          <label htmlFor="booking-category" className="block text-xs font-medium text-[#4A2C2A] uppercase tracking-wider mb-1.5">
+            Service Category <span className="text-[#4A2C2A] font-bold">*</span>
           </label>
           <select
             id="booking-category"
@@ -292,7 +349,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                 specificService: '',
               });
             }}
-            className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#D8D0C5] text-stone-900 focus:outline-hidden focus:border-[#976F44] focus:ring-1 focus:ring-[#976F44] transition-colors"
+            className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#EACCC9] text-[#38201F] focus:outline-hidden focus:border-[#4A2C2A] focus:ring-1 focus:ring-[#E6C4C2] transition-colors"
           >
             {SERVICE_CATEGORIES.map((cat) => (
               <option key={cat.key} value={cat.key}>
@@ -303,14 +360,14 @@ export const BookingForm: React.FC<BookingFormProps> = ({
         </div>
 
         <div>
-          <label htmlFor="booking-service" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1.5">
+          <label htmlFor="booking-service" className="block text-xs font-medium text-[#4A2C2A] uppercase tracking-wider mb-1.5">
             Specific Treatment
           </label>
           <select
             id="booking-service"
             value={formData.specificService}
             onChange={(e) => setFormData({ ...formData, specificService: e.target.value })}
-            className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#D8D0C5] text-stone-900 focus:outline-hidden focus:border-[#976F44] focus:ring-1 focus:ring-[#976F44] transition-colors"
+            className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#EACCC9] text-[#38201F] focus:outline-hidden focus:border-[#4A2C2A] focus:ring-1 focus:ring-[#E6C4C2] transition-colors"
           >
             <option value="">Any / General Consultation</option>
             {availableServices.map((srv) => (
@@ -325,8 +382,8 @@ export const BookingForm: React.FC<BookingFormProps> = ({
       {/* Row 4: Preferred Date & Time */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="booking-date" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1.5">
-            Preferred Date <span className="text-[#976F44]">*</span>
+          <label htmlFor="booking-date" className="block text-xs font-medium text-[#4A2C2A] uppercase tracking-wider mb-1.5">
+            Preferred Date <span className="text-[#4A2C2A] font-bold">*</span>
           </label>
           <div className="relative">
             <input
@@ -336,13 +393,13 @@ export const BookingForm: React.FC<BookingFormProps> = ({
               min={todayStr}
               value={formData.preferredDate}
               onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
-              className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#D8D0C5] text-stone-900 focus:outline-hidden focus:border-[#976F44] focus:ring-1 focus:ring-[#976F44] transition-colors"
+              className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#EACCC9] text-[#38201F] focus:outline-hidden focus:border-[#4A2C2A] focus:ring-1 focus:ring-[#E6C4C2] transition-colors"
             />
           </div>
         </div>
 
         <div>
-          <label htmlFor="booking-time" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1.5">
+          <label htmlFor="booking-time" className="block text-xs font-medium text-[#4A2C2A] uppercase tracking-wider mb-1.5">
             Preferred Time Slot
           </label>
           <div className="relative">
@@ -350,7 +407,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
               id="booking-time"
               value={formData.preferredTime}
               onChange={(e) => setFormData({ ...formData, preferredTime: e.target.value })}
-              className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#D8D0C5] text-stone-900 focus:outline-hidden focus:border-[#976F44] focus:ring-1 focus:ring-[#976F44] transition-colors"
+              className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#EACCC9] text-[#38201F] focus:outline-hidden focus:border-[#4A2C2A] focus:ring-1 focus:ring-[#E6C4C2] transition-colors"
             >
               {timeSlots.map((time) => (
                 <option key={time} value={time}>
@@ -364,7 +421,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
 
       {/* Row 5: Notes / Hair details / Preferences */}
       <div>
-        <label htmlFor="booking-notes" className="block text-xs font-medium text-stone-700 uppercase tracking-wider mb-1.5">
+        <label htmlFor="booking-notes" className="block text-xs font-medium text-[#4A2C2A] uppercase tracking-wider mb-1.5">
           Special Notes or Skin / Hair Concerns
         </label>
         <textarea
@@ -373,7 +430,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
           value={formData.notes}
           onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
           placeholder="Tell us about your hair length, skin sensitivity, or any specific goals for your visit..."
-          className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#D8D0C5] text-stone-900 focus:outline-hidden focus:border-[#976F44] focus:ring-1 focus:ring-[#976F44] transition-colors resize-none"
+          className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#EACCC9] text-[#38201F] focus:outline-hidden focus:border-[#4A2C2A] focus:ring-1 focus:ring-[#E6C4C2] transition-colors resize-none"
         />
       </div>
 
@@ -382,22 +439,31 @@ export const BookingForm: React.FC<BookingFormProps> = ({
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full py-4 bg-[#1A1816] hover:bg-[#976F44] text-white text-xs font-semibold uppercase tracking-widest transition-all duration-200 cursor-pointer shadow-sm flex items-center justify-center gap-2"
+          className="w-full py-4 bg-[#4A2C2A] hover:bg-[#38201F] text-white text-xs font-semibold uppercase tracking-widest transition-all duration-200 cursor-pointer shadow-sm flex items-center justify-center gap-2"
         >
           {isSubmitting ? (
             <span>Processing Request...</span>
           ) : (
             <>
-              <Calendar className="w-4 h-4 text-[#D8B88F]" />
+              <Calendar className="w-4 h-4 text-[#E6C4C2]" />
               <span>Request Appointment</span>
             </>
           )}
         </button>
 
-        <p className="text-[11px] text-stone-500 text-center mt-3 leading-relaxed">
-          ✦ An aesthetician or stylist will contact you directly to confirm availability. For same-day appointments, please call{' '}
-          <a href={`tel:${BUSINESS_INFO.phone.primaryRaw}`} className="underline text-stone-700 font-medium">
+        <p className="text-[11px] text-[#4A2C2A]/70 text-center mt-3 leading-relaxed">
+          ✦ An aesthetician or stylist will contact you directly to confirm availability. For immediate questions or same-day appointments, call{' '}
+          <a href={`tel:${BUSINESS_INFO.phone.primaryRaw}`} className="underline text-[#38201F] font-medium">
             {BUSINESS_INFO.phone.primary}
+          </a>{' '}
+          or{' '}
+          <a
+            href={BUSINESS_INFO.whatsapp.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline text-[#128C7E] font-medium"
+          >
+            Chat on WhatsApp
           </a>.
         </p>
       </div>

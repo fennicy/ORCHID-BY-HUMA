@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <!-- Definitions for styling and typography -->
+  <defs>
+    <style>
+      .logo-bg { fill: #E6C4C2; stroke: #38201F; stroke-width: 7; }
+      .brand-title {
+        font-family: 'Cormorant Garamond', 'Didot', 'Bodoni MT', Georgia, serif;
+        font-size: 112px;
+        font-weight: 400;
+        fill: #38201F;
+        letter-spacing: -1px;
+      }
+      .brand-sub {
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 26px;
+        font-weight: 500;
+        fill: #38201F;
+      }
+      .brand-services {
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 34px;
+        font-weight: 500;
+        fill: #38201F;
+        letter-spacing: 0.5px;
+      }
+      .sparkle {
+        fill: #38201F;
+      }
+    </style>
+  </defs>
+
+  <!-- Outer circular badge with blush tone and espresso border -->
+  <circle cx="250" cy="250" r="236" class="logo-bg" />
+
+  <!-- Brand Name: Orchid -->
+  <!-- Sparkle replacing/accompanying tittle on the i -->
+  <g id="brand-wordmark">
+    <text x="38" y="230" class="brand-title">Orchid</text>
+    
+    <!-- 4-point sparkle icon above i / d -->
+    <path class="sparkle" d="M 360 126 C 360 138 350 142 344 142 C 350 142 360 146 360 158 C 360 146 370 142 376 142 C 370 142 360 138 360 126 Z" />
+  </g>
+
+  <!-- Middle divider line + "by huma" -->
+  <line x1="60" y1="258" x2="304" y2="258" stroke="#38201F" stroke-width="3" stroke-linecap="round" />
+  <text x="313" y="266" class="brand-sub">by huma</text>
+
+  <!-- Bottom services descriptor -->
+  <text x="250" y="352" text-anchor="middle" class="brand-services">
+    Spa | Salon | Aesthetics
+  </text>
+</svg>

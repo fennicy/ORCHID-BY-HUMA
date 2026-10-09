@@ -1,12 +1,15 @@
-import spaTreatmentRoom from './spa-treatment-room.jpg';
-import salonInteriorHair from './salon-interior-hair.jpg';
-import orchidReceptionSalon from './orchid-reception-salon.jpg';
-import hairWashStyling from './hair-wash-styling.jpg';
-import bridalMakeup from './bridal-makeup.jpg';
-import facialTreatment from './facial-treatment.jpg';
-import hairStylingBalayage from './hair-styling-balayage.jpg';
-import heroSalonSpa from './hero-salon-spa.jpg';
-import spaWellness from './spa-wellness.jpg';
+import spaTreatmentRoom from './spa-treatment-room.webp';
+import salonInteriorHair from './salon-interior-hair.webp';
+import orchidReceptionSalon from './orchid-reception-salon.webp';
+import hairWashStyling from './hair-wash-styling.webp';
+import bridalMakeup from './bridal-makeup.webp';
+import facialTreatment from './facial-treatment.webp';
+import hairStylingBalayage from './hair-styling-balayage.webp';
+import heroSalonSpa from './hero-salon-spa.webp';
+import spaWellness from './spa-wellness.webp';
+import tintLaminationLashes from './tint-lamination-lashes.webp';
+import brazilianWaxingBody from './brazilian-waxing-body.webp';
+import customClinicalFacials from './custom-clinical-facials.webp';
 
 export {
   spaTreatmentRoom,
@@ -18,4 +21,7 @@ export {
   hairStylingBalayage,
   heroSalonSpa,
   spaWellness,
+  tintLaminationLashes,
+  brazilianWaxingBody,
+  customClinicalFacials,
 };

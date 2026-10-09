@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useRouter, Link } from '../context/RouterContext';
 import { BUSINESS_INFO } from '../data/business';
 import { Phone, Calendar, Menu, X, Clock } from 'lucide-react';
+import { Logo } from './Logo';
+import { WhatsAppIcon } from './WhatsAppIcon';
 
 export const Header: React.FC = () => {
   const { currentPath, navigate } = useRouter();
@@ -38,110 +40,151 @@ export const Header: React.FC = () => {
 
   return (
     <>
-      {/* Top Announcement Bar: Luxury Address & Hours */}
-      <div className="bg-[#1C1917] text-[#E7E2DB] text-xs py-2 px-4 border-b border-stone-800 hidden md:block">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <span className="flex items-center gap-1.5 text-stone-300">
-              <span className="text-[#C59B6D]">✦</span>
-              {BUSINESS_INFO.address.street}, {BUSINESS_INFO.address.city}, {BUSINESS_INFO.address.stateCode} {BUSINESS_INFO.address.zip}
+      {/* 1. TOP INFORMATION BAR (Height ~32-38px, Dark chocolate/burgundy #38201F) */}
+      <div className="bg-[#38201F] text-[#FAF7F5] border-b border-[#4A2C2A] text-[11px] font-sans antialiased hidden md:block">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-9 flex items-center justify-between text-[#F0D8D6]">
+          {/* Left / Center-Left: Address & Hours in one clean horizontal row */}
+          <div className="flex items-center gap-4 lg:gap-6 shrink-0">
+            <span className="flex items-center gap-1.5 text-[#F0D8D6]">
+              <span className="text-[#E6C4C2] text-xs">✦</span>
+              <span>1105 S Mason Rd, Katy, TX 77450</span>
             </span>
-            <span className="flex items-center gap-1.5 text-stone-400">
-              <Clock className="w-3.5 h-3.5 text-[#C59B6D]" />
-              {BUSINESS_INFO.hours[0].days}: {BUSINESS_INFO.hours[0].time} · {BUSINESS_INFO.hours[1].days}: {BUSINESS_INFO.hours[1].time}
+            <span className="text-[#4A2C2A]">|</span>
+            <span className="flex items-center gap-1.5 text-[#FAF7F5]/85">
+              <Clock className="w-3 h-3 text-[#E6C4C2] shrink-0" />
+              <span>Monday–Saturday: 10:00 AM–6:30 PM</span>
+            </span>
+            <span className="text-[#4A2C2A]">|</span>
+            <span className="text-[#FAF7F5]/85">
+              <span>Sunday: 12:00 PM–5:00 PM</span>
             </span>
           </div>
-          <div className="flex items-center gap-4 text-stone-300">
+
+          {/* Right: WhatsApp, Phone, Google Rated in one clean horizontal row */}
+          <div className="flex items-center gap-4 shrink-0 text-[#F0D8D6]">
+            <a
+              href={BUSINESS_INFO.whatsapp.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat on WhatsApp with Orchid By Huma"
+              className="hover:text-white transition-colors flex items-center gap-1.5 font-medium"
+            >
+              <WhatsAppIcon className="w-3.5 h-3.5 text-[#25D366]" />
+              <span>WhatsApp</span>
+            </a>
+            <span className="text-[#4A2C2A]">|</span>
             <a
               href={`tel:${BUSINESS_INFO.phone.primaryRaw}`}
-              className="hover:text-[#C59B6D] transition-colors flex items-center gap-1.5"
+              aria-label="Call Orchid By Huma"
+              className="hover:text-white transition-colors flex items-center gap-1.5"
             >
-              <Phone className="w-3 h-3 text-[#C59B6D]" />
-              {BUSINESS_INFO.phone.primary}
+              <Phone className="w-3 h-3 text-[#E6C4C2]" />
+              <span>(281) 206-0151</span>
             </a>
-            <span className="text-stone-600">|</span>
-            <span className="text-[#C59B6D] font-medium">★ 4.8 Google Rated</span>
+            <span className="text-[#4A2C2A]">|</span>
+            <span className="text-[#E6C4C2] font-semibold flex items-center gap-1">
+              <span>★ 4.8 Google Rated</span>
+            </span>
           </div>
         </div>
       </div>
 
-      {/* Main Sticky Header */}
+      {/* 2. MAIN STICKY NAVIGATION (Height ~72-78px, Ivory/white background #FAF7F5) */}
       <header
-        className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+        className={`sticky top-0 z-50 w-full transition-all duration-300 bg-[#FAF7F5] ${
           scrolled
-            ? 'bg-[#FAF8F5]/95 backdrop-blur-md shadow-xs border-b border-[#E8E0D5]'
-            : 'bg-[#FAF8F5] border-b border-[#E8E0D5]/70'
+            ? 'shadow-md border-b border-[#EACCC9]/90 bg-[#FAF7F5]/98 backdrop-blur-md'
+            : 'border-b border-[#EACCC9]/70'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-          {/* Zone 1: Brand Wordmark */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[74px] flex items-center justify-between gap-4">
+          {/* LEFT: Brand Logo & Wordmark (Properly sized, completely visible, no overlap) */}
           <Link
             to="/"
-            className="group flex flex-col focus:outline-hidden"
-            ariaLabel="Orchid By Huma - Home"
+            className="group flex items-center gap-3 shrink-0 focus-visible:outline-hidden"
+            ariaLabel="Orchid By Huma - Luxury Beauty Salon & Spa Home"
           >
-            <span className="font-serif text-2xl sm:text-3xl tracking-wide text-stone-900 group-hover:text-[#976F44] transition-colors">
-              Orchid By Huma
-            </span>
-            <span className="text-[10px] tracking-[0.25em] uppercase text-stone-500 font-sans -mt-1 font-medium">
-              Salon &amp; Spa · Katy, TX
-            </span>
+            <div className="w-11 h-11 sm:w-12 sm:h-12 shrink-0 rounded-full transition-transform duration-300 group-hover:scale-105 shadow-xs flex items-center justify-center overflow-hidden">
+              <Logo className="w-full h-full" />
+            </div>
+            <div className="flex flex-col justify-center">
+              <span className="font-serif text-2xl sm:text-[26px] tracking-wide text-[#38201F] group-hover:text-[#4A2C2A] transition-colors leading-tight whitespace-nowrap">
+                Orchid By Huma
+              </span>
+              <span className="text-[9.5px] sm:text-[10px] tracking-[0.22em] uppercase text-[#4A2C2A]/75 font-sans font-medium leading-none mt-0.5 whitespace-nowrap">
+                Spa · Salon · Aesthetics
+              </span>
+            </div>
           </Link>
 
-          {/* Zone 2: Navigation Links (Clean text, subtle underline on hover) */}
-          <nav className="hidden lg:flex items-center gap-8 text-sm font-medium text-stone-700">
+          {/* CENTER: Clean Navigation Links in specified exact order */}
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium text-[#4A2C2A]">
             {navLinks.map((link) => {
               const isActive = currentPath === link.href;
               return (
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`relative py-1 transition-colors whitespace-nowrap ${
+                  className={`relative py-1.5 transition-colors whitespace-nowrap ${
                     isActive
-                      ? 'text-[#976F44] font-semibold'
-                      : 'hover:text-stone-950 text-stone-700'
+                      ? 'text-[#38201F] font-semibold'
+                      : 'hover:text-[#38201F] text-[#4A2C2A]'
                   }`}
                 >
                   {link.name}
                   {isActive && (
-                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#B48C5E] rounded-full" />
+                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#4A2C2A] rounded-full" />
                   )}
                 </Link>
               );
             })}
           </nav>
 
-          {/* Zone 3: Primary Actions (Phone + Book Appointment) */}
-          <div className="hidden sm:flex items-center gap-4">
+          {/* RIGHT: Action Buttons (WhatsApp + BOOK APPOINTMENT, matching height & clean spacing) */}
+          <div className="hidden sm:flex items-center gap-2.5 shrink-0">
             <a
-              href={`tel:${BUSINESS_INFO.phone.primaryRaw}`}
-              className="text-stone-800 hover:text-[#976F44] transition-colors text-sm font-medium flex items-center gap-1.5 whitespace-nowrap"
+              href={BUSINESS_INFO.whatsapp.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat on WhatsApp with Orchid By Huma"
+              className="h-9 px-3.5 border border-[#25D366]/40 hover:border-[#25D366] text-[#1E3A2F] hover:text-[#075E54] bg-[#25D366]/10 hover:bg-[#25D366]/20 text-xs font-semibold tracking-wider uppercase transition-all duration-200 shadow-xs flex items-center gap-1.5 whitespace-nowrap"
             >
-              <Phone className="w-4 h-4 text-[#B48C5E]" />
-              <span>{BUSINESS_INFO.phone.primary}</span>
+              <WhatsAppIcon className="w-3.5 h-3.5 text-[#25D366]" />
+              <span>WhatsApp</span>
             </a>
 
             <button
               onClick={() => navigate('/book')}
-              className="bg-[#1A1816] hover:bg-[#976F44] text-[#FAF8F5] px-5 py-2.5 text-xs font-semibold tracking-wider uppercase transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md flex items-center gap-2 whitespace-nowrap"
+              className="h-9 px-4 sm:px-4.5 bg-[#4A2C2A] hover:bg-[#38201F] text-white text-xs font-semibold tracking-wider uppercase transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md flex items-center gap-2 whitespace-nowrap"
             >
-              <Calendar className="w-3.5 h-3.5 text-[#D8B88F]" />
-              <span>Book Appointment</span>
+              <Calendar className="w-3.5 h-3.5 text-[#E6C4C2]" />
+              <span>BOOK APPOINTMENT</span>
             </button>
           </div>
 
-          {/* Mobile Menu Toggle Button */}
+          {/* Mobile Quick Action Buttons & Menu Toggle */}
           <div className="flex items-center gap-2 sm:hidden">
+            <a
+              href={BUSINESS_INFO.whatsapp.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat on WhatsApp"
+              className="h-8 px-2.5 bg-[#25D366]/15 border border-[#25D366]/40 text-[#1E3A2F] text-[11px] font-semibold uppercase flex items-center gap-1"
+            >
+              <WhatsAppIcon className="w-3.5 h-3.5 text-[#25D366]" />
+              <span className="sr-only sm:not-sr-only">Chat</span>
+            </a>
+
             <button
               onClick={() => navigate('/book')}
-              className="bg-[#1A1816] text-[#FAF8F5] px-3 py-1.5 text-xs font-medium uppercase tracking-wider"
+              className="h-8 px-3 bg-[#4A2C2A] hover:bg-[#38201F] text-white text-[11px] font-semibold uppercase tracking-wider flex items-center gap-1.5"
             >
-              Book
+              <span>Book</span>
             </button>
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-stone-700 hover:text-stone-900 focus-visible:ring-2 focus-visible:ring-[#B48C5E] outline-none"
+              className="p-1.5 text-[#4A2C2A] hover:text-[#38201F] focus-visible:ring-2 focus-visible:ring-[#E6C4C2] outline-hidden ml-0.5"
               aria-expanded={mobileMenuOpen}
               aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             >
@@ -152,8 +195,8 @@ export const Header: React.FC = () => {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-[#FAF8F5] border-b border-stone-300 px-6 py-6 shadow-xl animate-in slide-in-from-top duration-200">
-            <div className="flex flex-col gap-4">
+          <div className="lg:hidden bg-[#FAF7F5] border-b border-[#EACCC9] px-6 py-6 shadow-xl animate-in slide-in-from-top duration-200">
+            <div className="flex flex-col gap-3.5">
               {navLinks.map((link) => {
                 const isActive = currentPath === link.href;
                 return (
@@ -161,22 +204,28 @@ export const Header: React.FC = () => {
                     key={link.href}
                     to={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`text-lg font-serif tracking-wide py-1 border-b border-stone-200/60 ${
-                      isActive ? 'text-[#976F44] font-semibold' : 'text-stone-800'
+                    className={`text-lg font-serif tracking-wide py-1.5 border-b border-[#EACCC9]/60 flex items-center justify-between ${
+                      isActive ? 'text-[#38201F] font-semibold' : 'text-[#4A2C2A]'
                     }`}
                   >
-                    {link.name}
+                    <span>{link.name}</span>
+                    {isActive && (
+                      <span className="w-2 h-2 rounded-full bg-[#4A2C2A]" />
+                    )}
                   </Link>
                 );
               })}
 
-              <div className="pt-3 flex flex-col gap-3">
+              <div className="pt-3 flex flex-col gap-2.5">
                 <a
-                  href={`tel:${BUSINESS_INFO.phone.primaryRaw}`}
-                  className="w-full py-3 px-4 border border-stone-300 text-stone-900 text-center font-medium text-sm flex items-center justify-center gap-2"
+                  href={BUSINESS_INFO.whatsapp.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Chat on WhatsApp with Orchid By Huma"
+                  className="w-full py-3 px-4 bg-[#25D366]/15 hover:bg-[#25D366]/25 border border-[#25D366]/50 text-[#1E3A2F] text-center font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-2"
                 >
-                  <Phone className="w-4 h-4 text-[#B48C5E]" />
-                  Call {BUSINESS_INFO.phone.primary}
+                  <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
+                  Chat on WhatsApp
                 </a>
 
                 <button
@@ -184,17 +233,25 @@ export const Header: React.FC = () => {
                     setMobileMenuOpen(false);
                     navigate('/book');
                   }}
-                  className="w-full py-3.5 px-4 bg-[#1A1816] text-white text-center font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-sm"
+                  className="w-full py-3.5 px-4 bg-[#4A2C2A] hover:bg-[#38201F] text-white text-center font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-xs"
                 >
-                  <Calendar className="w-4 h-4 text-[#D8B88F]" />
-                  Book An Appointment
+                  <Calendar className="w-4 h-4 text-[#E6C4C2]" />
+                  BOOK APPOINTMENT
                 </button>
+
+                <a
+                  href={`tel:${BUSINESS_INFO.phone.primaryRaw}`}
+                  className="w-full py-2.5 px-4 border border-[#EACCC9] text-[#4A2C2A] text-center font-medium text-xs flex items-center justify-center gap-2"
+                >
+                  <Phone className="w-3.5 h-3.5 text-[#4A2C2A]" />
+                  Call (281) 206-0151
+                </a>
               </div>
 
-              <div className="pt-2 text-xs text-stone-500 text-center space-y-1">
-                <p>{BUSINESS_INFO.address.full}</p>
+              <div className="pt-2 text-xs text-[#4A2C2A]/70 text-center space-y-1">
+                <p>1105 S Mason Rd, Katy, TX 77450</p>
                 <p>
-                  {BUSINESS_INFO.hours[0].days}: {BUSINESS_INFO.hours[0].time} · {BUSINESS_INFO.hours[1].days}: {BUSINESS_INFO.hours[1].time}
+                  Mon–Sat: 10:00 AM–6:30 PM · Sun: 12:00 PM–5:00 PM
                 </p>
               </div>
             </div>

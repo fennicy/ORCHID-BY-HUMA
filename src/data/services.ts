@@ -8,6 +8,8 @@ import {
   salonInteriorHair as salonInteriorImage,
   spaTreatmentRoom as spaRoomImage,
   orchidReceptionSalon as receptionImage,
+  tintLaminationLashes as lashImage,
+  brazilianWaxingBody,
 } from '../assets/images';
 
 export const SERVICE_CATEGORIES: ServiceCategory[] = [
@@ -437,7 +439,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     title: 'Waxing & Body Treatments',
     shortDescription: 'Gentle, hygienic full body waxing, Brazilian wax, and delicate intimate care.',
     longDescription: 'We prioritize client comfort with premium temperature-regulated stripless and soft waxes, soothing botanical pre-care, and calming after-care lotions.',
-    image: spaRoomImage,
+    image: brazilianWaxingBody,
     services: [
       {
         id: 'full-body-with-brazilian',
@@ -637,7 +639,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     title: 'Tint, Lamination & Lashes',
     shortDescription: 'Lash lifts, brow lamination, custom tinting, and micro-shading enhancements.',
     longDescription: 'Awaken your eyes with semi-permanent definition that frees you from daily mascara and brow pencils for 6 to 8 weeks.',
-    image: bridalImage,
+    image: lashImage,
     services: [
       {
         id: 'lash-lift-tint',

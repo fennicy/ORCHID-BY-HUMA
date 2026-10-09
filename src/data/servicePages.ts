@@ -8,6 +8,9 @@ import {
   salonInteriorHair as salonInteriorImage,
   hairWashStyling as hairWashImage,
   orchidReceptionSalon as receptionImage,
+  tintLaminationLashes as lashImage,
+  brazilianWaxingBody,
+  customClinicalFacials,
 } from '../assets/images';
 
 export interface ServiceLandingPageData {
@@ -423,7 +426,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Facials & Skincare',
     price: '$55–$110',
     duration: '45–60 min',
-    image: facialImage,
+    image: customClinicalFacials,
     overview: [
       'At Orchid By Huma in Katy, Texas, our facial therapies are personalized to your exact skin type and lifestyle needs. Beginning with a professional skin analysis, our licensed aestheticians blend steam exfoliation, gentle extractions, custom massage, and therapeutic masks.',
       'Our comprehensive menu features Basic Facials ($55), Brightening Facials ($60), Acne Purifying Facials ($65), Deep Hydrating & Calming Facials ($75), Microdermabrasion ($80), Back Facials ($55), and the signature HydraFacial ($110).',
@@ -477,7 +480,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Facials & Skincare',
     price: '$80',
     duration: '50 min',
-    image: facialImage,
+    image: customClinicalFacials,
     overview: [
       'Microdermabrasion at Orchid By Huma ($80) is an effective, non-chemical resurfacing treatment that gently exfoliates the outermost layer of dead skin cells. Using a medical-grade diamond-tipped wand paired with adjustable vacuum suction, our aestheticians sweep away dullness.',
       'This treatment stimulates micro-circulation, boosts cellular turnover, softens fine lines, and promotes enhanced absorption of topical serums and hydrators.',
@@ -531,7 +534,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Facials & Skincare',
     price: '$65',
     duration: '55 min',
-    image: facialImage,
+    image: customClinicalFacials,
     overview: [
       'Struggling with breakouts, congestion, or hormonal cystic flare-ups? Our Acne Facial ($65) at Orchid By Huma in Katy, Texas provides thorough clinical relief. Our aestheticians address the root causes of acne: excess sebum, dead skin buildup, and bacterial colonization.',
       'Using enzyme steam, safe sterile extractions, high-frequency antibacterial care, and anti-inflammatory botanical masks, we calm existing lesions and prevent future breakouts without stripping your skin barrier.',
@@ -693,7 +696,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Waxing & Body Treatments',
     price: '$20–$120',
     duration: '15–75 min',
-    image: facialImage,
+    image: brazilianWaxingBody,
     overview: [
       'At Orchid By Huma in Katy, Texas, waxing is practiced with strict medical-grade hygiene, speed, and genuine client comfort. Located on South Mason Road, our private suites provide discreet, sanitary hair removal using premium temperature-regulated stripless and soft waxes.',
       'Our waxing menu includes Full Body with Brazilian ($120), Full Body without Brazilian ($80), individual Brazilian ($50), Bikini Line ($20), Full Legs ($40), Half Legs ($30), Full Arms ($30), Underarms ($25), Full Back ($30), and soothing post-wax treatment masks ($15).',
@@ -747,7 +750,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Waxing & Body Treatments',
     price: '$50',
     duration: '30 min',
-    image: facialImage,
+    image: brazilianWaxingBody,
     overview: [
       'At Orchid By Huma, client comfort, strict sanitation, and meticulous technique are our highest priorities. Our Brazilian waxing service in Katy ($50) uses temperature-controlled gentle wax designed for sensitive intimate skin, removing hair cleanly from the root with minimal discomfort.',
       'We also provide full-body waxing packages with Brazilian ($120), bikini line grooming ($20), and soothing post-wax treatment masks ($15) and scrubs ($15) to keep skin smooth and bump-free.',
@@ -963,7 +966,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Tint & Lamination',
     price: '$60',
     duration: '60 min',
-    image: bridalImage,
+    image: lashImage,
     overview: [
       'Wake up every morning with open, curled eyelashes without touching an eyelash curler or mascara wand. At Orchid By Huma in Katy, Texas, our Lash Lift & Tint ($60) gently curls your natural lashes from the root using custom silicone shield molds.',
       'Paired with a deep jet-black vegetable tint, your lashes appear dramatically darker, longer, and more defined for 6 to 8 weeks—the entire natural hair shed cycle.',
@@ -1017,7 +1020,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Tint & Lamination',
     price: '$70',
     duration: '50 min',
-    image: bridalImage,
+    image: lashImage,
     overview: [
       'Eyebrow lamination is the ultimate secret to full, feathery, editorial brows. At Orchid By Huma in Katy, Texas, our Eyebrow Lamination service ($70) relaxes and realigns your natural brow hairs, allowing us to brush them upward into an arch that conceals gaps and sparse spots.',
       'We also offer custom Eyebrow Tinting ($20) to deepen the color and match your hair shade, giving you effortless wake-up-and-go brows that stay groomed for up to 8 weeks.',
@@ -1125,7 +1128,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Facials & Skincare',
     price: '$55–$110',
     duration: '45–60 min',
-    image: facialImage,
+    image: customClinicalFacials,
     overview: [
       'At Orchid By Huma, our licensed aestheticians customize every facial treatment to your unique skin health goals. Located at 1105 South Mason Rd in Katy, Texas, we combine advanced clinical extraction technology with nurturing botanical serums to purify, hydrate, and restore your natural radiance.',
       'Our dedicated skincare menu features our celebrated HydraFacial ($110), diamond-tip Microdermabrasion ($80), Acne Purifying Facial ($65), Vitamin C Brightening Facial ($60), and Hydrating Botanical Facials ($55), all administered in private, sanitized suites.',
@@ -1395,7 +1398,7 @@ export const SERVICE_LANDING_PAGES: Record<string, ServiceLandingPageData> = {
     category: 'Brows & Lashes',
     price: '$20–$250 & up',
     duration: '25–120 min',
-    image: bridalImage,
+    image: lashImage,
     overview: [
       'Awaken your natural eye beauty with customized brow sculpting and lash enhancements at Orchid By Huma on South Mason Road. Wake up every morning with perfectly lifted, dark lashes and neat, feathered brows with zero daily effort.',
       'Our brow and lash menu includes Lash Lift & Tint ($60), Eyebrow Lamination ($70), Eyelash Tint ($30), Eyebrow Tint ($20), Eyelash Extensions ($120 & up), and Semi-Permanent Micro-Shading ($250 & up).',

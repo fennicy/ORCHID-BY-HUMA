@@ -26,6 +26,16 @@ export const BUSINESS_INFO = {
     secondary: "713-714-7774",
     secondaryRaw: "+17137147774",
   },
+  whatsapp: {
+    number: "+1 281-206-0151",
+    rawNumber: "12812060151",
+    display: "(281) 206-0151",
+    url: "https://wa.me/12812060151",
+    createUrl: (message?: string) => {
+      if (!message) return "https://wa.me/12812060151";
+      return `https://wa.me/12812060151?text=${encodeURIComponent(message)}`;
+    },
+  },
   email: {
     primary: "orchbyhuma@gmail.com",
     secondary: "orchidbyhuma@gmail.com",
