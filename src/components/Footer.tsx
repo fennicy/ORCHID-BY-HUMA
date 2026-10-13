@@ -12,16 +12,16 @@ export const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Column 1: Brand & Philosophy */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 shrink-0 rounded-full shadow-sm">
+          <div className="space-y-5">
+            <div className="flex items-center gap-4">
+              <div className="footer-logo-badge shrink-0 rounded-full shadow-md overflow-hidden">
                 <Logo className="w-full h-full" />
               </div>
               <div>
-                <span className="font-serif text-2xl tracking-wide text-white block">
+                <span className="font-serif text-2xl sm:text-[28px] lg:text-[30px] tracking-wide text-white block">
                   {BUSINESS_INFO.name}
                 </span>
-                <span className="text-xs uppercase tracking-[0.2em] text-[#E6C4C2] font-medium block mt-0.5">
+                <span className="text-xs uppercase tracking-[0.22em] text-[#E6C4C2] font-medium block mt-1">
                   Spa · Salon · Aesthetics
                 </span>
               </div>
@@ -218,7 +218,7 @@ export const Footer: React.FC = () => {
           <p>
             © {new Date().getFullYear()} Orchid By Huma. All rights reserved. Katy, Texas.
           </p>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-6 gap-y-2">
             <Link to="/about" className="hover:text-[#FAF7F5] transition-colors">
               About
             </Link>

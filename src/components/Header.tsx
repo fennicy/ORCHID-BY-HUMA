@@ -42,7 +42,7 @@ export const Header: React.FC = () => {
     <>
       {/* 1. TOP INFORMATION BAR (Height ~32-38px, Dark chocolate/burgundy #38201F) */}
       <div className="bg-[#38201F] text-[#FAF7F5] border-b border-[#4A2C2A] text-[11px] font-sans antialiased hidden md:block">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-9 flex items-center justify-between text-[#F0D8D6]">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 h-9 flex items-center justify-between text-[#F0D8D6]">
           {/* Left / Center-Left: Address & Hours in one clean horizontal row */}
           <div className="flex items-center gap-4 lg:gap-6 shrink-0">
             <span className="flex items-center gap-1.5 text-[#F0D8D6]">
@@ -97,28 +97,30 @@ export const Header: React.FC = () => {
             : 'border-b border-[#EACCC9]/70'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[74px] flex items-center justify-between gap-4">
-          {/* LEFT: Brand Logo & Wordmark (Properly sized, completely visible, no overlap) */}
-          <Link
-            to="/"
-            className="group flex items-center gap-3 shrink-0 focus-visible:outline-hidden"
-            ariaLabel="Orchid By Huma - Luxury Beauty Salon & Spa Home"
-          >
-            <div className="w-11 h-11 sm:w-12 sm:h-12 shrink-0 rounded-full transition-transform duration-300 group-hover:scale-105 shadow-xs flex items-center justify-center overflow-hidden">
-              <Logo className="w-full h-full" />
-            </div>
-            <div className="flex flex-col justify-center">
-              <span className="font-serif text-2xl sm:text-[26px] tracking-wide text-[#38201F] group-hover:text-[#4A2C2A] transition-colors leading-tight whitespace-nowrap">
-                Orchid By Huma
-              </span>
-              <span className="text-[9.5px] sm:text-[10px] tracking-[0.22em] uppercase text-[#4A2C2A]/75 font-sans font-medium leading-none mt-0.5 whitespace-nowrap">
-                Spa · Salon · Aesthetics
-              </span>
-            </div>
-          </Link>
+        <div className="max-w-[1600px] mx-auto px-2.5 min-[360px]:px-3 sm:px-6 lg:px-10 h-[82px] min-[360px]:h-[86px] sm:h-[110px] lg:h-[136px] flex items-center justify-between gap-1.5 min-[360px]:gap-2 sm:gap-4 lg:gap-6 min-w-0">
+          {/* LEFT: Brand Logo & Full Wordmark on the far left */}
+          <div className="flex items-center shrink-0 lg:flex-1 lg:justify-start">
+            <Link
+              to="/"
+              className="group flex items-center gap-1.5 min-[360px]:gap-2 sm:gap-3.5 lg:gap-4 shrink-0 focus-visible:outline-hidden py-1"
+              ariaLabel="Orchid By Huma - Luxury Beauty Salon & Spa Home"
+            >
+              <div className="header-logo-badge shrink-0 rounded-full transition-transform duration-300 group-hover:scale-105 shadow-sm flex items-center justify-center overflow-hidden">
+                <Logo className="w-full h-full" />
+              </div>
+              <div className="flex flex-col justify-center shrink-0">
+                <span className="font-serif text-[17px] min-[360px]:text-[18px] min-[375px]:text-[19px] min-[414px]:text-[21px] sm:text-[28px] lg:text-[34px] tracking-wide text-[#38201F] group-hover:text-[#4A2C2A] transition-colors leading-tight whitespace-nowrap">
+                  Orchid By Huma
+                </span>
+                <span className="text-[7.5px] min-[360px]:text-[8px] min-[375px]:text-[8.5px] min-[414px]:text-[9.5px] sm:text-[11px] lg:text-[12px] tracking-[0.14em] sm:tracking-[0.24em] uppercase text-[#4A2C2A]/75 font-sans font-medium leading-none mt-0.5 sm:mt-1 whitespace-nowrap">
+                  Spa · Salon · Aesthetics
+                </span>
+              </div>
+            </Link>
+          </div>
 
-          {/* CENTER: Clean Navigation Links in specified exact order */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium text-[#4A2C2A]">
+          {/* CENTER: Desktop Navigation Menu Centered */}
+          <nav className="hidden lg:flex items-center justify-center gap-5 xl:gap-8 text-sm font-medium text-[#4A2C2A] shrink-0">
             {navLinks.map((link) => {
               const isActive = currentPath === link.href;
               return (
@@ -140,63 +142,75 @@ export const Header: React.FC = () => {
             })}
           </nav>
 
-          {/* RIGHT: Action Buttons (WhatsApp + BOOK APPOINTMENT, matching height & clean spacing) */}
-          <div className="hidden sm:flex items-center gap-2.5 shrink-0">
+          {/* RIGHT: Action Buttons on the far right (Desktop >= 1024px) */}
+          <div className="hidden lg:flex items-center justify-end gap-3 shrink-0 lg:flex-1">
             <a
               href={BUSINESS_INFO.whatsapp.url}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Chat on WhatsApp with Orchid By Huma"
-              className="h-9 px-3.5 border border-[#25D366]/40 hover:border-[#25D366] text-[#1E3A2F] hover:text-[#075E54] bg-[#25D366]/10 hover:bg-[#25D366]/20 text-xs font-semibold tracking-wider uppercase transition-all duration-200 shadow-xs flex items-center gap-1.5 whitespace-nowrap"
+              className="h-10 px-4 border border-[#25D366]/40 hover:border-[#25D366] text-[#1E3A2F] hover:text-[#075E54] bg-[#25D366]/10 hover:bg-[#25D366]/20 text-xs font-semibold tracking-wider uppercase transition-all duration-200 shadow-xs flex items-center gap-1.5 whitespace-nowrap"
             >
-              <WhatsAppIcon className="w-3.5 h-3.5 text-[#25D366]" />
+              <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
               <span>WhatsApp</span>
             </a>
 
             <button
               onClick={() => navigate('/book')}
-              className="h-9 px-4 sm:px-4.5 bg-[#4A2C2A] hover:bg-[#38201F] text-white text-xs font-semibold tracking-wider uppercase transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md flex items-center gap-2 whitespace-nowrap"
+              className="h-10 px-5 bg-[#4A2C2A] hover:bg-[#38201F] text-white text-xs font-semibold tracking-wider uppercase transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md flex items-center gap-2 whitespace-nowrap"
             >
-              <Calendar className="w-3.5 h-3.5 text-[#E6C4C2]" />
+              <Calendar className="w-4 h-4 text-[#E6C4C2]" />
               <span>BOOK APPOINTMENT</span>
             </button>
           </div>
 
-          {/* Mobile Quick Action Buttons & Menu Toggle */}
-          <div className="flex items-center gap-2 sm:hidden">
+          {/* Mobile & Tablet Quick Actions & Hamburger Toggle (Visible on all screens < 1024px) */}
+          <div className="flex lg:hidden items-center gap-1.5 sm:gap-2.5 shrink-0">
             <a
               href={BUSINESS_INFO.whatsapp.url}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Chat on WhatsApp"
-              className="h-8 px-2.5 bg-[#25D366]/15 border border-[#25D366]/40 text-[#1E3A2F] text-[11px] font-semibold uppercase flex items-center gap-1"
+              aria-label="Chat on WhatsApp with Orchid By Huma"
+              className="h-[44px] w-[44px] sm:w-auto sm:px-3 bg-[#25D366]/15 hover:bg-[#25D366]/25 border border-[#25D366]/40 text-[#1E3A2F] text-[11px] font-semibold uppercase flex items-center justify-center gap-1.5 transition-colors shrink-0"
             >
-              <WhatsAppIcon className="w-3.5 h-3.5 text-[#25D366]" />
-              <span className="sr-only sm:not-sr-only">Chat</span>
+              <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
+              <span className="hidden sm:inline">WhatsApp</span>
             </a>
 
+            {/* Book button on tablet (>=640px), hidden on mobile (<640px) to prevent header crowding since bottom action dock has Book */}
             <button
               onClick={() => navigate('/book')}
-              className="h-8 px-3 bg-[#4A2C2A] hover:bg-[#38201F] text-white text-[11px] font-semibold uppercase tracking-wider flex items-center gap-1.5"
+              className="hidden sm:flex h-[44px] px-3.5 bg-[#4A2C2A] hover:bg-[#38201F] text-white text-[11px] font-semibold uppercase tracking-wider items-center justify-center gap-1.5 cursor-pointer transition-colors shrink-0"
             >
               <span>Book</span>
             </button>
 
+            {/* Prominent MENU ☰ / CLOSE ✕ Navigation Button - fully visible, minimum 44px touch height */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-1.5 text-[#4A2C2A] hover:text-[#38201F] focus-visible:ring-2 focus-visible:ring-[#E6C4C2] outline-hidden ml-0.5"
+              className="h-[44px] px-3 sm:px-4 bg-[#F0D8D6] hover:bg-[#EACCC9] active:bg-[#E6C4C2] border border-[#EACCC9] text-[#38201F] font-bold text-xs sm:text-[13px] tracking-wider uppercase flex items-center justify-center gap-1.5 cursor-pointer transition-all duration-200 shadow-xs focus-visible:ring-2 focus-visible:ring-[#4A2C2A] outline-hidden shrink-0"
               aria-expanded={mobileMenuOpen}
               aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? (
+                <>
+                  <span>CLOSE</span>
+                  <X className="w-4 h-4 text-[#38201F] stroke-[2.5]" />
+                </>
+              ) : (
+                <>
+                  <span>MENU</span>
+                  <Menu className="w-4 h-4 text-[#38201F] stroke-[2.5]" />
+                </>
+              )}
             </button>
           </div>
         </div>
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-[#FAF7F5] border-b border-[#EACCC9] px-6 py-6 shadow-xl animate-in slide-in-from-top duration-200">
-            <div className="flex flex-col gap-3.5">
+          <div className="lg:hidden fixed inset-x-0 top-[82px] min-[360px]:top-[86px] sm:top-[110px] max-h-[calc(100dvh-82px)] min-[360px]:max-h-[calc(100dvh-86px)] sm:max-h-[calc(100dvh-110px)] overflow-y-auto bg-[#FAF7F5] border-b border-[#EACCC9] px-5 sm:px-6 pt-5 pb-24 shadow-2xl z-50 animate-in slide-in-from-top-2 duration-200">
+            <div className="flex flex-col gap-3 max-w-md mx-auto">
               {navLinks.map((link) => {
                 const isActive = currentPath === link.href;
                 return (
@@ -204,8 +218,8 @@ export const Header: React.FC = () => {
                     key={link.href}
                     to={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`text-lg font-serif tracking-wide py-1.5 border-b border-[#EACCC9]/60 flex items-center justify-between ${
-                      isActive ? 'text-[#38201F] font-semibold' : 'text-[#4A2C2A]'
+                    className={`text-lg font-serif tracking-wide py-2 border-b border-[#EACCC9]/60 flex items-center justify-between ${
+                      isActive ? 'text-[#38201F] font-semibold' : 'text-[#4A2C2A] hover:text-[#38201F]'
                     }`}
                   >
                     <span>{link.name}</span>
@@ -216,13 +230,13 @@ export const Header: React.FC = () => {
                 );
               })}
 
-              <div className="pt-3 flex flex-col gap-2.5">
+              <div className="pt-4 flex flex-col gap-2.5">
                 <a
                   href={BUSINESS_INFO.whatsapp.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Chat on WhatsApp with Orchid By Huma"
-                  className="w-full py-3 px-4 bg-[#25D366]/15 hover:bg-[#25D366]/25 border border-[#25D366]/50 text-[#1E3A2F] text-center font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-2"
+                  className="w-full py-3 px-4 bg-[#25D366]/15 hover:bg-[#25D366]/25 border border-[#25D366]/50 text-[#1E3A2F] text-center font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition-colors cursor-pointer"
                 >
                   <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
                   Chat on WhatsApp
@@ -233,7 +247,7 @@ export const Header: React.FC = () => {
                     setMobileMenuOpen(false);
                     navigate('/book');
                   }}
-                  className="w-full py-3.5 px-4 bg-[#4A2C2A] hover:bg-[#38201F] text-white text-center font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-xs"
+                  className="w-full py-3.5 px-4 bg-[#4A2C2A] hover:bg-[#38201F] text-white text-center font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-sm cursor-pointer transition-colors"
                 >
                   <Calendar className="w-4 h-4 text-[#E6C4C2]" />
                   BOOK APPOINTMENT
@@ -241,7 +255,7 @@ export const Header: React.FC = () => {
 
                 <a
                   href={`tel:${BUSINESS_INFO.phone.primaryRaw}`}
-                  className="w-full py-2.5 px-4 border border-[#EACCC9] text-[#4A2C2A] text-center font-medium text-xs flex items-center justify-center gap-2"
+                  className="w-full py-2.5 px-4 border border-[#EACCC9] text-[#4A2C2A] hover:bg-[#EACCC9]/30 text-center font-medium text-xs flex items-center justify-center gap-2 transition-colors"
                 >
                   <Phone className="w-3.5 h-3.5 text-[#4A2C2A]" />
                   Call (281) 206-0151
@@ -249,7 +263,7 @@ export const Header: React.FC = () => {
               </div>
 
               <div className="pt-2 text-xs text-[#4A2C2A]/70 text-center space-y-1">
-                <p>1105 S Mason Rd, Katy, TX 77450</p>
+                <p className="font-medium text-[#4A2C2A]">1105 S Mason Rd, Katy, TX 77450</p>
                 <p>
                   Mon–Sat: 10:00 AM–6:30 PM · Sun: 12:00 PM–5:00 PM
                 </p>

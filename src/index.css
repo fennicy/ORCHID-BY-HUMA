@@ -72,6 +72,104 @@ body {
   }
 }
 
+/* Site-Wide Fluid Wide Desktop Content Optimization:
+   Allows main content to use ~95-97% of available desktop viewport width
+   with clean 16px/24px responsive side padding, removing restrictive center crowding. */
+.max-w-7xl,
+.max-w-\[1600px\] {
+  max-width: 96% !important;
+  width: 96% !important;
+}
+
+@media (min-width: 1024px) {
+  .max-w-7xl,
+  .max-w-\[1600px\] {
+    max-width: 95% !important;
+    width: 95% !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .max-w-7xl,
+  .max-w-\[1600px\] {
+    max-width: 96% !important;
+    width: 96% !important;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+}
+
+@media (min-width: 1536px) {
+  .max-w-7xl,
+  .max-w-\[1600px\] {
+    max-width: 97% !important;
+    width: 97% !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+}
+
+/* Header & Footer Brand Logo Responsive Scaling (Pixel-Accurate) */
+.header-logo-badge {
+  width: 54px;
+  height: 54px;
+}
+@media (min-width: 360px) {
+  .header-logo-badge {
+    width: 60px;
+    height: 60px;
+  }
+}
+@media (min-width: 375px) {
+  .header-logo-badge {
+    width: 66px;
+    height: 66px;
+  }
+}
+@media (min-width: 431px) {
+  .header-logo-badge {
+    width: 82px;
+    height: 82px;
+  }
+}
+@media (min-width: 640px) {
+  .header-logo-badge {
+    width: 104px;
+    height: 104px;
+  }
+}
+@media (min-width: 1024px) {
+  .header-logo-badge {
+    width: 128px;
+    height: 128px;
+  }
+}
+
+.footer-logo-badge {
+  width: 72px;
+  height: 72px;
+}
+@media (min-width: 375px) {
+  .footer-logo-badge {
+    width: 78px;
+    height: 78px;
+  }
+}
+@media (min-width: 640px) {
+  .footer-logo-badge {
+    width: 88px;
+    height: 88px;
+  }
+}
+@media (min-width: 1024px) {
+  .footer-logo-badge {
+    width: 96px;
+    height: 96px;
+  }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;

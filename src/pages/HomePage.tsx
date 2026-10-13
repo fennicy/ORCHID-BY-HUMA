@@ -5,6 +5,7 @@ import { SERVICE_CATEGORIES } from '../data/services';
 import { TESTIMONIALS } from '../data/testimonials';
 import { FAQSection } from '../components/FAQSection';
 import { WhatsAppIcon } from '../components/WhatsAppIcon';
+import { TikTokIcon } from '../components/TikTokIcon';
 import {
   heroSalonSpa as heroImage,
   facialTreatment as facialImage,
@@ -32,6 +33,7 @@ import {
   Droplet,
   Layers,
   Navigation,
+  Instagram,
 } from 'lucide-react';
 
 export const HomePage: React.FC = () => {
@@ -169,33 +171,58 @@ export const HomePage: React.FC = () => {
             </p>
 
             {/* CTAs */}
-            <div className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4">
-              <button
-                onClick={() => navigate('/book')}
-                className="bg-[#E6C4C2] hover:bg-[#F0D8D6] text-[#38201F] font-bold px-7 py-3.5 text-xs uppercase tracking-widest transition-all duration-200 cursor-pointer shadow-md hover:shadow-lg flex items-center gap-2"
-              >
-                <Calendar className="w-4 h-4 text-[#38201F]" />
-                <span>Book an Appointment</span>
-              </button>
+            <div className="pt-2 flex flex-col gap-3 sm:gap-3.5">
+              {/* Row 1: Book Appointment & Call Buttons (Side-by-side, Unchanged) */}
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+                <button
+                  onClick={() => navigate('/book')}
+                  className="bg-[#E6C4C2] hover:bg-[#F0D8D6] text-[#38201F] font-bold px-7 py-3.5 text-xs uppercase tracking-widest transition-all duration-200 cursor-pointer shadow-md hover:shadow-lg flex items-center gap-2"
+                >
+                  <Calendar className="w-4 h-4 text-[#38201F]" />
+                  <span>Book an Appointment</span>
+                </button>
 
-              <a
-                href={BUSINESS_INFO.whatsapp.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Chat on WhatsApp with Orchid By Huma"
-                className="bg-[#25D366]/15 hover:bg-[#25D366]/25 text-white border border-[#25D366]/60 hover:border-[#25D366] px-6 py-3.5 text-xs uppercase tracking-widest font-semibold transition-colors flex items-center gap-2"
-              >
-                <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
-                <span>Chat on WhatsApp</span>
-              </a>
+                <a
+                  href={`tel:${BUSINESS_INFO.phone.primaryRaw}`}
+                  className="bg-transparent hover:bg-white/10 text-white border border-[#EACCC9]/60 hover:border-white px-6 py-3.5 text-xs uppercase tracking-widest font-semibold transition-colors flex items-center gap-2"
+                >
+                  <Phone className="w-4 h-4 text-[#E6C4C2]" />
+                  <span>Call {BUSINESS_INFO.phone.primary}</span>
+                </a>
+              </div>
 
-              <a
-                href={`tel:${BUSINESS_INFO.phone.primaryRaw}`}
-                className="bg-transparent hover:bg-white/10 text-white border border-[#EACCC9]/60 hover:border-white px-6 py-3.5 text-xs uppercase tracking-widest font-semibold transition-colors flex items-center gap-2"
-              >
-                <Phone className="w-4 h-4 text-[#E6C4C2]" />
-                <span>Call {BUSINESS_INFO.phone.primary}</span>
-              </a>
+              {/* Row 2: WhatsApp | Instagram | TikTok Buttons in the second row */}
+              <div className="flex items-center gap-3">
+                <a
+                  href={BUSINESS_INFO.whatsapp.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Chat on WhatsApp with Orchid By Huma"
+                  className="w-12 h-12 inline-flex items-center justify-center bg-[#25D366]/20 hover:bg-[#25D366]/30 border border-[#25D366]/60 text-[#25D366] transition-colors shadow-sm"
+                >
+                  <WhatsAppIcon className="w-6 h-6 text-[#25D366]" />
+                </a>
+
+                <a
+                  href={BUSINESS_INFO.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit Orchid By Huma on Instagram"
+                  className="w-12 h-12 inline-flex items-center justify-center bg-[#E1306C]/20 hover:bg-[#E1306C]/30 border border-[#E1306C]/60 text-[#E1306C] transition-colors shadow-sm"
+                >
+                  <Instagram className="w-6 h-6 text-[#E1306C]" />
+                </a>
+
+                <a
+                  href="https://www.tiktok.com/@orchidbyhumatx"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow Orchid By Huma on TikTok"
+                  className="w-12 h-12 inline-flex items-center justify-center bg-white/10 hover:bg-white/20 border border-white/40 text-white hover:text-[#00f2fe] transition-colors shadow-sm"
+                >
+                  <TikTokIcon className="w-6 h-6" />
+                </a>
+              </div>
             </div>
 
             {/* Direct Phone, Location & Rating Marker */}
@@ -236,7 +263,7 @@ export const HomePage: React.FC = () => {
                 />
               </div>
               {/* Overlapping Trust Highlight Card */}
-              <div className="absolute -bottom-6 -right-4 sm:-right-6 bg-[#38201F] text-[#FAF7F5] p-5 sm:p-6 shadow-xl border border-[#4A2C2A] max-w-xs">
+              <div className="mt-4 sm:mt-0 sm:absolute sm:-bottom-6 sm:-right-6 bg-[#38201F] text-[#FAF7F5] p-5 sm:p-6 shadow-xl border border-[#4A2C2A] max-w-xs">
                 <span className="font-serif text-3xl sm:text-4xl text-[#E6C4C2] block">10+</span>
                 <span className="text-xs uppercase tracking-wider text-[#F0D8D6] font-medium block mt-1">
                   Years of Beauty &amp; Spa Excellence
@@ -347,6 +374,83 @@ export const HomePage: React.FC = () => {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          AUTHENTIC TESTIMONIALS SECTION (4.8 GOOGLE RATING) - 4TH SECTION
+          ========================================================================= */}
+      <section className="py-20 lg:py-28 bg-[#FAF7F5] border-b border-[#EACCC9]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto space-y-4 mb-16">
+            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#4A2C2A]">
+              <Star className="w-4 h-4 fill-[#E6C4C2] text-[#E6C4C2]" />
+              <span>4.8 ★ Google Rating · Verified Katy Clients</span>
+            </div>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#38201F]">
+              Kind Words From Our Clients
+            </h2>
+            <p className="text-[#4A2C2A]/80 text-sm sm:text-base">
+              Real experiences from guests who trust Orchid By Huma for haircuts, blowout styling, HydraFacials, and color artistry.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {TESTIMONIALS.map((t) => (
+              <div
+                key={t.id}
+                className="bg-white p-8 border border-[#EACCC9] flex flex-col justify-between space-y-6 shadow-xs hover:border-[#E6C4C2] transition-colors"
+              >
+                <div className="space-y-4">
+                  {/* Rating Stars */}
+                  <div className="flex items-center gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-[#E6C4C2] text-[#E6C4C2]" />
+                    ))}
+                    <span className="text-xs text-[#4A2C2A]/60 font-medium ml-2">5.0</span>
+                  </div>
+
+                  <p className="text-[#4A2C2A] text-sm leading-relaxed italic">
+                    "{t.reviewText}"
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t border-[#EACCC9]/40">
+                  <div className="font-serif text-base text-[#38201F] font-semibold">
+                    {t.author}
+                  </div>
+                  <div className="text-xs text-[#4A2C2A] font-medium mt-0.5">
+                    {t.serviceMentioned}
+                  </div>
+                  <div className="text-[11px] text-[#4A2C2A]/60 mt-0.5 flex items-center gap-1.5">
+                    <span>{t.verifiedSource}</span>
+                    <span>·</span>
+                    <span>Katy, TX</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center flex flex-wrap items-center justify-center gap-4">
+            <button
+              onClick={() => navigate('/reviews')}
+              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#4A2C2A] hover:text-[#38201F] transition-colors border-b border-[#4A2C2A] pb-1 cursor-pointer"
+            >
+              <span>Explore All Verified Client Reviews (4.8 ★)</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+            <span className="text-[#EACCC9] hidden sm:inline">·</span>
+            <a
+              href="https://www.google.com/search?q=Orchid+By+Huma+Katy+TX"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#4A2C2A]/80 hover:text-[#38201F] transition-colors pb-1"
+            >
+              <span>Read on Google</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
           </div>
         </div>
       </section>
@@ -780,83 +884,6 @@ export const HomePage: React.FC = () => {
             >
               Book Your Appointment Now
             </button>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================================
-          AUTHENTIC TESTIMONIALS SECTION (4.8 GOOGLE RATING)
-          ========================================================================= */}
-      <section className="py-20 lg:py-28 bg-[#FAF7F5] border-b border-[#EACCC9]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto space-y-4 mb-16">
-            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#4A2C2A]">
-              <Star className="w-4 h-4 fill-[#E6C4C2] text-[#E6C4C2]" />
-              <span>4.8 ★ Google Rating · Verified Katy Clients</span>
-            </div>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#38201F]">
-              Kind Words From Our Clients
-            </h2>
-            <p className="text-[#4A2C2A]/80 text-sm sm:text-base">
-              Real experiences from guests who trust Orchid By Huma for haircuts, blowout styling, HydraFacials, and color artistry.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {TESTIMONIALS.map((t) => (
-              <div
-                key={t.id}
-                className="bg-white p-8 border border-[#EACCC9] flex flex-col justify-between space-y-6 shadow-xs hover:border-[#E6C4C2] transition-colors"
-              >
-                <div className="space-y-4">
-                  {/* Rating Stars */}
-                  <div className="flex items-center gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-[#E6C4C2] text-[#E6C4C2]" />
-                    ))}
-                    <span className="text-xs text-[#4A2C2A]/60 font-medium ml-2">5.0</span>
-                  </div>
-
-                  <p className="text-[#4A2C2A] text-sm leading-relaxed italic">
-                    "{t.reviewText}"
-                  </p>
-                </div>
-
-                <div className="pt-4 border-t border-[#EACCC9]/40">
-                  <div className="font-serif text-base text-[#38201F] font-semibold">
-                    {t.author}
-                  </div>
-                  <div className="text-xs text-[#4A2C2A] font-medium mt-0.5">
-                    {t.serviceMentioned}
-                  </div>
-                  <div className="text-[11px] text-[#4A2C2A]/60 mt-0.5 flex items-center gap-1.5">
-                    <span>{t.verifiedSource}</span>
-                    <span>·</span>
-                    <span>Katy, TX</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 text-center flex flex-wrap items-center justify-center gap-4">
-            <button
-              onClick={() => navigate('/reviews')}
-              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#4A2C2A] hover:text-[#38201F] transition-colors border-b border-[#4A2C2A] pb-1 cursor-pointer"
-            >
-              <span>Explore All Verified Client Reviews (4.8 ★)</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-            <span className="text-[#EACCC9] hidden sm:inline">·</span>
-            <a
-              href="https://www.google.com/search?q=Orchid+By+Huma+Katy+TX"
-              target="_blank"
-              rel="noreferrer noopener"
-              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#4A2C2A]/80 hover:text-[#38201F] transition-colors pb-1"
-            >
-              <span>Read on Google</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </a>
           </div>
         </div>
       </section>

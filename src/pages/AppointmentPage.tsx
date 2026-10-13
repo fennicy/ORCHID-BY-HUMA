@@ -41,23 +41,27 @@ export const AppointmentPage: React.FC = () => {
                 <p className="text-[#F0D8D6] text-xs sm:text-sm leading-relaxed">
                   For appointments within the next 24 hours or urgent bridal inquiries, calling directly ensures immediate stylist availability checks.
                 </p>
-                <div className="pt-2 flex flex-col gap-2">
-                  <a
-                    href={BUSINESS_INFO.whatsapp.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Chat on WhatsApp with Orchid By Huma"
-                    className="w-full inline-flex items-center justify-center gap-2 py-3 bg-[#25D366]/20 hover:bg-[#25D366]/30 border border-[#25D366]/60 text-white font-semibold text-xs uppercase tracking-wider transition-colors shadow-sm"
-                  >
-                    <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
-                    <span>Chat on WhatsApp</span>
-                  </a>
+                <div className="pt-2">
+                  {/* Call Button (Unchanged) */}
                   <a
                     href={`tel:${BUSINESS_INFO.phone.primaryRaw}`}
                     className="w-full inline-flex items-center justify-center gap-2 py-3.5 bg-[#E6C4C2] hover:bg-[#F0D8D6] text-[#38201F] font-bold text-xs uppercase tracking-wider transition-colors shadow-sm"
                   >
                     <Phone className="w-4 h-4 text-[#38201F]" />
                     <span>Call {BUSINESS_INFO.phone.primary}</span>
+                  </a>
+                </div>
+
+                {/* WhatsApp Button row underneath Call button, centered with only WhatsApp logo */}
+                <div className="pt-1 flex items-center justify-center">
+                  <a
+                    href={BUSINESS_INFO.whatsapp.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Chat on WhatsApp with Orchid By Huma"
+                    className="w-14 h-14 inline-flex items-center justify-center bg-[#25D366]/20 hover:bg-[#25D366]/30 border border-[#25D366]/60 text-[#25D366] transition-colors shadow-sm"
+                  >
+                    <WhatsAppIcon className="w-7 h-7 text-[#25D366]" />
                   </a>
                 </div>
               </div>

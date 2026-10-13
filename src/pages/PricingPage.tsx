@@ -36,7 +36,7 @@ export const PricingPage: React.FC = () => {
 
       {/* PRICING SECTIONS BY DEPARTMENT */}
       <section className="py-12 lg:py-20 bg-[#FAF7F5]">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           {SERVICE_CATEGORIES.map((category) => (
             <div
               key={category.key}

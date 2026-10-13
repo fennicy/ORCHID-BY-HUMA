@@ -94,10 +94,10 @@ const AppContent: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen pb-14 sm:pb-0 bg-[#FAF7F5] text-[#4A2C2A]">
+    <div className="flex flex-col min-h-screen w-full max-w-full overflow-x-clip pb-14 sm:pb-0 bg-[#FAF7F5] text-[#4A2C2A]">
       <SEOHead />
       <Header />
-      <main className="flex-1">{renderCurrentPage()}</main>
+      <main className="flex-1 w-full max-w-full overflow-x-clip">{renderCurrentPage()}</main>
       <Footer />
       <MobileQuickBar />
     </div>
