@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter, Link } from '../context/RouterContext';
 import { BUSINESS_INFO } from '../data/business';
-import { Phone, Calendar, Menu, X, Clock } from 'lucide-react';
+import { Phone, Calendar, Menu, X, Clock, Search } from 'lucide-react';
 import { Logo } from './Logo';
 import { WhatsAppIcon } from './WhatsAppIcon';
+import { SearchModal } from './SearchModal';
 
 export const Header: React.FC = () => {
   const { currentPath, navigate } = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -32,6 +34,7 @@ export const Header: React.FC = () => {
     { name: 'Home', href: '/' },
     { name: 'About Us', href: '/about' },
     { name: 'Services', href: '/services' },
+    { name: 'Deals', href: '/deals' },
     { name: 'Gallery', href: '/gallery' },
     { name: 'Reviews', href: '/reviews' },
     { name: 'Pricing', href: '/pricing' },
@@ -166,16 +169,14 @@ export const Header: React.FC = () => {
 
           {/* Mobile & Tablet Quick Actions & Hamburger Toggle (Visible on all screens < 1024px) */}
           <div className="flex lg:hidden items-center gap-1.5 sm:gap-2.5 shrink-0">
-            <a
-              href={BUSINESS_INFO.whatsapp.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Chat on WhatsApp with Orchid By Huma"
-              className="h-[44px] w-[44px] sm:w-auto sm:px-3 bg-[#25D366]/15 hover:bg-[#25D366]/25 border border-[#25D366]/40 text-[#1E3A2F] text-[11px] font-semibold uppercase flex items-center justify-center gap-1.5 transition-colors shrink-0"
+            {/* Search Button (Opens Service & Treatment Search) */}
+            <button
+              onClick={() => setSearchOpen(true)}
+              aria-label="Search website"
+              className="h-[44px] w-[44px] bg-[#F0D8D6]/70 hover:bg-[#EACCC9] border border-[#EACCC9] text-[#38201F] hover:text-[#4A2C2A] flex items-center justify-center transition-colors shadow-2xs cursor-pointer shrink-0 rounded-xs"
             >
-              <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
-              <span className="hidden sm:inline">WhatsApp</span>
-            </a>
+              <Search className="w-4 h-4 text-[#38201F] stroke-[2.2]" />
+            </button>
 
             {/* Book button on tablet (>=640px), hidden on mobile (<640px) to prevent header crowding since bottom action dock has Book */}
             <button
@@ -206,6 +207,9 @@ export const Header: React.FC = () => {
             </button>
           </div>
         </div>
+
+        {/* Global Website Search Interface Modal */}
+        <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (

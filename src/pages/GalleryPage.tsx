@@ -1,208 +1,95 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useRouter } from '../context/RouterContext';
 import { PageHero } from '../components/PageHero';
 import { BUSINESS_INFO } from '../data/business';
-import { GALLERY_ITEMS } from '../data/gallery';
-import { GalleryItem } from '../types';
-import { WhatsAppIcon } from '../components/WhatsAppIcon';
-import { Calendar, Phone, MapPin, Sparkles, X, ZoomIn } from 'lucide-react';
+import { Instagram, ArrowRight, Sparkles, ExternalLink, ShieldCheck, Heart } from 'lucide-react';
 
 export const GalleryPage: React.FC = () => {
   const { navigate } = useRouter();
-  const [activeFilter, setActiveFilter] = useState<string>('all');
-  const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
-
-  const filters = [
-    { key: 'all', label: 'All Photos' },
-    { key: 'Salon Ambiance', label: 'Salon & Reception' },
-    { key: 'Hair Artistry', label: 'Hair & Balayage' },
-    { key: 'Facials & Skincare', label: 'Facials & Skincare' },
-    { key: 'Bridal & Makeup', label: 'Bridal Beauty' },
-    { key: 'Brows & Lashes', label: 'Brows & Lashes' },
-    { key: 'Spa & Wellness', label: 'Spa & Wellness' },
-  ];
-
-  const filteredItems =
-    activeFilter === 'all'
-      ? GALLERY_ITEMS
-      : GALLERY_ITEMS.filter((item) => item.category === activeFilter);
 
   return (
     <div className="space-y-0">
       <PageHero
-        title="Authentic Salon & Spa Gallery"
-        subtitle="Explore our real Katy salon interior, private spa suites, hair wash bars, reception lounge, and client artistry."
-        breadcrumb="Gallery"
+        title="See More on Instagram"
+        subtitle="Explore Orchid By Huma’s latest hairstyles, balayage transformations, bridal looks, salon updates, and beauty inspiration on Instagram."
+        breadcrumb="Gallery & Instagram"
       />
 
-      {/* FILTER TABS */}
-      <section className="bg-[#FAF7F5] border-b border-[#EACCC9] sticky top-20 z-30 shadow-xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none no-scrollbar">
-            {filters.map((f) => {
-              const isSelected = activeFilter === f.key;
-              return (
-                <button
-                  key={f.key}
-                  onClick={() => setActiveFilter(f.key)}
-                  className={`px-4 py-2 text-xs font-semibold uppercase tracking-wider whitespace-nowrap transition-all duration-200 cursor-pointer ${
-                    isSelected
-                      ? 'bg-[#38201F] text-[#FAF7F5] shadow-xs'
-                      : 'bg-[#F0D8D6]/40 text-[#4A2C2A] hover:bg-[#EACCC9] hover:text-[#38201F]'
-                  }`}
-                >
-                  {f.label}
-                </button>
-              );
-            })}
+      {/* INSTAGRAM FOCUS SECTION */}
+      <section className="py-20 lg:py-28 bg-[#FAF7F5]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-10">
+          {/* Decorative Icon Badge */}
+          <div className="w-20 h-20 rounded-full bg-[#E1306C]/15 border border-[#E1306C]/30 text-[#E1306C] mx-auto flex items-center justify-center shadow-xs">
+            <Instagram className="w-10 h-10 text-[#E1306C]" />
           </div>
-        </div>
-      </section>
 
-      {/* GALLERY GRID */}
-      <section className="py-16 lg:py-24 bg-[#FAF7F5]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#4A2C2A]">
-              Real Photography
+          {/* Heading & Supporting Copy */}
+          <div className="space-y-4 max-w-2xl mx-auto">
+            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#4A2C2A] block">
+              Live Beauty Inspiration &amp; Client Portfolios
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#38201F]">
-              Inside Orchid By Huma
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#38201F]">
+              See More on Instagram
             </h2>
-            <p className="text-[#4A2C2A]/80 text-sm leading-relaxed">
-              Every photograph below depicts our authentic salon facilities located at 1105 South Mason Rd in Katy, Texas, showcasing our tranquil treatment spaces and hair craftsmanship.
+            <p className="text-[#4A2C2A]/80 text-sm sm:text-base leading-relaxed">
+              We share our most recent client work, before-and-after balayage results, bridal makeup artistry, skincare tutorials, and behind-the-scenes moments daily on our official Instagram page.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {filteredItems.map((item) => (
-              <div
-                key={item.id}
-                onClick={() => setSelectedImage(item)}
-                className="group relative bg-white border border-[#EACCC9] overflow-hidden cursor-pointer shadow-xs hover:border-[#E6C4C2] transition-all duration-300"
-              >
-                <div className="aspect-4/3 overflow-hidden relative bg-[#FAF7F5]">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-[#38201F]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span className="p-3 rounded-full bg-white/90 text-[#38201F] shadow-md">
-                      <ZoomIn className="w-5 h-5" />
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-5 flex items-center justify-between">
-                  <div>
-                    <span className="text-[11px] font-semibold uppercase tracking-wider text-[#4A2C2A] block">
-                      {item.category}
-                    </span>
-                    <h3 className="font-serif text-lg text-[#38201F] font-medium mt-1">
-                      {item.title}
-                    </h3>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* LIGHTBOX MODAL */}
-          {selectedImage && (
-            <div
-              className="fixed inset-0 z-50 bg-[#38201F]/85 backdrop-blur-xs flex items-center justify-center p-4"
-              onClick={() => setSelectedImage(null)}
-            >
-              <div
-                className="relative max-w-4xl w-full bg-[#38201F] border border-[#4A2C2A] text-white overflow-hidden shadow-2xl"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <button
-                  onClick={() => setSelectedImage(null)}
-                  className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/60 text-white hover:text-[#E6C4C2] transition-colors"
-                  aria-label="Close image preview"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-
-                <div className="aspect-16/10 max-h-[75vh] overflow-hidden bg-black flex items-center justify-center">
-                  <img
-                    src={selectedImage.image}
-                    alt={selectedImage.title}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-
-                <div className="p-6 bg-[#38201F] flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-[#4A2C2A]">
-                  <div>
-                    <span className="text-xs uppercase tracking-wider text-[#E6C4C2] font-semibold">
-                      {selectedImage.category}
-                    </span>
-                    <h3 className="font-serif text-xl sm:text-2xl text-white mt-1">
-                      {selectedImage.title}
-                    </h3>
-                    <p className="text-[#F0D8D6] text-xs mt-1">
-                      {BUSINESS_INFO.address.full}
-                    </p>
-                  </div>
-
-                  <div className="flex items-center gap-3 shrink-0">
-                    <button
-                      onClick={() => {
-                        setSelectedImage(null);
-                        navigate('/book');
-                      }}
-                      className="px-5 py-2.5 bg-[#E6C4C2] hover:bg-[#F0D8D6] text-[#38201F] font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer"
-                    >
-                      Book Service
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* CALL TO ACTION */}
-      <section className="py-16 bg-[#38201F] text-[#FAF7F5] border-t border-[#4A2C2A]">
-        <div className="max-w-4xl mx-auto px-4 text-center space-y-5">
-          <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#E6C4C2]">
-            Visit Us In Person
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl text-white">
-            Experience Our Katy Sanctuary Today
-          </h2>
-          <p className="text-[#F0D8D6] text-sm max-w-xl mx-auto leading-relaxed">
-            Come visit Orchid By Huma at 1105 South Mason Rd, Katy, TX 77450. Walk-ins welcome based on availability, or reserve your dedicated stylist ahead of time.
-          </p>
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
-            <button
-              onClick={() => navigate('/book')}
-              className="bg-[#E6C4C2] hover:bg-[#F0D8D6] text-[#38201F] font-bold px-7 py-3 text-xs uppercase tracking-widest transition-colors cursor-pointer flex items-center gap-2"
-            >
-              <Calendar className="w-4 h-4 text-[#38201F]" />
-              <span>Book Appointment</span>
-            </button>
+          {/* Prominent Action Button & Text Link */}
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
             <a
-              href={BUSINESS_INFO.whatsapp.url}
+              href={BUSINESS_INFO.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Chat on WhatsApp with Orchid By Huma"
-              className="bg-[#25D366]/15 hover:bg-[#25D366]/25 text-white border border-[#25D366]/60 hover:border-[#25D366] px-6 py-3 text-xs uppercase tracking-widest font-semibold transition-colors flex items-center gap-2"
+              aria-label="Follow Orchid By Huma on Instagram (opens in new tab)"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#E1306C] hover:bg-[#C13584] text-white text-xs font-bold uppercase tracking-widest transition-colors shadow-md hover:shadow-lg cursor-pointer"
             >
-              <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
-              <span>Chat on WhatsApp</span>
+              <Instagram className="w-4 h-4 text-white" />
+              <span>Follow Us on Instagram</span>
             </a>
+
             <a
-              href={`tel:${BUSINESS_INFO.phone.primaryRaw}`}
-              className="border border-[#EACCC9]/60 hover:border-white text-white px-6 py-3 text-xs uppercase tracking-widest font-semibold transition-colors flex items-center gap-2"
+              href={BUSINESS_INFO.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#38201F] hover:text-[#4A2C2A] underline underline-offset-4 transition-colors py-2"
             >
-              <Phone className="w-4 h-4 text-[#E6C4C2]" />
-              <span>Call (281) 206-0151</span>
+              <span>View Instagram</span>
+              <ExternalLink className="w-3.5 h-3.5" />
             </a>
+          </div>
+
+          {/* Verification Badge & Social Handle */}
+          <div className="pt-6 border-t border-[#EACCC9]/60 flex flex-wrap items-center justify-center gap-4 text-xs text-[#4A2C2A]/70">
+            <span className="font-medium text-[#38201F]">
+              Official Account: <strong className="text-[#E1306C]">{BUSINESS_INFO.instagramHandle}</strong>
+            </span>
+            <span>·</span>
+            <span className="flex items-center gap-1">
+              <Sparkles className="w-3.5 h-3.5 text-[#E6C4C2]" />
+              <span>Real Client Hair &amp; Beauty Artistry</span>
+            </span>
+          </div>
+
+          {/* Next Steps: Book Appointment */}
+          <div className="pt-8">
+            <div className="bg-white border border-[#EACCC9] p-8 max-w-xl mx-auto space-y-4">
+              <h3 className="font-serif text-xl text-[#38201F]">
+                Ready for Your Own Transformation?
+              </h3>
+              <p className="text-xs sm:text-sm text-[#4A2C2A]/80 leading-relaxed">
+                Book your personalized appointment with our team of skilled hair artists and licensed aestheticians in Katy, Texas.
+              </p>
+              <div className="pt-2">
+                <button
+                  onClick={() => navigate('/book')}
+                  className="w-full sm:w-auto px-6 py-3 bg-[#4A2C2A] hover:bg-[#38201F] text-white text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
+                >
+                  Book an Appointment
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>

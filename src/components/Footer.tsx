@@ -77,8 +77,13 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/deals" className="hover:text-white transition-colors">
+                  Deals &amp; Specials
+                </Link>
+              </li>
+              <li>
                 <Link to="/gallery" className="hover:text-white transition-colors">
-                  Salon Gallery
+                  Instagram Gallery
                 </Link>
               </li>
               <li>

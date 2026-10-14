@@ -134,14 +134,25 @@ export const SEOHead: React.FC = () => {
           ];
           faqItems = [];
           break;
-        case '/gallery':
-          title = 'Salon & Spa Gallery | Orchid By Huma in Katy, TX';
+        case '/deals':
+          title = 'Deals & Specials | Beauty Salon & Spa Promotions in Katy, TX | Orchid By Huma';
           description =
-            'Take a visual tour inside Orchid By Huma in Katy, Texas. Explore our styling stations, hair wash lounge, private skincare suites, and authentic salon ambiance.';
+            'Explore current beauty, salon, skincare, and spa deals and specials at Orchid By Huma in Katy, Texas. Check back for seasonal packages or contact our team directly.';
+          canonical = 'https://orchidbyhuma.com/deals/';
+          breadcrumbItems = [
+            { name: 'Home', url: 'https://orchidbyhuma.com/' },
+            { name: 'Deals & Specials', url: canonical },
+          ];
+          faqItems = [];
+          break;
+        case '/gallery':
+          title = 'See More on Instagram | Orchid By Huma in Katy, TX';
+          description =
+            'Follow Orchid By Huma on Instagram for the latest client transformations, balayage hair artistry, bridal makeup, skincare rituals, and Katy salon inspiration.';
           canonical = 'https://orchidbyhuma.com/gallery/';
           breadcrumbItems = [
             { name: 'Home', url: 'https://orchidbyhuma.com/' },
-            { name: 'Gallery', url: canonical },
+            { name: 'Instagram & Gallery', url: canonical },
           ];
           faqItems = [];
           break;

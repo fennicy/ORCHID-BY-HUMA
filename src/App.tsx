@@ -14,6 +14,7 @@ const PricingPage = lazy(() => import('./pages/PricingPage').then(m => ({ defaul
 const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
 const AppointmentPage = lazy(() => import('./pages/AppointmentPage').then(m => ({ default: m.AppointmentPage })));
 const GalleryPage = lazy(() => import('./pages/GalleryPage').then(m => ({ default: m.GalleryPage })));
+const DealsPage = lazy(() => import('./pages/DealsPage').then(m => ({ default: m.DealsPage })));
 const ReviewsPage = lazy(() => import('./pages/ReviewsPage').then(m => ({ default: m.ReviewsPage })));
 const ServiceDetailPage = lazy(() => import('./pages/ServiceDetailPage').then(m => ({ default: m.ServiceDetailPage })));
 
@@ -66,6 +67,12 @@ const AppContent: React.FC = () => {
         return (
           <Suspense fallback={<RouteLoadingFallback />}>
             <GalleryPage />
+          </Suspense>
+        );
+      case '/deals':
+        return (
+          <Suspense fallback={<RouteLoadingFallback />}>
+            <DealsPage />
           </Suspense>
         );
       case '/reviews':
