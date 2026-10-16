@@ -3,9 +3,51 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig} from 'vite';
 
+function localApiPlugin() {
+  return {
+    name: 'local-api-handler',
+    configureServer(server: any) {
+      server.middlewares.use(async (req: any, res: any, next: any) => {
+        const url = req.url?.split('?')[0];
+        if (url === '/api/contact' || url === '/api/book-appointment') {
+          try {
+            const chunks: any[] = [];
+            req.on('data', (chunk: any) => chunks.push(chunk));
+            req.on('end', async () => {
+              const rawBody = Buffer.concat(chunks).toString();
+              let body = {};
+              try {
+                body = rawBody ? JSON.parse(rawBody) : {};
+              } catch {
+                body = {};
+              }
+              req.body = body;
+
+              if (url === '/api/contact') {
+                const handler = (await import('./api/contact.ts')).default;
+                await handler(req, res);
+              } else if (url === '/api/book-appointment') {
+                const handler = (await import('./api/book-appointment.ts')).default;
+                await handler(req, res);
+              }
+            });
+          } catch (err: any) {
+            console.error('[Local API Error]:', err);
+            res.statusCode = 500;
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify({ success: false, error: err?.message || 'Internal API Error' }));
+          }
+          return;
+        }
+        next();
+      });
+    },
+  };
+}
+
 export default defineConfig(() => {
   return {
-    plugins: [react(), tailwindcss()],
+    plugins: [react(), tailwindcss(), localApiPlugin()],
     build: {
       rollupOptions: {
         output: {

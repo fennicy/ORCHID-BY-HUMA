@@ -96,33 +96,21 @@ function handleAppointment(ss, payload) {
 }
 
 function handleContact(ss, payload) {
-  var sheet = getOrCreateSheet(ss, 'Contact Enquiries', [
-    'Reference ID',
+  var sheet = getOrCreateSheet(ss, 'Contact', [
     'Timestamp',
     'Name',
-    'Phone',
     'Email',
-    'Topic / Service',
-    'Preferred Date',
-    'Message',
-    'Status',
-    'Email Delivered',
-    'Source URL'
+    'Phone',
+    'Message'
   ]);
 
   var data = payload.data || {};
   var row = [
-    payload.id || '',
     payload.timestamp || new Date().toISOString(),
     data.name || '',
-    data.phone || '',
     data.email || '',
-    data.serviceInterested || '',
-    data.preferredDate || '',
-    data.message || '',
-    'new', // Status
-    payload.emailDelivered ? 'YES' : 'NO',
-    data.sourceUrl || ''
+    data.phone || '',
+    data.message || ''
   ];
 
   sheet.appendRow(row);

@@ -16,6 +16,7 @@ function normalizePath(rawPath: string): AppRoute {
   
   if (clean === '/about') return '/about';
   if (clean === '/services') return '/services';
+  if (clean === '/deals') return '/deals';
   if (clean === '/pricing') return '/pricing';
   if (clean === '/contact') return '/contact';
   if (clean === '/appointment' || clean === '/book') return '/book';

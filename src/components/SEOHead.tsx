@@ -135,9 +135,9 @@ export const SEOHead: React.FC = () => {
           faqItems = [];
           break;
         case '/deals':
-          title = 'Deals & Specials | Beauty Salon & Spa Promotions in Katy, TX | Orchid By Huma';
+          title = 'Exclusive Beauty Deals & Specials in Katy, TX | Orchid By Huma';
           description =
-            'Explore current beauty, salon, skincare, and spa deals and specials at Orchid By Huma in Katy, Texas. Check back for seasonal packages or contact our team directly.';
+            'Enhance your beauty with exclusive makeup and beauty deals at Orchid By Huma in Katy, TX. Special pricing on Bridal Makeup ($750), Engagement Makeup ($450), Party Makeup ($300), Facials with Free Eyebrow Shaping ($50), Brazilian Wax ($40), and Threading specials.';
           canonical = 'https://orchidbyhuma.com/deals/';
           breadcrumbItems = [
             { name: 'Home', url: 'https://orchidbyhuma.com/' },
