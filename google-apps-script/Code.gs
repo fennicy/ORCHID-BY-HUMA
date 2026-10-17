@@ -17,15 +17,24 @@ var SCRIPT_PROP_KEY = 'ORCHID_WEBHOOK_SECRET';
 
 function doPost(e) {
   try {
-    if (!e || !e.postData || !e.postData.contents) {
+    var payload = {};
+    if (e && e.postData && e.postData.contents) {
+      try {
+        payload = JSON.parse(e.postData.contents);
+      } catch (jsonErr) {
+        // Fallback for form-urlencoded or raw text
+        payload = e.parameter || {};
+      }
+    } else if (e && e.parameter) {
+      payload = e.parameter;
+    } else {
       return ContentService
         .createTextOutput(JSON.stringify({ status: 'error', message: 'No post data received' }))
         .setMimeType(ContentService.MimeType.JSON);
     }
 
-    var payload = JSON.parse(e.postData.contents);
-    var action = payload.action;
-    var providedKey = payload.apiKey || '';
+    var action = payload.action || (payload.data && payload.data.action) || 'create_contact';
+    var providedKey = payload.apiKey || (payload.data && payload.data.apiKey) || '';
 
     // Verify API Key if configured in Script Properties
     var scriptProperties = PropertiesService.getScriptProperties();
@@ -97,20 +106,37 @@ function handleAppointment(ss, payload) {
 
 function handleContact(ss, payload) {
   var sheet = getOrCreateSheet(ss, 'Contact', [
-    'Timestamp',
-    'Name',
-    'Email',
-    'Phone',
+    'Submission Date and Time',
+    'Full Name',
+    'Email Address',
+    'Phone Number',
+    'Service Interested In',
+    'Subject',
     'Message'
   ]);
 
   var data = payload.data || {};
+  // Safely extract string values, avoiding [object Object] serialization
+  var name = typeof data.name === 'string' ? data.name : (data.name ? String(data.name) : '');
+  var email = typeof data.email === 'string' ? data.email : (data.email ? String(data.email) : '');
+  var phone = typeof data.phone === 'string' ? data.phone : (data.phone ? String(data.phone) : '');
+  var service = typeof data.serviceInterested === 'string' && data.serviceInterested.trim()
+    ? data.serviceInterested.trim()
+    : 'Bridal Makeup';
+  var subject = typeof data.subject === 'string' && data.subject.trim()
+    ? data.subject.trim()
+    : service;
+  var message = typeof data.message === 'string' ? data.message : (data.message ? String(data.message) : '');
+  var timestamp = typeof payload.timestamp === 'string' ? payload.timestamp : new Date().toISOString();
+
   var row = [
-    payload.timestamp || new Date().toISOString(),
-    data.name || '',
-    data.email || '',
-    data.phone || '',
-    data.message || ''
+    timestamp,
+    name,
+    email,
+    phone,
+    service,
+    subject,
+    message
   ];
 
   sheet.appendRow(row);

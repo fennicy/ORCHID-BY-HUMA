@@ -411,3 +411,5 @@ export const DealsPage: React.FC = () => {
     </div>
   );
 };
+
+export default DealsPage;

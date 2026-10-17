@@ -9,7 +9,7 @@ export const ContactForm: React.FC = () => {
     name: '',
     phone: '',
     email: '',
-    serviceInterested: 'General Inquiry',
+    serviceInterested: 'Bridal Makeup',
     preferredDate: '',
     message: '',
   });
@@ -209,12 +209,14 @@ export const ContactForm: React.FC = () => {
             onChange={(e) => setFormData({ ...formData, serviceInterested: e.target.value })}
             className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#EACCC9] text-[#38201F] focus:outline-hidden focus:border-[#4A2C2A] focus:ring-1 focus:ring-[#E6C4C2] transition-colors"
           >
-            <option value="General Inquiry">General Question / Consultation</option>
-            {SERVICE_CATEGORIES.map((cat) => (
-              <option key={cat.key} value={cat.title}>
-                {cat.title}
-              </option>
-            ))}
+            <option value="Bridal Makeup">Bridal Makeup</option>
+            <option value="Engagement Makeup">Engagement Makeup</option>
+            <option value="Party Makeup">Party Makeup</option>
+            <option value="Facial">Facial</option>
+            <option value="Eyebrow Threading & Brow Tint">Eyebrow Threading & Brow Tint</option>
+            <option value="Full Face Threading">Full Face Threading</option>
+            <option value="Brazilian Wax">Brazilian Wax</option>
+            <option value="Other">Other</option>
           </select>
         </div>
       </div>
@@ -249,10 +251,14 @@ export const ContactForm: React.FC = () => {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full py-3.5 bg-[#4A2C2A] hover:bg-[#38201F] text-white text-xs font-semibold uppercase tracking-widest transition-all duration-200 cursor-pointer shadow-sm flex items-center justify-center gap-2"
+        className={`w-full py-3.5 bg-[#4A2C2A] text-white text-xs font-semibold uppercase tracking-widest transition-all duration-200 shadow-sm flex items-center justify-center gap-2 ${
+          isSubmitting
+            ? 'opacity-70 cursor-not-allowed'
+            : 'hover:bg-[#38201F] active:bg-[#2A1817] cursor-pointer'
+        }`}
       >
-        <Send className="w-3.5 h-3.5 text-[#E6C4C2]" />
-        <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
+        <Send className={`w-3.5 h-3.5 text-[#E6C4C2] ${isSubmitting ? 'animate-pulse' : ''}`} />
+        <span>{isSubmitting ? 'Saving Your Inquiry...' : 'Send Message'}</span>
       </button>
     </form>
   );

@@ -142,13 +142,31 @@ async function appendViaGoogleSheetsAPI(
   let rowValues: any[] = [];
   if (type === 'contact') {
     const contact = data as ContactPayload;
-    // Exactly saving: Submission Timestamp, Name, Email, Phone Number, Message
+    // Exactly saving separate columns:
+    // 1. Submission Date and Time
+    // 2. Full Name
+    // 3. Email Address
+    // 4. Phone Number
+    // 5. Service Interested In
+    // 6. Subject
+    // 7. Message
+    const nameVal = typeof contact.name === 'string' ? contact.name.trim() : String(contact.name || '');
+    const emailVal = typeof contact.email === 'string' ? contact.email.trim() : String(contact.email || '');
+    const phoneVal = typeof contact.phone === 'string' ? contact.phone.trim() : String(contact.phone || '');
+    const serviceVal = typeof contact.serviceInterested === 'string' && contact.serviceInterested.trim()
+      ? contact.serviceInterested.trim()
+      : 'Bridal Makeup';
+    const subjectVal = serviceVal; // Subject matches the inquiry service or general inquiry
+    const messageVal = typeof contact.message === 'string' ? contact.message.trim() : String(contact.message || '');
+
     rowValues = [
       timestamp,
-      contact.name || '',
-      contact.email || '',
-      contact.phone || '',
-      contact.message || '',
+      nameVal,
+      emailVal,
+      phoneVal,
+      serviceVal,
+      subjectVal,
+      messageVal,
     ];
   } else {
     const apt = data as AppointmentPayload;
@@ -212,7 +230,7 @@ async function appendViaGoogleSheetsAPI(
         });
 
         // Add header row
-        const headerRange = `${encodeURIComponent(tabName)}!A1:E1`;
+        const headerRange = `${encodeURIComponent(tabName)}!A1:G1`;
         await fetch(
           `https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(
             spreadsheetId
@@ -224,7 +242,17 @@ async function appendViaGoogleSheetsAPI(
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              values: [['Submission Timestamp', 'Name', 'Email', 'Phone Number', 'Message']],
+              values: [
+                [
+                  'Submission Date and Time',
+                  'Full Name',
+                  'Email Address',
+                  'Phone Number',
+                  'Service Interested In',
+                  'Subject',
+                  'Message',
+                ],
+              ],
             }),
           }
         );
