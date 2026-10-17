@@ -9,7 +9,7 @@ export const ContactForm: React.FC = () => {
     name: '',
     phone: '',
     email: '',
-    serviceInterested: 'Bridal Makeup',
+    serviceInterested: 'General Question / Consultation',
     preferredDate: '',
     message: '',
   });
@@ -59,10 +59,22 @@ export const ContactForm: React.FC = () => {
         }),
       });
 
-      const data = await response.json().catch(() => ({}));
+      let data: any = {};
+      try {
+        data = await response.json();
+      } catch {
+        data = {};
+      }
 
       if (!response.ok || !data.success) {
-        throw new Error(data.error || 'Unable to deliver your message. Please call us directly.');
+        // Ensure error is strictly a readable string, never an object or exception
+        const errorMsg =
+          typeof data.error === 'string'
+            ? data.error
+            : typeof data.message === 'string'
+            ? data.message
+            : 'Unable to deliver your message. Please call our Katy salon directly at (281) 206-0151.';
+        throw new Error(errorMsg);
       }
 
       setSubmittedData({
@@ -70,14 +82,19 @@ export const ContactForm: React.FC = () => {
         serviceInterested: formData.serviceInterested,
         phone: formData.phone.trim(),
       });
-      setSubmissionId(data.id || '');
+      setSubmissionId(typeof data.id === 'string' ? data.id : '');
       setSubmitted(true);
       setError(null);
     } catch (err: any) {
       console.error('Contact submission error:', err);
-      setError(
-        err.message || 'We could not send your message right now. Please check your internet connection or call our Katy salon directly at (281) 206-0151.'
-      );
+      // Ensure error is never rendered as [object Object]
+      const userMessage =
+        err && typeof err.message === 'string' && err.message !== '[object Object]'
+          ? err.message
+          : typeof err === 'string'
+          ? err
+          : 'We could not send your message right now. Please check your internet connection or call our Katy salon directly at (281) 206-0151.';
+      setError(userMessage);
     } finally {
       setIsSubmitting(false);
     }
@@ -145,7 +162,7 @@ export const ContactForm: React.FC = () => {
       {error && (
         <div role="alert" className="p-3 bg-red-50 border border-red-200 text-red-800 text-xs flex items-center gap-2">
           <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
-          <span>{error}</span>
+          <span>{typeof error === 'string' ? error : String(error || '')}</span>
         </div>
       )}
 
@@ -209,14 +226,16 @@ export const ContactForm: React.FC = () => {
             onChange={(e) => setFormData({ ...formData, serviceInterested: e.target.value })}
             className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#EACCC9] text-[#38201F] focus:outline-hidden focus:border-[#4A2C2A] focus:ring-1 focus:ring-[#E6C4C2] transition-colors"
           >
-            <option value="Bridal Makeup">Bridal Makeup</option>
-            <option value="Engagement Makeup">Engagement Makeup</option>
-            <option value="Party Makeup">Party Makeup</option>
-            <option value="Facial">Facial</option>
-            <option value="Eyebrow Threading & Brow Tint">Eyebrow Threading & Brow Tint</option>
-            <option value="Full Face Threading">Full Face Threading</option>
-            <option value="Brazilian Wax">Brazilian Wax</option>
-            <option value="Other">Other</option>
+            <option value="General Question / Consultation">General Question / Consultation</option>
+            <option value="Facials & Skincare">Facials &amp; Skincare</option>
+            <option value="Hair Styling & Treatments">Hair Styling &amp; Treatments</option>
+            <option value="Hair Color & Highlights">Hair Color &amp; Highlights</option>
+            <option value="Precision Haircuts">Precision Haircuts</option>
+            <option value="Bridal & Event Makeup">Bridal &amp; Event Makeup</option>
+            <option value="Waxing & Body Treatments">Waxing &amp; Body Treatments</option>
+            <option value="Threading & Facial Waxing">Threading &amp; Facial Waxing</option>
+            <option value="Tint, Lamination & Lashes">Tint, Lamination &amp; Lashes</option>
+            <option value="Massage & Spa Wellness">Massage &amp; Spa Wellness</option>
           </select>
         </div>
       </div>

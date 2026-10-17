@@ -155,7 +155,7 @@ async function appendViaGoogleSheetsAPI(
     const phoneVal = typeof contact.phone === 'string' ? contact.phone.trim() : String(contact.phone || '');
     const serviceVal = typeof contact.serviceInterested === 'string' && contact.serviceInterested.trim()
       ? contact.serviceInterested.trim()
-      : 'Bridal Makeup';
+      : 'General Question / Consultation';
     const subjectVal = serviceVal; // Subject matches the inquiry service or general inquiry
     const messageVal = typeof contact.message === 'string' ? contact.message.trim() : String(contact.message || '');
 
