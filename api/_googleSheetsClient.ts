@@ -1,5 +1,5 @@
 import { createSign } from 'crypto';
-import { AppointmentPayload, ContactPayload } from './_leadStorage';
+import { AppointmentPayload, ContactPayload } from './_leadStorage.js';
 
 export interface GoogleSheetsSubmissionResult {
   success: boolean;

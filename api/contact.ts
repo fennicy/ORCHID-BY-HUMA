@@ -1,6 +1,6 @@
 import type { IncomingMessage, ServerResponse } from 'http';
-import { ContactPayload, recordLead, checkRateLimit, escapeHtml, SubmissionResponse } from './_leadStorage';
-import { sendToGoogleSheets, isGoogleSheetsConfigured } from './_googleSheetsClient';
+import { ContactPayload, recordLead, checkRateLimit, escapeHtml, SubmissionResponse } from './_leadStorage.js';
+import { sendToGoogleSheets, isGoogleSheetsConfigured } from './_googleSheetsClient.js';
 
 interface VercelLikeRequest extends IncomingMessage {
   body?: any;
